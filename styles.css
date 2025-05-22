@@ -1872,7 +1872,7 @@ body {
 }
 
 .messenger-option[data-messenger="whatsapp"] .messenger-icon::before {
-    background-color: rgba(37, 211, 102, 0.15);
+    background-color: rgba(37, 211, 101, 0.103);
 }
 
 .messenger-option[data-messenger="viber"] .messenger-icon {
@@ -1880,7 +1880,7 @@ body {
 }
 
 .messenger-option[data-messenger="viber"] .messenger-icon::before {
-    background-color: rgba(115, 96, 242, 0.15);
+    background-color: rgba(116, 96, 242, 0.065);
 }
 
 .messenger-option[data-messenger="telegram"] .messenger-icon {
@@ -1888,7 +1888,7 @@ body {
 }
 
 .messenger-option[data-messenger="telegram"] .messenger-icon::before {
-    background-color: rgba(0, 136, 204, 0.15);
+    background-color: rgba(0, 136, 204, 0.031);
 }
 
 .messenger-option[data-messenger="email"] .messenger-icon {
@@ -1896,7 +1896,7 @@ body {
 }
 
 .messenger-option[data-messenger="email"] .messenger-icon::before {
-    background-color: rgba(227, 30, 36, 0.15);
+    background-color: rgba(115, 30, 227, 0.035);
 }
 
 .messenger-option:hover .messenger-icon {
