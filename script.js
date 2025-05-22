@@ -1,113 +1,96 @@
-// Анимация при прокрутке
 document.addEventListener('DOMContentLoaded', function() {
-    const animateElements = document.querySelectorAll('.animate-fade-in-up');
+    // Переменные
+    const cityNameElement = document.getElementById('cityName');
+    const cityModal = document.getElementById('cityModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModal = document.getElementById('closeModal');
+    const cancelCitySelection = document.getElementById('cancelCitySelection');
+    const cityItems = document.querySelectorAll('.city-item');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     
-    function checkInView() {
-        animateElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            } else {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-            }
-        });
+    // Открытие модального окна по клику на имя города
+    cityNameElement.addEventListener('click', function() {
+      cityModal.classList.add('active');
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Блокировка прокрутки
+    });
+    
+    // Закрытие модального окна
+    function closeModalWindow() {
+      cityModal.classList.remove('active');
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = ''; // Разблокировка прокрутки
     }
     
-    // Инициализация стилей для анимируемых элементов
-    animateElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    closeModal.addEventListener('click', closeModalWindow);
+    cancelCitySelection.addEventListener('click', closeModalWindow);
+    modalOverlay.addEventListener('click', closeModalWindow);
+    
+    // Выбор города
+    cityItems.forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const cityName = this.textContent;
+        cityNameElement.textContent = cityName + ' ';
+        
+        // Добавляем иконку стрелки после текста
+        const arrowIcon = document.createElement('i');
+        arrowIcon.className = 'fas fa-chevron-down';
+        cityNameElement.appendChild(arrowIcon);
+        
+        // Сохраняем выбранный город в localStorage
+        localStorage.setItem('selectedCity', cityName);
+        
+        closeModalWindow();
+      });
     });
     
-    // Проверка при загрузке страницы
-    checkInView();
+    // Инициализация города из localStorage при загрузке страницы
+    const savedCity = localStorage.getItem('selectedCity');
+    if (savedCity) {
+      cityNameElement.textContent = savedCity + ' ';
+      
+      // Добавляем иконку стрелки после текста
+      const arrowIcon = document.createElement('i');
+      arrowIcon.className = 'fas fa-chevron-down';
+      cityNameElement.appendChild(arrowIcon);
+    }
     
-    // Проверка при прокрутке
-    window.addEventListener('scroll', checkInView);
-    
-    // Плавная прокрутка для якорных ссылок
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+    // Для мобильных устройств - обработка клика на dropdown-toggle
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = this.parentElement;
+          const dropdownMenu = parent.querySelector('.dropdown-menu');
+          
+          // Закрываем все другие открытые меню
+          document.querySelectorAll('.nav-item.dropdown').forEach(item => {
+            if (item !== parent && item.classList.contains('active')) {
+              item.classList.remove('active');
+              item.querySelector('.dropdown-menu').style.display = 'none';
             }
-        });
-    });
-    
-    // Анимация счетчиков в секции статистики
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let animated = false;
-    
-    function animateNumbers() {
-        if (animated) return;
-        
-        const statsSection = document.querySelector('.stats');
-        if (!statsSection) return;
-        
-        const statsSectionTop = statsSection.getBoundingClientRect().top;
-        
-        if (statsSectionTop < window.innerHeight - 150) {
-            statNumbers.forEach(statNumber => {
-                const target = parseInt(statNumber.textContent);
-                let count = 0;
-                const duration = 2000; // 2 секунды
-                const interval = Math.floor(duration / target);
-                
-                const counter = setInterval(() => {
-                    count += 1;
-                    statNumber.textContent = count;
-                    
-                    if (count >= target) {
-                        clearInterval(counter);
-                    }
-                }, interval);
-            });
-            
-            animated = true;
+          });
+          
+          // Переключаем текущее меню
+          parent.classList.toggle('active');
+          
+          if (parent.classList.contains('active')) {
+            dropdownMenu.style.display = 'block';
+            setTimeout(() => {
+              dropdownMenu.style.opacity = '1';
+              dropdownMenu.style.transform = 'translateY(0)';
+            }, 10);
+          } else {
+            dropdownMenu.style.opacity = '0';
+            dropdownMenu.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              dropdownMenu.style.display = 'none';
+            }, 300);
+          }
         }
-    }
-    
-    // Проверка для анимации счетчиков
-    window.addEventListener('scroll', animateNumbers);
-    animateNumbers(); // Проверка при загрузке
-    
-    // Добавление эффекта волны при наведении на элементы
-    const addRippleEffect = (elements) => {
-        elements.forEach(element => {
-            element.addEventListener('mouseenter', function(e) {
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                
-                ripple.style.width = ripple.style.height = `${size}px`;
-                ripple.style.left = `${e.clientX - rect.left - size/2}px`;
-                ripple.style.top = `${e.clientY - rect.top - size/2}px`;
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
-    };
-    
-    // Применение эффекта волны к кнопкам и карточкам
-    addRippleEffect(document.querySelectorAll('.btn, .service-card, .property-card, .team-member'));
-});
+      });
+    });
+  });
+  

@@ -1,294 +1,86 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Юридическая фирма</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <title>Название сайта</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
+
 <body>
-<body>
-    <!-- Шапка сайта -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <a href="index.html">Юрист<span>Про</span></a>
+    <!-- Главное меню -->
+    <script src="script.js"></script>
+
+    <!-- Главное меню -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="/" class="logo">
+                        <img src="images/logo.png" alt="Стратегия - юридические услуги">
+                        <div class="logo-text">
+                            <h1 class="site-name">"СТРАТЕГИЯ"</h1>
+                            <p class="site-description">юридические услуги</p>
+                        </div>
+                    </a>
+                    <p class="city-name" id="cityName">Воронеж <i class="fas fa-chevron-down"></i></p>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Услуги <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
+                                <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
+                                <li><a href="#" class="dropdown-item">Лицензирование</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Цены на услуги</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Полезное <i
+                                    class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-contacts">
+                    <div class="phone-numbers">
+                        <a href="tel:84732954824" class="phone">8(473)295-48-24</a>
+                        <a href="tel:89525534488" class="phone">8(952)553-44-88</a>
+                    </div>
+                    <a href="#callback" class="callback-btn">Обратный звонок</a>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#properties">Недвижимость</a></li>
-                    <li><a href="#team">Команда</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <!-- Главный баннер -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Профессиональные юридические услуги</h1>
-            <p>Мы предоставляем квалифицированную юридическую помощь в сфере недвижимости, бизнеса и семейного права</p>
-            <a href="#contact" class="btn">Связаться с нами</a>
-        </div>
-    </section>
+    <!-- Модальное окно выбора города -->
+    <div class="city-modal" id="cityModal">
+        <div class="city-modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
 
-    <!-- Секция услуг -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <p class="section-subtitle">Мы предлагаем широкий спектр юридических услуг для частных лиц и бизнеса</p>
-            
-            <div class="services-grid">
-                <div class="service-card animate-fade-in-up">
-                    <i class="fas fa-home"></i>
-                    <h3>Недвижимость</h3>
-                    <p>Юридическое сопровождение сделок с недвижимостью, проверка документов, оформление прав собственности</p>
-                </div>
-                
-                <div class="service-card animate-fade-in-up">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Корпоративное право</h3>
-                    <p>Регистрация компаний, юридическое сопровождение бизнеса, договорное право</p>
-                </div>
-                
-                <div class="service-card animate-fade-in-up">
-                    <i class="fas fa-users"></i>
-                    <h3>Семейное право</h3>
-                    <p>Бракоразводные процессы, раздел имущества, алименты, усыновление</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <h2 class="city-modal-title">Выберите ближайший к вам офис</h2>
 
-    <!-- Секция недвижимости -->
-    <section class="properties" id="properties">
-        <div class="container">
-            <h2 class="section-title">Объекты недвижимости</h2>
-            <p class="section-subtitle">Ознакомьтесь с нашими текущими предложениями по недвижимости</p>
-            
-            <div class="properties-grid">
-                <div class="property-card">
-                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="property-info">
-                        <h3>Современная квартира</h3>
-                        <p>Москва, ул. Ленина, 123</p>
-                        <p>2 комнаты, 65 м²</p>
-                        <p class="price">12 500 000 ₽</p>
-                    </div>
-                </div>
-                
-                <div class="property-card">
-                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="property-info">
-                        <h3>Загородный дом</h3>
-                        <p>Подмосковье, д. Сосновка</p>
-                        <p>4 комнаты, 150 м², участок 12 соток</p>
-                        <p class="price">18 900 000 ₽</p>
-                    </div>
-                </div>
-                
-                <div class="property-card">
-                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');"></div>
-                    <div class="property-info">
-                        <h3>Офисное помещение</h3>
-                        <p>Москва, ул. Тверская, 45</p>
-                        <p>120 м², 3 этаж</p>
-                        <p class="price">25 000 000 ₽</p>
-                    </div>
-                </div>
+            <div class="city-list">
+                <a href="#" class="city-item" data-city="voronezh">Воронеж</a>
+                <a href="#" class="city-item" data-city="yuzhno-sakhalinsk">Южно-Сахалинск</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Секция команды -->
-    <section class="team" id="team">
-        <div class="container">
-            <h2 class="section-title">Наша команда</h2>
-            <p class="section-subtitle">Познакомьтесь с нашими опытными юристами</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');"></div>
-                    <div class="team-info">
-                        <h3>Александр Иванов</h3>
-                        <p>Управляющий партнер</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80');"></div>
-                    <div class="team-info">
-                        <h3>Елена Петрова</h3>
-                        <p>Юрист по недвижимости</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80');"></div>
-                    <div class="team-info">
-                        <h3>Дмитрий Сидоров</h3>
-                        <p>Корпоративный юрист</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-photo" style="background-image: url('https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
-                    <div class="team-info">
-                        <h3>Ольга Смирнова</h3>
-                        <p>Семейный юрист</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button class="cancel-btn" id="cancelCitySelection">Отменить выбор</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Секция статистики -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">15</div>
-                    <p>Лет опыта</p>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <p>Довольных клиентов</p>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">93%</div>
-                    <p>Выигранных дел</p>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <p>Поддержка клиентов</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция контактов -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Связаться с нами</h2>
-            <p class="section-subtitle">Оставьте заявку, и мы свяжемся с вами в ближайшее время</p>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Контактная информация</h3>
-                    <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Тверская, д. 1, офис 123</p>
-                        <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
-                        <p><i class="fas fa-envelope"></i> info@yuristpro.ru</p>
-                        <p><i class="fas fa-clock"></i> Пн-Пт: 9:00 - 18:00</p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Ваш email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Ваш телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Ваше сообщение" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал сайта -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>О компании</h3>
-                    <p>ЮристПро - профессиональная юридическая фирма, специализирующаяся на недвижимости, корпоративном и семейном праве.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Услуги</h3>
-                    <ul>
-                        <li><a href="#">Недвижимость</a></li>
-                        <li><a href="#">Корпоративное право</a></li>
-                        <li><a href="#">Семейное право</a></li>
-                        <li><a href="#">Налоговое право</a></li>
-                        <li><a href="#">Судебные споры</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Полезные ссылки</h3>
-                    <ul>
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Услуги</a></li>
-                        <li><a href="#">Команда</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Подписка</h3>
-                    <p>Подпишитесь на нашу рассылку, чтобы получать новости и обновления</p>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" placeholder="Ваш email" required>
-                        </div>
-                        <button type="submit" class="btn">Подписаться</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 ЮристПро. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript для анимаций -->
-    <script src="script.js"></script>
+    <div class="modal-overlay" id="modalOverlay"></div>
 
 </body>
+
 </html>
