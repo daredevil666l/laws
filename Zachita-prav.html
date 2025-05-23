@@ -3,109 +3,63 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Земельный юрист</title>
+    <title>Семейный юрист</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 
 <body>
+    <!-- Главное меню -->
     <script src="script.js"></script>
 
-    <!-- Главное меню и баннер -->
-    <div class="hero-section">
-        <div class="main-image-container">
-            <img src="images/zemelnye-spory.jpg" alt="Земельный юрист" class="main-image">
-        </div>
-
-        <!-- Главное меню -->
-        <header class="main-header transparent-header">
-            <div class="container">
-                <div class="header-wrapper">
-                    <div class="logo-wrapper">
-                        <a href="/" class="logo">
-                            <img src="images/logo.png" alt="Стратегия - юридические услуги">
-                            <div class="logo-text">
-                                <h1 class="site-name">"СТРАТЕГИЯ"</h1>
-                                <p class="site-description">юридические услуги</p>
-                            </div>
-                        </a>
-                        <p class="city-name" id="cityName">Воронеж <i class="fas fa-chevron-down"></i></p>
-                    </div>
-
-                    <nav class="main-nav">
-                        <ul class="nav-list">
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Услуги <i
-                                        class="fas fa-chevron-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
-                                    <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
-                                    <li><a href="#" class="dropdown-item">Лицензирование</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Цены на услуги</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Полезное <i
-                                        class="fas fa-chevron-down"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Контакты</a>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <div class="header-contacts">
-                        <div class="phone-numbers">
-                            <a href="tel:84732954824" class="phone">8(473)295-48-24</a>
-                            <a href="tel:89525534488" class="phone">8(952)553-44-88</a>
+    <!-- Главное меню -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="/" class="logo">
+                        <img src="images/logo.png" alt="Стратегия - юридические услуги">
+                        <div class="logo-text">
+                            <h1 class="site-name">"СТРАТЕГИЯ"</h1>
+                            <p class="site-description">юридические услуги</p>
                         </div>
-                        <a href="#callback" class="callback-btn">Обратный звонок</a>
-                    </div>
+                    </a>
+                    <p class="city-name" id="cityName">Воронеж <i class="fas fa-chevron-down"></i></p>
                 </div>
-            </div>
-        </header>
 
-        <!-- Заголовок и подзаголовок -->
-        <div class="hero-content">
-            <div class="container">
-                <div class="hero-text">
-                    <h1 class="main-title">ЗЕМЕЛЬНЫЙ ЮРИСТ</h1>
-                    <h2 class="subtitle">Юридическая помощь по любым земельным спорам</h2>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Услуги <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
+                                <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
+                                <li><a href="#" class="dropdown-item">Лицензирование</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Цены на услуги</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Полезное <i
+                                    class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
 
-                    <!-- Блок с галочками -->
-                    <div class="benefits-list">
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <span>☑️</span>
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="benefit-text">Быстро, надежно, юридически чисто</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <span>☑️</span>
-
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="benefit-text">Вся ответственность на нас по договору</div>
-                        </div>
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <span>☑️</span>
-
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="benefit-text">Сопровождаем на всех этапах от выбора до подписания сделки</div>
-                        </div>
+                <div class="header-contacts">
+                    <div class="phone-numbers">
+                        <a href="tel:84732954824" class="phone">8(473)295-48-24</a>
+                        <a href="tel:89525534488" class="phone">8(952)553-44-88</a>
                     </div>
-
-                    <button class="cta-button hero-button">Получить консультацию</button>
+                    <a href="#callback" class="callback-btn">Обратный звонок</a>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Модальное окно выбора города -->
     <div class="city-modal" id="cityModal">
@@ -127,172 +81,244 @@
 
     <div class="modal-overlay" id="modalOverlay"></div>
 
+
+
+
     <!-- Основной контент -->
     <div class="page-container">
         <!-- Хлебные крошки -->
         <div class="breadcrumbs">
             <a href="/services" class="breadcrumb-link">Юридические услуги</a>
             <span class="breadcrumb-separator">›</span>
-            <span class="breadcrumb-current">Земельный юрист</span>
+            <span class="breadcrumb-current">Защита прав потребителей</span>
         </div>
 
+        <!-- Основной заголовок -->
+        <h1 class="main-title">ЗАЩИТА ПРАВ ПОТРЕБИТЕЛЕЙ
+        </h1>
+
+        <!-- Подзаголовок -->
+        <h2 class="subtitle">Юридическая помощь по любым спорам</h2>
+
         <div class="content-sidebar-wrapper">
-            <!-- Основной контент -->
+            <!-- Основное изображение и контент -->
             <div class="main-content">
-                <!-- Контентный блок -->
+                <!-- Основное изображение -->
+                <div class="main-image-container">
+                    <img src="images/zachita-prav.jpg" alt="Семейный юрист" class="main-image">
+                </div>
+                <!--Текст-->
                 <div class="content-container">
                     <div class="article-content">
-                        <!-- Вводный текст -->
-                        <p class="text-paragraph">
-                            Собственников тех или иных наделов земли с каждым годом становится все больше, а земельные
-                            споры
-                            превращаются в суровую реальность. Если при возникновении конфликта на помощь сразу же
-                            приходит
-                            опытный юрист по земельным спорам, дело может очень быстро принять выгодный для Вас оборот.
-                        </p>
+                      <!-- Вводный текст -->
+                      <p class="text-paragraph">
+                        Если Вы пострадали от недобросовестных продавцов или производителей, мошенников и обманщиков — можете смело обращаться к нашим юристам. Компания «Стратегия» занимается следующими направлениями правоотношений:
+                      </p>
+                      
+                      <!-- Список услуг -->
+                      <ul class="custom-list">
+                        <li>покупка или продажа недвижимости;</li>
+                        <li>нарушение сроков и качества выполнения строительных или ремонтных работ;</li>
+                        <li>нарушение сроков поставки заказанных работ, услуг или товаров;</li>
+                        <li>нарушение качества и сроков оказания бытовых услуг;</li>
+                        <li>нарушение правил оказания медицинских услуг;</li>
+                        <li>нарушение правил оказания туристических услуг;</li>
+                        <li>различные нарушения прав потребителей в сфере торговли;</li>
+                        <li>нарушение сроков и качества при изготовлении или покупки мебели;</li>
+                        <li>правовое сопровождение покупки и продажи товаров.</li>
+                      </ul>
+                      
+                      <!-- Информационный блок -->
+                      <div class="info-box">
+                        <h4 class="info-title">Получите консультацию!</h4>
+                        <p>Получить предварительную консультацию Вы можете, позвонив по телефону 295-48-24 в наш офис. Далее, в зависимости от ситуации и Вашего желания, Вы можете защищать свои потребительские права либо самостоятельно, либо доверить это специалистам юридической компании «Стратегия».</p>
+                      </div>
+                      
+                      <h3 class="content-subtitle">Как мы работаем</h3>
+                      
+                      <p class="text-paragraph">
+                        В последнем случае Вам будет необходимо договориться о времени встречи с представителем нашей организации и он подъедет в удобное для вас время в любое место Воронежа и области. Наши юристы выслушают все Ваши вопросы, расскажут, как действовать в той или иной ситуации, а также помогут составить претензию, запрос или исковое заявление, подскажут, где найти независимых экспертов или оценщиков.
+                      </p>
+                      
+                      <p class="text-paragraph">
+                        В случае необходимости юристы нашей организации будут представлять Ваши интересы в судах и иных инстанциях. Защита прав потребителей осуществляется на основе закона РФ «О защите прав потребителей» — действенного инструмента в споре с недобросовестными продавцами и производителями, а также с нечистыми на руку компаниями, оказывающими различного рода услуги.
+                      </p>
+                      
+                      <blockquote class="content-quote">
+                        Для осуществления своей деятельности компания «Стратегия» в соответствии с законодательством РФ имеет широкий спектр полномочий.
+                      </blockquote>
+                      
+                      <p class="text-paragraph">
+                        Для решения Ваших проблем наша организация готова задействовать свой обширный опыт в сфере защиты прав потребителей, а также подключить к работе ведущих юристов в области Гражданского права, своих партнеров из числа экспертов и оценщиков, общественных деятелей и журналистов, а также представителей исполнительной власти и надзорных органов.
+                      </p>
+                      
+                      <p class="text-paragraph">
+                        Мы готовы взять на себя организацию всего процесса защиты Ваших потребительских прав от «А» (Вашего звонка нам) до «Я» (выплаты Вам компенсации нарушителем).
+                      </p>
+                      
+                      <h3 class="content-subtitle accent">Доверяя решение своей проблемы нам, Вы избавляетесь от:</h3>
+                      
+                      <!-- Список преимуществ -->
+                      <ul class="custom-list">
+                        <li>неприятного общения с представителями тех организаций, которые Вас обманули;</li>
+                        <li>хождения по инстанциям;</li>
+                        <li>поиска экспертов и оценщиков;</li>
+                        <li>участия в судебных процессах;</li>
+                        <li>встреч с судебными исполнителями и т.д.</li>
+                      </ul>
+                      
+                      <!-- Блок с призывом к действию -->
+                      <div class="cta-block">
+                        <h4 class="cta-title">Нужна помощь в защите ваших прав потребителя?</h4>
+                        <p>Ваше обращение в нашу организацию – это залог успешного ведения Ваших дел во всех инстанциях нашего города и области. Вы можете изложить суть Вашей проблемы на нашем форуме, либо проконсультироваться в on-line консультации на нашем сайте или задать вопросы по телефону.</p>
+                        <button class="cta-button">Получить консультацию</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
 
-                        <!-- Блок с призывом к действию -->
-                        <div class="cta-block">
-                            <h4 class="cta-title">Чтобы получить консультацию адвоката по земельным вопросам в Воронеже
-                                заполните заявку</h4>
-                            <button class="cta-button">Получить консультацию</button>
-                        </div>
+            <!-- Боковое меню с юридическими услугами -->
+            <div class="sidebar-menu">
+                <div class="sidebar-title">Юридические услуги</div>
 
-                        <!-- Остальной контент страницы -->
-                        <h3 class="content-subtitle">Помощь юриста при земельных спорах, земельные дела</h3>
+                <!-- Раздел для частных клиентов -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Частным клиентам</span>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <ul class="category-items">
+                        <li><a href="/zhilishchniy-yurist">Жилищный юрист</a></li>
+                        <li><a href="/dosudebnoe-uregulirovanie">Досудебное урегулирование споров</a></li>
+                        <li><a href="/bankrotstvo">Банкротство. Кредитный юрист</a></li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <a href="Semeini.html">Семейный юрист</a>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/vzyskanie-alimentov">Взыскание алиментов</a></li>
+                                <li><a href="Nasledstvennie.html">Наследственные дела</a></li>
+                                <li><a href="/uslugi-po-nasledstvu">Услуги по наследству</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Юридическая консультация</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/yuridicheskaya-ekspertiza">Юридическая экспертиза</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Защита прав потребителей</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/vozmeshchenie-ushcherba">Возмещение ущерба</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/trudovoy-yurist">Трудовой юрист</a></li>
+                        <li><a href="/strakhovoy-yurist">Страховой юрист</a></li>
+                        <li><a href="/avtoyurist">Автоюрист</a></li>
+                        <li><a href="/advokat-po-ugolovnym-delam">Адвокат по уголовным делам</a></li>
+                        <li><a href="Zemelni.html">Земельный юрист</a></li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Юрист по недвижимости</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/oformlenie-sdelok">Оформление сделок с недвижимостью</a></li>
+                                <li><a href="/snizhenie-kadastrovoy-stoimosti">Снижение кадастровой стоимости</a></li>
+                                <li><a href="/perevod-zhiloy-nezhiloy">Перевод недвижимости из жилого в нежилой фонд</a>
+                                </li>
+                                <li><a href="/srochnyy-vykup">Срочный выкуп недвижимости</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-                        <p class="text-paragraph">
-                            Профессиональный юрист по земельным спорам знает все тонкости нормативной базы и подробности
-                            судебной практики, а значит, подробно разобравшись в вашей проблеме, защитит ваши интересы и
-                            в суде,
-                            и в других инстанциях.
-                        </p>
+                <!-- Раздел для юридических лиц -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Юридическим лицам</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="category-items collapsed">
+                        <li><a href="/registratsiya-ip">Регистрация ИП</a></li>
+                        <li><a href="/registratsiya-organizatsiy">Регистрация организаций</a></li>
+                        <li><a href="/arbitrazh">Арбитраж. Арбитражные споры</a></li>
+                        <li><a href="/likvidatsiya-organizatsiy">Ликвидация организаций</a></li>
+                        <li><a href="/biznes-advokat">Адвокат по уголовным делам</a></li>
+                        <li><a href="/biznes-uregulirovanie">Досудебное урегулирование споров</a></li>
+                        <li><a href="/biznes-ispolnitelnoe">Исполнительное производство</a></li>
+                        <li><a href="/predstavitelstvo">Представительство в суде</a></li>
+                        <li><a href="/reshenie-problem">Решение юридических проблем</a></li>
+                        <li><a href="/biznes-kadastrovaya">Снижение кадастровой стоимости</a></li>
+                        <li><a href="/biznes-soprovozhdenie">Юридическое сопровождение</a></li>
+                    </ul>
+                </div>
 
-                        <p class="text-paragraph">
-                            Даже если Вам кажется, что отстоять Ваше право на землю уже не удастся, вполне возможно, что
-                            наша
-                            организация предоставит Вам юриста, способного сотворить чудо.
-                        </p>
+                <!-- Раздел для лицензирования -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Лицензирование</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="category-items collapsed">
+                        <li><a href="/pomoshch-litsenzii">Помощь в получении лицензии</a></li>
+                        <li><a href="/obrazovatelnaya-litsenziya">Получение образовательной лицензии</a></li>
+                        <li><a href="/meditsinskaya-litsenziya">Получение медицинской лицензии</a></li>
+                        <li><a href="/alkogol-litsenziya">Получение лицензии на производство и продажу алкоголя</a></li>
+                        <li><a href="/mchs-litsenziya">Получение лицензии МЧС</a></li>
+                        <li><a href="/otkhody-litsenziya">Получение лицензии на деятельность с отходами</a></li>
+                        <li><a href="/fsb-litsenziya">Получение лицензии ФСБ</a></li>
+                        <li><a href="/rosatom-litsenziya">Получение лицензии Росатома</a></li>
+                        <li><a href="/perevozka-litsenziya">Получение лицензии на перевозку</a></li>
+                        <li><a href="/metall-litsenziya">Получение лицензии на работу с металлом</a></li>
+                        <li><a href="/uk-litsenziya">Получение лицензии управляющей компании</a></li>
+                        <li><a href="/shifrovanie-litsenziya">Получение лицензии на шифрование информации</a></li>
+                    </ul>
+                </div>
 
-                        <p class="text-paragraph">
-                            Наш юрист по земельным спорам постарается помочь Вам на любой из стадий судебной тяжбы, а
-                            консультация наших специалистов поможет разобраться в том, почему именно Вам так необходима
-                            профессиональная защита ваших интересов.
-                        </p>
+                <!-- Блок со статистикой -->
+                <div class="sidebar-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-text">лет успешной практики</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text">выигранных дел</div>
+                    </div>
+                </div>
 
-                        <!-- Подзаголовок о том, как стать собственником -->
-                        <h2 class="content-title">Как стать собственником земли?</h2>
-
-                        <p class="text-paragraph">
-                            Гражданские дела, связанные с разрешением земельных и жилищных споров, относятся к разряду
-                            самых
-                            распространенных. Наши клиенты обращаются к нам с такими вопросами, как оформление
-                            наследства на
-                            земельные паи, а также признание права собственности на землю. Это очень важно, поскольку
-                            именно
-                            закрепленное право на владение землей позволяет распоряжаться участком по своему усмотрению
-                            и
-                            беспрепятственно совершать сделки с землей: покупать или продавать ее, менять, дарить,
-                            передавать по
-                            наследству или в залог.
-                        </p>
-
-                        <!-- Подзаголовок с акцентом -->
-                        <h3 class="content-subtitle accent">Основаниями для признания права собственности на землю
-                            являются:
-                        </h3>
-
-                        <!-- Список с квадратными маркерами -->
-                        <ul class="custom-list">
-                            <li>решения органов государственной власти и местного самоуправления;</li>
-                            <li>заключение договоров и других сделок с землей;</li>
-                            <li>приобретательная давность;</li>
-                            <li>решения суда.</li>
-                        </ul>
-
-                        <p class="text-paragraph">
-                            Надо заметить, проблемы с признанием права собственности возникают не только у отдельных
-                            граждан, но
-                            и у юридических лиц. И тем, и другим мы рекомендуем обращаться за помощью к профессионалам,
-                            специализирующимся на ведении земельных споров.
-                        </p>
-
-                        <p class="text-paragraph">
-                            Кроме признания права собственности на землю, юристы нашей компании всегда готовы оказать
-                            вам
-                            квалифицированную юридическую помощь по таким делам, как:
-                        </p>
-
-                        <!-- Список услуг -->
-                        <ul class="custom-list">
-                            <li>об обжаловании отказа в госрегистрации права на владение землей;</li>
-                            <li>о приватизации земельных участков и – в случае необходимости – об обжаловании отказа в
-                                приватизации;</li>
-                            <li>о признании сделок с землей недействительными;</li>
-                            <li>об определении порядка пользования земельным участком;</li>
-                            <li>споры по межеванию и другие дела об определении границ земельного участка;</li>
-                            <li>об объединении земельных участков;</li>
-                            <li>о разделе участка между собственниками;</li>
-                            <li>о предоставлении земельных участков и их изъятии из чужого незаконного владения;</li>
-                            <li>об изменении категории земельного участка и его разрешенного использования;</li>
-                            <li>об устранении препятствий в пользовании участком, которые не связаны с лишением
-                                владения;</li>
-                            <li>о признании и установлении сервитута;</li>
-                            <li>по вопросам, связанным с арендой земли: заключение договоров, их продление, изменение
-                                или
-                                расторжение;</li>
-                            <li>по спорам, связанным с нарушениями правил застройки земельных участков и других
-                                положений
-                                градостроительного кодекса;</li>
-                            <li>по иным категориям гражданских дел, связанных с отношениями в сфере использования земли.
-                            </li>
-                        </ul>
-
-                        <p class="text-paragraph">
-                            Кроме того, наши юристы знают, как правильно и максимально быстро оформить земельные паи, и
-                            всегда
-                            готовы проконсультировать вас по этоту поводу. Вы всегда можете рассчитывать на то, что,
-                            защищая
-                            ваши права, представители компании «Стратегия»:
-                        </p>
-
-                        <!-- Нумерованный список -->
-                        <ol class="numbered-list">
-                            <li>Проконсультируют Вас и при необходимости дадут письменное заключение. Юридическая
-                                консультация
-                                обойдется вам в 2500 рублей, однако если вы заключите с нашими представителями договор о
-                                ведении
-                                дела, эта услуга будет для вас бесплатной.</li>
-                            <li>Составят исковое заявление и представят его в суд.</li>
-                            <li>Подготовят отзыв или возражение на исковое заявление.</li>
-                            <li>Помогут собрать дополнительные доказательства.</li>
-                            <li>Примут участие в судебных заседаниях, получат решение суда и в случае необходимости
-                                обжалуют
-                                его.</li>
-                            <li>Проследят за исполнением решения суда. Ведение земельного дела в суде обойдется вам в
-                                сумму от
-                                25.000 рублей.</li>
-                        </ol>
-
-                        <!-- Выделенный блок с информацией -->
-                        <div class="info-box">
-                            <h4 class="info-title">Важно знать!</h4>
-                            <p>Помните: согласно ст. 100 ГПК РФ, если решение суда будет в вашу пользу, суд присудит
-                                оплату
-                                услуг адвоката проигравшей стороне.</p>
-                        </div>
-
-                        <!-- Блок с призывом к действию -->
-                        <div class="cta-block">
-                            <h4 class="cta-title">Нужна консультация земельного юриста?</h4>
-                            <p>Получите бесплатную первичную консультацию по вашему вопросу</p>
-                            <button class="cta-button">Связаться с юристом</button>
-                        </div>
+                <!-- Блок с популярными статьями -->
+                <div class="popular-articles">
+                    <div class="sidebar-title">Популярные статьи</div>
+                    <div class="article-links">
+                        <a href="/article1" class="article-link">
+                            <span class="article-date">14.05.2025</span>
+                            <span class="article-name">Как правильно оформить земельный участок</span>
+                        </a>
+                        <a href="/article2" class="article-link">
+                            <span class="article-date">02.05.2025</span>
+                            <span class="article-name">Наследство без завещания: порядок действий</span>
+                        </a>
+                        <a href="/article3" class="article-link">
+                            <span class="article-date">23.04.2025</span>
+                            <span class="article-name">Банкротство физических лиц: новый закон</span>
+                        </a>
                     </div>
                 </div>
             </div>
 
 
+        
 
         </div>
 

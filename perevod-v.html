@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Семейный юрист</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+    <!-- Главное меню -->
+    <script src="script.js"></script>
+
+    <!-- Главное меню -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-wrapper">
+                    <a href="/" class="logo">
+                        <img src="images/logo.png" alt="Стратегия - юридические услуги">
+                        <div class="logo-text">
+                            <h1 class="site-name">"СТРАТЕГИЯ"</h1>
+                            <p class="site-description">юридические услуги</p>
+                        </div>
+                    </a>
+                    <p class="city-name" id="cityName">Воронеж <i class="fas fa-chevron-down"></i></p>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Услуги <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
+                                <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
+                                <li><a href="#" class="dropdown-item">Лицензирование</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Цены на услуги</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">Полезное <i
+                                    class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-contacts">
+                    <div class="phone-numbers">
+                        <a href="tel:84732954824" class="phone">8(473)295-48-24</a>
+                        <a href="tel:89525534488" class="phone">8(952)553-44-88</a>
+                    </div>
+                    <a href="#callback" class="callback-btn">Обратный звонок</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Модальное окно выбора города -->
+    <div class="city-modal" id="cityModal">
+        <div class="city-modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <h2 class="city-modal-title">Выберите ближайший к вам офис</h2>
+
+            <div class="city-list">
+                <a href="#" class="city-item" data-city="voronezh">Воронеж</a>
+                <a href="#" class="city-item" data-city="yuzhno-sakhalinsk">Южно-Сахалинск</a>
+            </div>
+
+            <button class="cancel-btn" id="cancelCitySelection">Отменить выбор</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+
+
+
+    <!-- Основной контент -->
+    <div class="page-container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="/services" class="breadcrumb-link">Юридические услуги</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Перевод недвижимости из жилого в нежилой фонд</span>
+        </div>
+
+        <!-- Основной заголовок -->
+        <h1 class="main-title">ПЕРЕВОД НЕДВИЖИМОСТИ ИЗ ЖИЛОГО В НЕЖИЛОЙ ФОНД
+        </h1>
+
+        <!-- Подзаголовок -->
+        <h2 class="subtitle">Перевод в нежилое "под ключ" или поэтапно
+        </h2>
+
+        <div class="content-sidebar-wrapper">
+            <!-- Основное изображение и контент -->
+            <div class="main-content">
+                <!-- Основное изображение -->
+                <div class="main-image-container">
+                    <img src="images/perevod-v-nezhiloe.jpg" alt="Семейный юрист" class="main-image">
+                </div>
+                <!--Текст-->
+                <div class="content-container">
+                    <div class="article-content">
+                        <!-- Главный заголовок -->
+                        <h2 class="content-title">Перевод недвижимости в нежилой фонд</h2>
+
+                        <!-- Блок с ценой услуги -->
+                        <div class="pricing-box">
+                            <div class="price-tag">
+                                <span class="price-amount">от 170 000 ₽</span>
+                                <span class="price-label">«под ключ»</span>
+                            </div>
+                            <div class="price-features">
+                                <span class="feature-badge">Поэтапная оплата</span>
+                                <span class="feature-badge">Полное сопровождение</span>
+                            </div>
+                        </div>
+
+                        <!-- Инструкция для клиента -->
+                        <h3 class="content-subtitle">Чтобы перевести объект (квартиру, дом) в нежилой фонд, Вам
+                            необходимо:</h3>
+
+                        <div class="process-steps client-steps">
+                            <div class="step">
+                                <div class="step-number">01</div>
+                                <div class="step-content">
+                                    <p>Предоставьте данные о объекте.</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">02</div>
+                                <div class="step-content">
+                                    <p>По данным о Вашем объекте мы определим возможные сроки и стоимость перевода.</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">03</div>
+                                <div class="step-content">
+                                    <p>По договоренности подписываем договор.</p>
+                                </div>
+                            </div>
+
+                            <div class="step">
+                                <div class="step-number">04</div>
+                                <div class="step-content">
+                                    <p>После процедуры перевода, Вы получите соответствующие документы.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Этапы работы компании -->
+                        <h3 class="content-subtitle accent">Наша работа заключается в:</h3>
+
+                        <div class="service-stages">
+                            <style>
+                                .stage-icon {
+                                    width: 40px;
+                                    height: 40px;
+                                    background-color: rgba(198, 163, 89, 0.15);
+                                    border-radius: 8px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin-right: 15px;
+                                    font-size: 24px;
+                                    /* Увеличенный размер для эмодзи */
+                                    color: var(--accent-color);
+                                    flex-shrink: 0;
+                                    position: relative;
+                                    z-index: 1;
+                                }
+                            </style>
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    📄
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">1</div>
+                                    <div class="stage-text">Проверка документации и помещения жилого фонда перевод
+                                        которого планируется.</div>
+                                </div>
+                            </div>
+
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    📐
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">2</div>
+                                    <div class="stage-text">Разработка проектов и их согласование.</div>
+                                </div>
+                            </div>
+
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    📝
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">3</div>
+                                    <div class="stage-text">Подготовка документов для гос органов, для получения приказа
+                                        о переводе.</div>
+                                </div>
+                            </div>
+
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    🔑
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">4</div>
+                                    <div class="stage-text">Ввод объекта в эксплуатацию.</div>
+                                </div>
+                            </div>
+
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    ✏️
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">5</div>
+                                    <div class="stage-text">Внесение изменений в ЕГРН.</div>
+                                </div>
+                            </div>
+
+                            <div class="stage">
+                                <div class="stage-icon">
+                                    🧾
+                                </div>
+                                <div class="stage-details">
+                                    <div class="stage-number">6</div>
+                                    <div class="stage-text">Получение выписки из ЕГРН на нежилое помещение.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Блок с призывом к действию -->
+                        <div class="cta-block">
+                            <h4 class="cta-title">Хотите перевести помещение в нежилой фонд?</h4>
+                            <p>Оставьте заявку, и наши специалисты проконсультируют вас по возможности перевода вашего
+                                объекта недвижимости в нежилой фонд.</p>
+                            <button class="cta-button">Оставить заявку</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Дополнительные CSS стили -->
+                <style>
+                    /* Стили для блока с ценой */
+                    .pricing-box {
+                        background-color: rgba(198, 163, 89, 0.08);
+                        border: 1px solid rgba(198, 163, 89, 0.2);
+                        padding: 25px;
+                        margin: 30px 0;
+                        position: relative;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 0 100%);
+                    }
+
+                    .price-tag {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .price-amount {
+                        font-size: 36px;
+                        font-weight: 700;
+                        color: var(--accent-color);
+                        line-height: 1;
+                    }
+
+                    .price-label {
+                        font-size: 16px;
+                        color: var(--text-secondary);
+                        margin-top: 5px;
+                    }
+
+                    .price-features {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                    }
+
+                    .feature-badge {
+                        background-color: rgba(198, 163, 89, 0.2);
+                        color: var(--accent-color);
+                        padding: 6px 12px;
+                        font-size: 14px;
+                        border-radius: 3px;
+                        font-weight: 500;
+                    }
+
+                    /* Стили для шагов клиента */
+                    .process-steps {
+                        margin: 40px 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 25px;
+                    }
+
+                    .step {
+                        display: flex;
+                        align-items: flex-start;
+                        background-color: rgba(255, 255, 255, 0.03);
+                        padding: 20px;
+                        border-radius: 5px;
+                        transition: all var(--transition-speed);
+                        position: relative;
+                        overflow: hidden;
+                    }
+
+                    .step::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 0;
+                        height: 100%;
+                        background-color: rgba(198, 163, 89, 0.05);
+                        transition: width var(--transition-speed) ease;
+                        z-index: 0;
+                    }
+
+                    .step:hover::before {
+                        width: 100%;
+                        right: auto;
+                        left: 0;
+                    }
+
+                    .step-number {
+                        font-size: 28px;
+                        font-weight: 700;
+                        color: var(--accent-color);
+                        margin-right: 20px;
+                        opacity: 0.8;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .step-content {
+                        flex: 1;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .step-content p {
+                        margin: 0;
+                        font-size: 16px;
+                        color: var(--text-color);
+                    }
+
+                    /* Стили для этапов работы компании */
+                    .service-stages {
+                        margin: 40px 0;
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                        gap: 20px;
+                    }
+
+                    .stage {
+                        display: flex;
+                        align-items: flex-start;
+                        background-color: rgba(255, 255, 255, 0.03);
+                        padding: 20px;
+                        border-radius: 5px;
+                        transition: all var(--transition-speed);
+                        position: relative;
+                        overflow: hidden;
+                        height: 100%;
+                    }
+
+                    .stage::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 0;
+                        height: 100%;
+                        background-color: rgba(198, 163, 89, 0.05);
+                        transition: width var(--transition-speed) ease;
+                        z-index: 0;
+                    }
+
+                    .stage:hover::before {
+                        width: 100%;
+                        right: auto;
+                        left: 0;
+                    }
+
+                    .stage-icon {
+                        width: 40px;
+                        height: 40px;
+                        background-color: rgba(198, 163, 89, 0.15);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 15px;
+                        font-size: 18px;
+                        color: var(--accent-color);
+                        flex-shrink: 0;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .stage-details {
+                        flex: 1;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .stage-number {
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: var(--accent-color);
+                        margin-bottom: 5px;
+                        background-color: rgba(198, 163, 89, 0.1);
+                        display: inline-block;
+                        width: 22px;
+                        height: 22px;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 22px;
+                    }
+
+                    .stage-text {
+                        font-size: 15px;
+                        color: var(--text-color);
+                    }
+
+                    /* Адаптивные стили */
+                    @media (max-width: 768px) {
+                        .pricing-box {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 15px;
+                        }
+
+                        .service-stages {
+                            grid-template-columns: 1fr;
+                        }
+                    }
+                </style>
+
+            </div>
+
+            <!-- Боковое меню с юридическими услугами -->
+            <div class="sidebar-menu">
+                <div class="sidebar-title">Юридические услуги</div>
+
+                <!-- Раздел для частных клиентов -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Частным клиентам</span>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <ul class="category-items">
+                        <li><a href="/zhilishchniy-yurist">Жилищный юрист</a></li>
+                        <li><a href="/dosudebnoe-uregulirovanie">Досудебное урегулирование споров</a></li>
+                        <li><a href="/bankrotstvo">Банкротство. Кредитный юрист</a></li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <a href="Semeini.html">Семейный юрист</a>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/vzyskanie-alimentov">Взыскание алиментов</a></li>
+                                <li><a href="Nasledstvennie.html">Наследственные дела</a></li>
+                                <li><a href="/uslugi-po-nasledstvu">Услуги по наследству</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Юридическая консультация</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/yuridicheskaya-ekspertiza">Юридическая экспертиза</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Защита прав потребителей</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/vozmeshchenie-ushcherba">Возмещение ущерба</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/trudovoy-yurist">Трудовой юрист</a></li>
+                        <li><a href="/strakhovoy-yurist">Страховой юрист</a></li>
+                        <li><a href="/avtoyurist">Автоюрист</a></li>
+                        <li><a href="/advokat-po-ugolovnym-delam">Адвокат по уголовным делам</a></li>
+                        <li><a href="Zemelni.html">Земельный юрист</a></li>
+                        <li class="has-submenu">
+                            <div class="submenu-header">
+                                <span>Юрист по недвижимости</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                            <ul class="submenu-items">
+                                <li><a href="/oformlenie-sdelok">Оформление сделок с недвижимостью</a></li>
+                                <li><a href="/snizhenie-kadastrovoy-stoimosti">Снижение кадастровой стоимости</a></li>
+                                <li><a href="/perevod-zhiloy-nezhiloy">Перевод недвижимости из жилого в нежилой фонд</a>
+                                </li>
+                                <li><a href="/srochnyy-vykup">Срочный выкуп недвижимости</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Раздел для юридических лиц -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Юридическим лицам</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="category-items collapsed">
+                        <li><a href="/registratsiya-ip">Регистрация ИП</a></li>
+                        <li><a href="/registratsiya-organizatsiy">Регистрация организаций</a></li>
+                        <li><a href="/arbitrazh">Арбитраж. Арбитражные споры</a></li>
+                        <li><a href="/likvidatsiya-organizatsiy">Ликвидация организаций</a></li>
+                        <li><a href="/biznes-advokat">Адвокат по уголовным делам</a></li>
+                        <li><a href="/biznes-uregulirovanie">Досудебное урегулирование споров</a></li>
+                        <li><a href="/biznes-ispolnitelnoe">Исполнительное производство</a></li>
+                        <li><a href="/predstavitelstvo">Представительство в суде</a></li>
+                        <li><a href="/reshenie-problem">Решение юридических проблем</a></li>
+                        <li><a href="/biznes-kadastrovaya">Снижение кадастровой стоимости</a></li>
+                        <li><a href="/biznes-soprovozhdenie">Юридическое сопровождение</a></li>
+                    </ul>
+                </div>
+
+                <!-- Раздел для лицензирования -->
+                <div class="menu-category">
+                    <div class="category-header">
+                        <span>Лицензирование</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <ul class="category-items collapsed">
+                        <li><a href="/pomoshch-litsenzii">Помощь в получении лицензии</a></li>
+                        <li><a href="/obrazovatelnaya-litsenziya">Получение образовательной лицензии</a></li>
+                        <li><a href="/meditsinskaya-litsenziya">Получение медицинской лицензии</a></li>
+                        <li><a href="/alkogol-litsenziya">Получение лицензии на производство и продажу алкоголя</a></li>
+                        <li><a href="/mchs-litsenziya">Получение лицензии МЧС</a></li>
+                        <li><a href="/otkhody-litsenziya">Получение лицензии на деятельность с отходами</a></li>
+                        <li><a href="/fsb-litsenziya">Получение лицензии ФСБ</a></li>
+                        <li><a href="/rosatom-litsenziya">Получение лицензии Росатома</a></li>
+                        <li><a href="/perevozka-litsenziya">Получение лицензии на перевозку</a></li>
+                        <li><a href="/metall-litsenziya">Получение лицензии на работу с металлом</a></li>
+                        <li><a href="/uk-litsenziya">Получение лицензии управляющей компании</a></li>
+                        <li><a href="/shifrovanie-litsenziya">Получение лицензии на шифрование информации</a></li>
+                    </ul>
+                </div>
+
+                <!-- Блок со статистикой -->
+                <div class="sidebar-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-text">лет успешной практики</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text">выигранных дел</div>
+                    </div>
+                </div>
+
+                <!-- Блок с популярными статьями -->
+                <div class="popular-articles">
+                    <div class="sidebar-title">Популярные статьи</div>
+                    <div class="article-links">
+                        <a href="/article1" class="article-link">
+                            <span class="article-date">14.05.2025</span>
+                            <span class="article-name">Как правильно оформить земельный участок</span>
+                        </a>
+                        <a href="/article2" class="article-link">
+                            <span class="article-date">02.05.2025</span>
+                            <span class="article-name">Наследство без завещания: порядок действий</span>
+                        </a>
+                        <a href="/article3" class="article-link">
+                            <span class="article-date">23.04.2025</span>
+                            <span class="article-name">Банкротство физических лиц: новый закон</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="quiz-container">
+        <!-- Прогресс-бар -->
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 20%"></div>
+            </div>
+            <div class="progress-text">Расчет пройден на 20%</div>
+        </div>
+
+        <!-- Контейнер с вопросами -->
+        <div class="quiz-content">
+            <!-- Вопрос 1 (активен по умолчанию) -->
+            <div class="quiz-step active" data-step="1">
+                <div class="question-header">
+                    <div class="question-number">Вопрос 1</div>
+                    <h2 class="question-title">Какой тип юридической помощи вам необходим?</h2>
+                </div>
+
+                <div class="options-grid">
+                    <div class="option-card" data-value="family">
+                        <div class="option-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="option-title">Семейное право</div>
+                        <div class="option-description">Развод, алименты, опека, брачный договор</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" data-value="property">
+                        <div class="option-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="option-title">Недвижимость</div>
+                        <div class="option-description">Купля-продажа, аренда, споры о границах</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" data-value="business">
+                        <div class="option-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="option-title">Бизнес</div>
+                        <div class="option-description">Регистрация, сопровождение, споры</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" data-value="criminal">
+                        <div class="option-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="option-title">Уголовное право</div>
+                        <div class="option-description">Защита по уголовным делам</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="quiz-step" data-step="2">
+                <div class="question-header">
+                    <div class="question-number">Вопрос 2</div>
+                    <h2 class="question-title">На какой стадии находится ваше дело?</h2>
+                </div>
+
+                <div class="options-list">
+                    <div class="option-item" data-value="consultation">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Нужна консультация, проблема только возникла</div>
+                    </div>
+
+                    <div class="option-item" data-value="documents">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Требуется составление документов</div>
+                    </div>
+
+                    <div class="option-item" data-value="negotiation">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Идут переговоры, нужен специалист</div>
+                    </div>
+
+                    <div class="option-item" data-value="court">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Дело уже в суде или скоро будет передано</div>
+                    </div>
+
+                    <div class="option-item" data-value="execution">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Исполнительное производство</div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="quiz-step" data-step="3">
+                <div class="question-header">
+                    <div class="question-number">Вопрос 3</div>
+                    <h2 class="question-title">Как давно возникла проблема?</h2>
+                </div>
+
+                <div class="options-list">
+                    <div class="option-item" data-value="days">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Несколько дней назад</div>
+                    </div>
+
+                    <div class="option-item" data-value="month">
+                        <div class="option-radio"></div>
+                        <div class="option-text">В течение последнего месяца</div>
+                    </div>
+
+                    <div class="option-item" data-value="several-months">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Несколько месяцев назад</div>
+                    </div>
+
+                    <div class="option-item" data-value="year">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Более года назад</div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="quiz-step" data-step="4">
+                <div class="question-header">
+                    <div class="question-number">Вопрос 4</div>
+                    <h2 class="question-title">Какой бюджет вы готовы выделить на решение проблемы?</h2>
+                </div>
+
+                <div class="options-list">
+                    <div class="option-item" data-value="economy">
+                        <div class="option-radio"></div>
+                        <div class="option-text">До 15 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-value="standard">
+                        <div class="option-radio"></div>
+                        <div class="option-text">15 000 - 30 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-value="premium">
+                        <div class="option-radio"></div>
+                        <div class="option-text">30 000 - 50 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-value="vip">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Более 50 000 ₽</div>
+                    </div>
+
+                    <div class="option-item" data-value="discuss">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Готов обсудить после консультации</div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="quiz-step" data-step="5">
+                <div class="question-header">
+                    <div class="question-number">Вопрос 5</div>
+                    <h2 class="question-title">Насколько срочно требуется решение?</h2>
+                </div>
+
+                <div class="options-list">
+                    <div class="option-item" data-value="urgent">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Очень срочно (в течение 24 часов)</div>
+                    </div>
+
+                    <div class="option-item" data-value="quick">
+                        <div class="option-radio"></div>
+                        <div class="option-text">В течение недели</div>
+                    </div>
+
+                    <div class="option-item" data-value="normal">
+                        <div class="option-radio"></div>
+                        <div class="option-text">В течение месяца</div>
+                    </div>
+
+                    <div class="option-item" data-value="not-urgent">
+                        <div class="option-radio"></div>
+                        <div class="option-text">Срок не имеет значения</div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Финальный шаг (улучшенный дизайн) -->
+            <div class="quiz-step result-step" data-step="6">
+                <div class="result-content">
+                    <div class="result-header">
+                        <div class="complete-badge">
+                            <i class="fas fa-check-circle"></i> Расчет готов
+                        </div>
+                        <h2 class="result-title">Где вам удобней получить расчет стоимости?</h2>
+                    </div>
+
+                    <div class="messenger-options">
+                        <div class="messenger-option" data-messenger="whatsapp">
+                            <div class="messenger-icon">
+                                <img src="images/whatsapp.png" alt="WhatsApp">
+                            </div>
+                            <div class="messenger-name">WhatsApp</div>
+                            <div class="messenger-check"><i class="fas fa-check"></i></div>
+                        </div>
+
+                        <div class="messenger-option" data-messenger="viber">
+                            <div class="messenger-icon">
+                                <img src="images/vk.png" alt="VK">
+                            </div>
+                            <div class="messenger-name">VK</div>
+                            <div class="messenger-check"><i class="fas fa-check"></i></div>
+                        </div>
+
+                        <div class="messenger-option" data-messenger="telegram">
+                            <div class="messenger-icon">
+                                <img src="images/telegram.webp" alt="Telegram">
+                            </div>
+                            <div class="messenger-name">Telegram</div>
+                            <div class="messenger-check"><i class="fas fa-check"></i></div>
+                        </div>
+
+                        <div class="messenger-option" data-messenger="email">
+                            <div class="messenger-icon">
+                                <img src="images/mail.png" alt="E-mail">
+                            </div>
+                            <div class="messenger-name">E-mail</div>
+                            <div class="messenger-check"><i class="fas fa-check"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <div class="time-badge">
+                            <div class="badge-content">
+                                <div class="badge-label">Засекайте</div>
+                                <div class="badge-value">45</div>
+                                <div class="badge-unit">минут</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" placeholder="Ваше имя" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <input type="tel" placeholder="Ваш телефон" required>
+                                </div>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="submit-button">
+                                    <span>Получить расчет</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="privacy-policy">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="privacy-policy-checkbox" name="privacy-policy-checkbox"
+                                        class="custom-checkbox">
+                                    <label for="privacy-policy-checkbox" class="checkbox-label">Согласен с условиями
+                                        политики конфиденциальности данных</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/guaranty.png" alt="Гарантия конфиденциальности">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">Гарантия конфиденциальности</div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/clock.png" alt="Быстрый ответ">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-text">Быстрый ответ в течение 45 минут</div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <img src="images/employee.png" alt="Индивидуальный подход">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="feature-text">Индивидуальный подход к вашей ситуации</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="main-footer">
+        <!-- Верхняя секция футера с контактами -->
+        <div class="footer-contacts">
+            <div class="container">
+                <div class="contacts-grid">
+                    <!-- Адрес -->
+                    <div class="contact-column">
+                        <h3 class="contact-title">Адрес</h3>
+                        <div class="contact-info">
+                            <p>Воронеж,</p>
+                            <p>Пушкинская 5, 5 этаж, офис 17</p>
+                        </div>
+                    </div>
+
+                    <!-- Телефоны -->
+                    <div class="contact-column">
+                        <h3 class="contact-title">Телефоны</h3>
+                        <div class="contact-info">
+                            <a href="tel:84732954824" class="contact-link">8(473)295-48-24</a>
+                            <a href="tel:89525534488" class="contact-link">8(952)553-44-88</a>
+                        </div>
+                    </div>
+
+                    <!-- E-Mail -->
+                    <div class="contact-column">
+                        <h3 class="contact-title">E-Mail</h3>
+                        <div class="contact-info">
+                            <a href="mailto:vrn@стратегия-юк.рф" class="contact-link">vrn@стратегия-юк.рф</a>
+                        </div>
+                    </div>
+
+                    <!-- Часы работы -->
+                    <div class="contact-column">
+                        <h3 class="contact-title">Часы работы</h3>
+                        <div class="contact-info">
+                            <p>Пн - Пт : 9:00 - 18:00</p>
+                            <p>Сб - Вс : 9:00 - 15:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основная секция футера с логотипом и слоганом -->
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Стратегия - юридическая компания">
+                    </div>
+                    <div class="footer-tagline">
+                        <h2 class="company-name">"Стратегия"</h2>
+                        <p class="company-slogan">На страже Ваших интересов!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя секция футера с копирайтом -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        © 2025 "Стратегия". Все права защищены
+                    </div>
+                    <div class="footer-links">
+                        <a href="/privacy-policy" class="footer-link">Политика конфиденциальности</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
