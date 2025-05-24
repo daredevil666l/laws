@@ -2691,7 +2691,6 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
     min-height: 600px;
     overflow: hidden;
     margin-bottom: 30px;
@@ -2854,34 +2853,34 @@ body {
 /* Стили для блока с преимуществами */
 .benefits-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 20px;
     margin: 30px 0;
-    max-width: 600px;
+    max-width: 100%;
     position: relative;
     z-index: 5;
 }
 
 .benefit-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 15px;
     transition: transform 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 15px;
+    padding: 15px;
     border-radius: 8px;
-    backdrop-filter: blur(5px);
+    width: calc(33.33% - 14px);
 }
 
 .benefit-item:hover {
-    transform: translateX(5px);
+    transform: translateY(-5px);
 }
 
 .benefit-icon {
-    width: 32px;
-    height: 32px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2889,17 +2888,21 @@ body {
     transition: all 0.3s ease;
 }
 
+.benefit-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.benefit-icon span,
 .benefit-icon i {
-    color: var(--primary-color);
-    font-size: 16px;
-    transition: transform 0.3s ease;
+    display: none;
 }
 
 .benefit-text {
-    color: var(--primary-color);
-    font-size: 16px;
-    font-weight: 500;
+    color: #ffffff;
+    font-size: 14px;
     line-height: 1.4;
+
 }
 
 .hero-text {
@@ -2907,7 +2910,7 @@ body {
     max-width: 60%;
     position: relative;
     z-index: 5;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0);
     padding: 30px;
     border-radius: 10px;
     backdrop-filter: blur(5px);
@@ -2921,12 +2924,12 @@ body {
     }
     
     .benefit-item {
-        padding: 8px 12px;
+        padding: 12px;
     }
     
     .benefit-icon {
-        width: 28px;
-        height: 28px;
+        width: 50px;
+        height: 50px;
     }
     
     .benefit-text {
@@ -2936,17 +2939,17 @@ body {
 
 @media (max-width: 480px) {
     .benefits-list {
-        gap: 12px;
+        gap: 10px;
         margin: 15px 0;
     }
     
     .benefit-item {
-        padding: 6px 10px;
+        padding: 10px;
     }
     
     .benefit-icon {
-        width: 24px;
-        height: 24px;
+        width: 40px;
+        height: 40px;
     }
     
     .benefit-text {
