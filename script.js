@@ -668,3 +668,80 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// Функция для оживления кнопок и добавления эффектов
+document.addEventListener('DOMContentLoaded', function() {
+    // Добавляем эффект блеска ко всем кнопкам
+    const allButtons = document.querySelectorAll('.cta-button, .callback-btn, .submit-button, .next-btn, .back-btn');
+    
+    allButtons.forEach(button => {
+        // Добавляем класс для эффекта блеска
+        button.classList.add('shine-effect');
+        // Добавляем класс для эффекта при наведении
+        button.classList.add('button-hover-effect');
+    });
+    
+    // Добавляем стрелки к кнопкам связи
+    const contactButtons = document.querySelectorAll('.cta-button, .callback-btn');
+    
+    contactButtons.forEach(button => {
+        // Добавляем класс для стилизации
+        button.classList.add('contact-arrow-btn');
+        
+        // Создаем элемент для стрелки
+        const arrowIcon = document.createElement('img');
+        arrowIcon.src = 'images/arrow-top-right.svg';
+        arrowIcon.alt = 'Связаться';
+        arrowIcon.classList.add('arrow-icon');
+        
+        // Добавляем стрелку в кнопку
+        button.appendChild(arrowIcon);
+    });
+    
+    // Добавляем эффект при клике на кнопки
+    allButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Создаем эффект пульсации при клике
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            
+            // Позиционируем эффект в месте клика
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            button.appendChild(ripple);
+            
+            // Удаляем эффект после анимации
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Добавляем стили для эффекта пульсации при клике
+const style = document.createElement('style');
+style.textContent = `
+    .ripple-effect {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        width: 100px;
+        height: 100px;
+        transform: translate(-50%, -50%) scale(0);
+        animation: ripple 0.6s linear;
+    }
+    
+    @keyframes ripple {
+        to {
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
