@@ -384,6 +384,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Обработчики клика на карточки опций
+    // Обработчики клика на карточки опций
     optionCards.forEach(card => {
         card.addEventListener('click', function () {
             // Находим все карточки в текущем шаге
@@ -398,6 +399,15 @@ document.addEventListener('DOMContentLoaded', function () {
             // Сохраняем ответ пользователя
             const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
             userAnswers[`step${stepNumber}`] = this.dataset.value;
+
+            // Отправляем событие в Яндекс Метрику
+            if (stepNumber === 1) {
+                sendYandexMetricaEvent('quiz_step1_complete', {
+                    quiz_step: stepNumber,
+                    legal_help_type: this.dataset.value,
+                    option_title: this.querySelector('.option-title').textContent
+                });
+            }
 
             // Автоматический переход к следующему шагу через небольшую задержку
             setTimeout(goToNextStep, 500);
@@ -419,8 +429,43 @@ document.addEventListener('DOMContentLoaded', function () {
             // Сохраняем ответ пользователя
             const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
             userAnswers[`step${stepNumber}`] = this.dataset.value;
+
+            // Отправляем события в Яндекс Метрику для разных шагов
+            const eventParams = {
+                quiz_step: stepNumber,
+                selected_value: this.dataset.value,
+                option_text: this.querySelector('.option-text').textContent
+            };
+
+            switch (stepNumber) {
+                case 2:
+                    sendYandexMetricaEvent('quiz_step2_complete', {
+                        ...eventParams,
+                        case_stage: this.dataset.value
+                    });
+                    break;
+                case 3:
+                    sendYandexMetricaEvent('quiz_step3_complete', {
+                        ...eventParams,
+                        problem_timeframe: this.dataset.value
+                    });
+                    break;
+                case 4:
+                    sendYandexMetricaEvent('quiz_step4_complete', {
+                        ...eventParams,
+                        budget_range: this.dataset.value
+                    });
+                    break;
+                case 5:
+                    sendYandexMetricaEvent('quiz_step5_complete', {
+                        ...eventParams,
+                        urgency_level: this.dataset.value
+                    });
+                    break;
+            }
         });
     });
+
 
     // Обработчики клика на опции мессенджеров
     messengerOptions.forEach(option => {
@@ -434,7 +479,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Сохраняем выбранный мессенджер
             userAnswers.messenger = this.dataset.messenger;
 
-            // Обновляем текст кнопки
+            // Отправляем событие в Яндекс Метрику
+            sendYandexMetricaEvent('quiz_step6_messenger', {
+                quiz_step: 6,
+                selected_messenger: this.dataset.messenger,
+                messenger_name: this.querySelector('.messenger-name').textContent
+            });
+
+            // Обновляем текст кнопки (остальной код без изменений)
             const submitButtonText = document.querySelector('.submit-button span');
             switch (this.dataset.messenger) {
                 case 'whatsapp':
@@ -560,6 +612,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Здесь был бы код для отправки данных на сервер
                 console.log('Данные для отправки:', userAnswers);
+                sendYandexMetricaEvent('quiz_form_submitted', {
+                    name: userAnswers.name,
+                    phone: userAnswers.phone,
+                    messenger: userAnswers.messenger,
+                    legal_help_type: userAnswers.step1,
+                    case_stage: userAnswers.step2,
+                    problem_timeframe: userAnswers.step3,
+                    budget_range: userAnswers.step4,
+                    urgency_level: userAnswers.step5,
+                    quiz_completed: true
+                });
+                
 
                 // Показываем сообщение об успешной отправке через небольшую задержку
                 setTimeout(() => {
@@ -681,51 +745,51 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Функция для оживления кнопок и добавления эффектов
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Добавляем эффект блеска ко всем кнопкам
     const allButtons = document.querySelectorAll('.cta-button, .callback-btn, .submit-button, .next-btn, .back-btn');
-    
+
     allButtons.forEach(button => {
         // Добавляем класс для эффекта блеска
         button.classList.add('shine-effect');
         // Добавляем класс для эффекта при наведении
         button.classList.add('button-hover-effect');
     });
-    
+
     // Добавляем стрелки к кнопкам связи
     const contactButtons = document.querySelectorAll('.cta-button, .callback-btn');
-    
+
     contactButtons.forEach(button => {
         // Добавляем класс для стилизации
         button.classList.add('contact-arrow-btn');
-        
+
         // Создаем элемент для стрелки
         const arrowIcon = document.createElement('img');
         arrowIcon.src = 'images/arrow-top-right.svg';
         arrowIcon.alt = 'Связаться';
         arrowIcon.classList.add('arrow-icon');
-        
+
         // Добавляем стрелку в кнопку
         button.appendChild(arrowIcon);
     });
-    
+
     // Добавляем эффект при клике на кнопки
     allButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             // Создаем эффект пульсации при клике
             const ripple = document.createElement('span');
             ripple.classList.add('ripple-effect');
-            
+
             // Позиционируем эффект в месте клика
             const rect = button.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             ripple.style.left = x + 'px';
             ripple.style.top = y + 'px';
-            
+
             button.appendChild(ripple);
-            
+
             // Удаляем эффект после анимации
             setTimeout(() => {
                 ripple.remove();
