@@ -1,3 +1,14 @@
+// Функция для отправки событий в Яндекс Метрику
+function sendYandexMetricaEvent(goalId, params = {}) {
+    if (typeof ym !== 'undefined') {
+        ym(102159330, 'reachGoal', goalId, params);
+        console.log('Отправлено событие в Метрику:', goalId, params);
+    } else {
+        console.warn('Яндекс Метрика не загружена');
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // Переменные
     const cityNameElement = document.getElementById('cityName');
