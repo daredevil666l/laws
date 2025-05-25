@@ -2877,7 +2877,11 @@ body {
     height: 100%;
 }
 
-.benefit-icon span,
+.benefit-icon span {
+    font-size: 32px;
+    line-height: 1;
+}
+
 .benefit-icon i {
     display: none;
 }
@@ -3031,3 +3035,5 @@ body {
         margin-bottom: 20px;
     }
 }
+
+
