@@ -2905,7 +2905,7 @@ body {
 /* Адаптивные стили */
 @media (max-width: 768px) {
     .benefits-list {
-        gap: 15px;
+        gap: 152px;
         margin: 20px 0;
     }
 
@@ -2919,13 +2919,13 @@ body {
     }
 
     .benefit-text {
-        font-size: 14px;
+        font-size: 29px;
     }
 }
 
 @media (max-width: 480px) {
     .benefits-list {
-        gap: 10px;
+        gap: 100px;
         margin: 15px 0;
     }
 
@@ -2939,7 +2939,7 @@ body {
     }
 
     .benefit-text {
-        font-size: 13px;
+        font-size: 25px;
     }
 }
 
@@ -4829,4 +4829,14 @@ body {
 
 .red-arrow {
     width:40px;
+}
+
+@media (max-width: 768px) {
+    .benefits-list {
+        gap: 152px;
+    }
+
+    .benefit-text {
+        font-size: 29px;
+    }
 }
