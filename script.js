@@ -1237,3 +1237,20 @@ if (companySlogan) {
     companySlogan.style.letterSpacing = '1px';
     companySlogan.style.marginTop = '10px';
 }
+
+
+// ... existing code ...
+
+// Обработка клика по логотипу
+document.addEventListener('DOMContentLoaded', function() {
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    if (logoWrapper) {
+        logoWrapper.addEventListener('click', function(e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+            window.location.href = 'index.html';
+        });
+        
+        // Добавляем стиль курсора, чтобы показать, что элемент кликабельный
+        logoWrapper.style.cursor = 'pointer';
+    }
+});
