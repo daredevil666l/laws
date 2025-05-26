@@ -9,7 +9,28 @@
 </head>
 
 <body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(102159330, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/102159330" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
     <script src="script.js"></script>
+    <script src="dropdown-menu.js"></script>
 
     <!-- Главное меню и баннер -->
     <div class="hero-section">
@@ -29,25 +50,20 @@
                                 <p class="site-description">юридические услуги</p>
                             </div>
                         </a>
-                        <p class="city-name" id="cityName">Воронеж <i class="fas fa-chevron-down"></i></p>
                     </div>
 
                     <nav class="main-nav">
                         <ul class="nav-list">
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Услуги <i
+                                <a href="#" class="nav-link dropdown-toggle">Для Граждан <i
                                         class="fas fa-chevron-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
-                                    <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
-                                    <li><a href="#" class="dropdown-item">Лицензирование</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Цены на услуги</a>
+
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Полезное <i
+                                <a href="#" class="nav-link dropdown-toggle">Для бизнеса</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle">Лицензирование <i
                                         class="fas fa-chevron-down"></i></a>
                             </li>
                             <li class="nav-item">
@@ -66,7 +82,6 @@
                 </div>
             </div>
         </header>
-
         <!-- Заголовок и подзаголовок -->
         <div class="hero-content">
             <div class="container">
@@ -78,28 +93,25 @@
                     <div class="benefits-list">
                         <div class="benefit-item">
                             <div class="benefit-icon">
-                                <span>☑️</span>
-                                <i class="fas fa-check"></i>
+                                <img src="images/12.svg" alt="Галочка">
                             </div>
                             <div class="benefit-text">Быстро, надежно, юридически чисто</div>
                         </div>
                         <div class="benefit-item">
                             <div class="benefit-icon">
-                                <span>☑️</span>
-
-                                <i class="fas fa-check"></i>
+                                <img src="images/12.svg" alt="Галочка">
                             </div>
                             <div class="benefit-text">Вся ответственность на нас по договору</div>
                         </div>
                         <div class="benefit-item">
                             <div class="benefit-icon">
-                                <span>☑️</span>
-
-                                <i class="fas fa-check"></i>
+                                <img src="images/12.svg" alt="Галочка">
                             </div>
-                            <div class="benefit-text">Сопровождаем на всех этапах от выбора до подписания сделки</div>
+                            <div class="benefit-text">Сопровождаем на всех этапах от выбора до подписания сделки
+                            </div>
                         </div>
                     </div>
+
 
                     <button class="cta-button hero-button">Получить консультацию</button>
                 </div>
@@ -299,7 +311,8 @@
 
     </div>
 
-    <div class="quiz-container">
+    <form class="quiz-container">
+        <h2 class="quiz-title">Рассчитайте предварительную стоимость услуги</h2>
         <!-- Прогресс-бар -->
         <div class="progress-wrapper">
             <div class="progress-bar">
@@ -632,8 +645,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
 
     <footer class="main-footer">
         <!-- Верхняя секция футера с контактами -->

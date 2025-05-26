@@ -9,7 +9,28 @@
 </head>
 
 <body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(102159330, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/102159330" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
     <script src="script.js"></script>
+    <script src="dropdown-menu.js"></script>
 
     <!-- Главное меню и баннер -->
     <div class="hero-section">
@@ -36,14 +57,10 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle">Для Граждан <i
                                         class="fas fa-chevron-down"></i></a>
-                                <!-- <ul class="dropdown-menu">
-                                    <li><a href="#" class="dropdown-item">Частным клиентам</a></li>
-                                    <li><a href="#" class="dropdown-item">Юридическим лицам</a></li>
-                                    <li><a href="#" class="dropdown-item">Лицензирование</a></li>
-                                </ul> -->
+
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Для бизнеса</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle">Для бизнеса</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle">Лицензирование <i
@@ -65,7 +82,6 @@
                 </div>
             </div>
         </header>
-
         <!-- Заголовок и подзаголовок -->
         <div class="hero-content">
             <div class="container">
@@ -207,7 +223,8 @@
                                 <span>📊</span>
                             </div>
                             <div class="benefit-title">Налоговые льготы</div>
-                            <div class="benefit-desc">Снижение налога (при включении юр. услуг в расходы организации)</div>
+                            <div class="benefit-desc">Снижение налога (при включении юр. услуг в расходы организации)
+                            </div>
                         </div>
 
                         <div class="benefit-card">
@@ -622,7 +639,7 @@
 
     </div>
 
-    <div class="quiz-container">
+    <form class="quiz-container">
         <h2 class="quiz-title">Рассчитайте предварительную стоимость услуги</h2>
         <!-- Прогресс-бар -->
         <div class="progress-wrapper">
@@ -956,9 +973,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
+    </form>
     <footer class="main-footer">
         <!-- Верхняя секция футера с контактами -->
         <div class="footer-contacts">

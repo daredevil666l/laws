@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     urgency_level: userAnswers.step5,
                     quiz_completed: true
                 });
-                
+
 
                 // Показываем сообщение об успешной отправке через небольшую задержку
                 setTimeout(() => {
@@ -820,3 +820,420 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Находим все ссылки nav-link
+    const navLinks = document.querySelectorAll('a.nav-link');
+
+    // Ищем ссылку с текстом "Контакты"
+    const contactLink = Array.from(navLinks).find(link => link.textContent.trim() === 'Контакты');
+
+    if (contactLink) {
+        contactLink.addEventListener('click', function (e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+
+            // Находим секцию с контактами
+            const contactsSection = document.querySelector('.footer-contacts');
+
+            if (contactsSection) {
+                // Плавно прокручиваем к секции контактов
+                contactsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Находим кнопку CTA
+    const ctaButton = document.querySelector('.cta-button');
+
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function (e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение, если это ссылка
+
+            // Находим контейнер с квизом
+            const quizContainer = document.querySelector('.quiz-container');
+
+            if (quizContainer) {
+                // Плавно прокручиваем к квизу
+                quizContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Находим кнопку CTA
+    const arrowButton = document.querySelector('.services-cta-button');
+
+    if (arrowButton) {
+        arrowButton.addEventListener('click', function (e) {
+            // e.preventDefault(); // Предотвращаем стандартное поведение, если это ссылка
+
+            // Находим контейнер с квизом
+            const quizContainer = document.querySelector('.quiz-container');
+
+            if (quizContainer) {
+                // Плавно прокручиваем к квизу
+                quizContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const statItems = document.querySelectorAll('.stat-item');
+    let hasAnimated = false; // Флаг для предотвращения повторных анимаций
+
+    // Функция для анимации счетчика
+    function animateCounter(element, target, duration = 2000) {
+        const counter = element.querySelector('.counter');
+        if (!counter) return;
+
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+
+            // Форматирование больших чисел
+            if (target >= 1000000000) {
+                counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+            } else if (target >= 1000) {
+                counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+            } else {
+                counter.textContent = Math.floor(current);
+            }
+        }, 16);
+    }
+
+    // Функция запуска анимации
+    function startAnimation() {
+        if (hasAnimated) return; // Предотвращаем повторную анимацию
+
+        hasAnimated = true;
+
+        statItems.forEach((item, index) => {
+            const target = parseInt(item.dataset.target);
+
+            setTimeout(() => {
+                item.classList.add('animated');
+                animateCounter(item, target);
+            }, index * 200);
+        });
+    }
+
+    // ИСПРАВЛЕННЫЙ Intersection Observer
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '-20% 0px -20% 0px', // Уменьшил margin для лучшего срабатывания
+        threshold: 0.3 // Увеличил threshold
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // ВАЖНО: проверяем что элемент действительно видим И пересекает viewport
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+                console.log('Statistics section is visible!'); // Для отладки
+                startAnimation();
+                // НЕ отключаем observer, чтобы можно было отладить
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Наблюдаем за секцией статистики
+    const statisticsSection = document.querySelector('.statistics-section');
+    if (statisticsSection) {
+        observer.observe(statisticsSection);
+
+        // ДОПОЛНИТЕЛЬНАЯ проверка на случай если элемент уже видим при загрузке
+        setTimeout(() => {
+            const rect = statisticsSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+            // Если секция уже видна при загрузке страницы
+            if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+                console.log('Statistics already visible on load!'); // Для отладки
+                startAnimation();
+            }
+        }, 500); // Небольшая задержка для корректной загрузки
+    }
+
+    // FALLBACK: дополнительный обработчик скролла для надежности
+    let scrollTimeout;
+    window.addEventListener('scroll', function () {
+        if (hasAnimated) return;
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const statisticsSection = document.querySelector('.statistics-section');
+            if (!statisticsSection) return;
+
+            const rect = statisticsSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+            // Проверяем видимость секции
+            if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
+                console.log('Statistics visible via scroll fallback!'); // Для отладки
+                startAnimation();
+            }
+        }, 100);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const servicesGrids = document.querySelectorAll('.services-grid');
+    const showMoreBtn = document.querySelector('.show-more-btn');
+    const servicesContainer = document.querySelector('.services-container');
+
+    // Количество видимых карточек по умолчанию
+    const defaultVisibleCount = 6;
+
+    // Функция для проверки и управления видимостью кнопки
+    function toggleShowMoreButton(activeTab) {
+        if (!showMoreBtn) return;
+
+        const activeGrid = document.querySelector(`[data-content="${activeTab}"]`);
+        if (!activeGrid) return;
+
+        const itemsCount = activeGrid.querySelectorAll('.service-card').length;
+
+        // Скрываем кнопку если элементов меньше или равно видимому количеству
+        if (itemsCount <= defaultVisibleCount) {
+            showMoreBtn.style.display = 'none';
+        } else {
+            showMoreBtn.style.display = 'block';
+        }
+
+        // Сбрасываем состояние кнопки при переключении табов
+        showMoreBtn.classList.remove('expanded');
+        showMoreBtn.querySelector('span').textContent = 'Показать все услуги';
+        activeGrid.classList.remove('expanded');
+    }
+
+    // Переключение табов
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const targetTab = this.getAttribute('data-tab');
+
+            // Удаляем активный класс у всех кнопок
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Добавляем активный класс к нажатой кнопке
+            this.classList.add('active');
+
+            // Скрываем все сетки
+            servicesGrids.forEach(grid => {
+                grid.classList.remove('active');
+            });
+
+            // Показываем нужную сетку
+            setTimeout(() => {
+                const targetGrid = document.querySelector(`[data-content="${targetTab}"]`);
+                if (targetGrid) {
+                    targetGrid.classList.add('active');
+
+                    // Обновляем видимость кнопки "Показать больше"
+                    toggleShowMoreButton(targetTab);
+
+                    // Обновляем высоту контейнера
+                    setTimeout(() => {
+                        servicesContainer.style.minHeight = targetGrid.scrollHeight + 'px';
+                    }, 100);
+                }
+            }, 200);
+        });
+    });
+
+    // Функционал "Показать больше" - ОБНОВЛЕН
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', function () {
+            const activeGrid = document.querySelector('.services-grid.active');
+            if (!activeGrid) return;
+
+            const isExpanded = this.classList.contains('expanded');
+
+            if (!isExpanded) {
+                activeGrid.classList.add('expanded');
+                this.classList.add('expanded');
+                this.querySelector('span').textContent = 'Скрыть услуги';
+
+                // Обновляем высоту контейнера
+                setTimeout(() => {
+                    servicesContainer.style.minHeight = activeGrid.scrollHeight + 'px';
+                }, 100);
+            } else {
+                activeGrid.classList.remove('expanded');
+                this.classList.remove('expanded');
+                this.querySelector('span').textContent = 'Показать все услуги';
+
+                // Обновляем высоту контейнера
+                setTimeout(() => {
+                    servicesContainer.style.minHeight = activeGrid.scrollHeight + 'px';
+                }, 100);
+
+                // Прокручиваем к началу секции
+                document.querySelector('.services-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
+    // Устанавливаем начальную высоту контейнера и видимость кнопки
+    setTimeout(() => {
+        const activeGrid = document.querySelector('.services-grid.active');
+        if (activeGrid && servicesContainer) {
+            servicesContainer.style.minHeight = activeGrid.scrollHeight + 'px';
+
+            // Проверяем активную вкладку и устанавливаем видимость кнопки
+            const activeTab = document.querySelector('.tab-button.active');
+            if (activeTab) {
+                toggleShowMoreButton(activeTab.getAttribute('data-tab'));
+            }
+        }
+    }, 100);
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Анимация появления этапов при скролле
+    const workSteps = document.querySelectorAll('.work-step');
+
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const steps = entry.target.querySelectorAll('.work-step');
+                steps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('animated');
+                    }, index * 200);
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Наблюдаем за секцией
+    const workSection = document.querySelector('.how-we-work-section');
+    if (workSection) {
+        observer.observe(workSection);
+    }
+
+    // Интерактивность для этапов
+    workSteps.forEach(step => {
+        step.addEventListener('mouseenter', function () {
+            // Подсвечиваем соответствующую линию
+            const stepNumber = this.getAttribute('data-step');
+            const line = document.querySelector(`.line-${stepNumber}`);
+            if (line) {
+                line.style.opacity = '0.8';
+                line.style.transform += ' scale(1.2)';
+            }
+        });
+
+        step.addEventListener('mouseleave', function () {
+            // Возвращаем линию в исходное состояние
+            const stepNumber = this.getAttribute('data-step');
+            const line = document.querySelector(`.line-${stepNumber}`);
+            if (line) {
+                line.style.opacity = '';
+                line.style.transform = line.style.transform.replace(' scale(1.2)', '');
+            }
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', function () {
+            const isActive = item.classList.contains('active');
+
+            // Закрываем все открытые элементы
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            // Если элемент не был активным, открываем его
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // Анимация появления при скролле
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const faqItems = entry.target.querySelectorAll('.faq-item');
+                faqItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 150);
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Изначально скрываем элементы для анимации
+    faqItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease';
+    });
+
+    // Наблюдаем за секцией
+    const faqSection = document.querySelector('.faq-section');
+    if (faqSection) {
+        observer.observe(faqSection);
+    }
+});
+
+// ... existing code ...
+
+// Добавляем шрифт Pacifico из Google Fonts
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
+document.head.appendChild(link);
+
+// Применяем шрифт к слогану
+const companySlogan = document.querySelector('.company-slogan');
+if (companySlogan) {
+    companySlogan.style.fontFamily = '"Great Vibes", cursive';
+    companySlogan.style.fontSize = '24px';
+    companySlogan.style.letterSpacing = '1px';
+    companySlogan.style.marginTop = '10px';
+}

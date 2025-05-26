@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Общие пункты меню
     const commonMenuItems = [
-        { text: 'Юридическая консультация', href: 'consultation.html' },
-        { text: 'Досудебное урегулирование споров', href: 'pre-trial.html' },
-        { text: 'Представительство в суде', href: 'court.html' },
-        { text: 'Исполнительное производство', href: 'enforcement.html' },
-        { text: 'Регистрация товарных знаков', href: 'trademark.html' }
+        { text: 'Юридическая консультация', href: 'juridicheskaya-konsultacia.html' },
+        { text: 'Досудебное урегулирование споров', href: 'dosudebnaya.html' },
+        { text: 'Представительство в суде', href: 'sudebnoe-predstavitelstvo.html' },
+        { text: 'Исполнительное производство', href: 'ispolnitelnoe-proizvodtvo.html' },
+        { text: 'Регистрация товарных знаков', href: 'registracia-tovarnih.html' }
     ];
 
     // Меню для граждан
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { text: 'Военный юрист', href: 'voen.html' },
         { text: 'Страховой юрист', href: 'strahovie.html' },
         { text: 'Трудовой юрист', href: 'trud.html' },
-        { text: 'Жилищный юрист', href: 'Houses.html' },
+        { text: 'Жилищный юрист', href: 'doma.html' },
         { text: 'Перевод недвижимости в нежилой фонд', href: 'perevod-v.html' },
-        { text: 'Юрист по недвижимости', href: 'doma.html' },
+        { text: 'Юрист по недвижимости', href: 'Houses.html' },
         { text: 'Защита прав потребителей', href: 'Zachita-prav.html' },
         { text: 'Наследственные дела', href: 'Nasledstvennie.html' },
         { text: 'Семейный юрист', href: 'Semeini.html' },
@@ -68,14 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Меню лицензирования
     const licensingMenuItems = [
-        { text: 'Получение лицензии на алкоголь', href: 'alcohol-license.html' },
-        { text: 'Получение образовательной лицензии', href: 'education-license.html' },
-        { text: 'Получение лицензии на деятельность с отходами', href: 'waste-license.html' },
-        { text: 'Получение лицензии МЧС', href: 'mchs-license.html' },
-        { text: 'Получение медицинской лицензии', href: 'medical-license.html' },
-        { text: 'Получение лицензии ФСБ', href: 'fsb-license.html' },
-        { text: 'Лицензия УК', href: 'uk-license.html' },
-        { text: 'Получение лицензии Ростехнадзора', href: 'rospotrebnadzor-license.html' }
+        { text: 'Получение лицензии на алкоголь', href: 'alcochol.html' },
+        { text: 'Получение образовательной лицензии', href: 'obrazovatelnaya.html' },
+        { text: 'Получение лицензии на деятельность с отходами', href: 'deyatelnost-s-othodami.html' },
+        { text: 'Получение лицензии МЧС', href: 'licensiya-mchs.html' },
+        { text: 'Получение медицинской лицензии', href: 'medicinskaya-licensia.html' },
+        { text: 'Получение лицензии ФСБ', href: 'licensia-fsb.html' },
+        { text: 'Лицензия УК', href: 'license-uk.html' },
+        { text: 'Получение лицензии Ростехнадзора', href: 'license-rostechnadzor.html' }
     ];
 
     // Создаем все меню
@@ -104,6 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 1000;
         }
 
+        .nav-item.dropdown:last-child .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
         .nav-item.dropdown:hover .dropdown-menu {
             display: flex;
             flex-wrap: wrap;
@@ -127,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             color: var(--text-color);
             text-decoration: none;
             transition: all var(--transition-speed);
-            font-size: 14px;
+            font-size: 12px;
             white-space: normal;
             line-height: 1.4;
         }
@@ -135,6 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .dropdown-item:hover {
             background-color: var(--secondary-color);
             color: var(--accent-color);
+        }
+
+        @media (max-width: 1200px) {
+            .nav-item.dropdown:last-child .dropdown-menu {
+                right: 0;
+                left: auto;
+            }
         }
     `;
 
