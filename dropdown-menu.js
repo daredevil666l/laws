@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Функция создания выпадающего меню
     function createDropdownMenu(linkText, menuItems) {
         // Находим нужную ссылку
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { text: 'Защита прав потребителей', href: 'Zachita-prav.html' },
         { text: 'Наследственные дела', href: 'Nasledstvennie.html' },
         { text: 'Семейный юрист', href: 'Semeini.html' },
-        { text: 'Земельный юрист', href: 'Zemelni.html' },
+        { text: "Затопление квартрир", href: 'zatoplenie.html' },
         ...commonMenuItems
     ];
 

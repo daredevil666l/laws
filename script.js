@@ -1254,3 +1254,521 @@ document.addEventListener('DOMContentLoaded', function() {
         logoWrapper.style.cursor = 'pointer';
     }
 });
+
+
+// Функция для мобильной адаптации hero-section
+class MobileHeroAdapter {
+    constructor() {
+        this.init();
+        this.setupEventListeners();
+    }
+
+    init() {
+        this.createBurgerMenu();
+        this.setupMobileStyles();
+        this.handleResize();
+    }
+
+    // Создание бургер-меню
+    createBurgerMenu() {
+        const header = document.querySelector('.main-header');
+        const nav = document.querySelector('.main-nav');
+        
+        if (!header || !nav) return;
+
+        // Создаем кнопку бургер-меню
+        const burgerButton = document.createElement('button');
+        burgerButton.className = 'mobile-burger-btn';
+        burgerButton.innerHTML = `
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        `;
+        
+        // Добавляем кнопку в header-wrapper
+        const headerWrapper = document.querySelector('.header-wrapper');
+        if (headerWrapper) {
+            headerWrapper.appendChild(burgerButton);
+        }
+
+        // Создаем мобильное меню
+        this.createMobileMenu();
+        
+        // Обработчик клика по бургеру
+        burgerButton.addEventListener('click', () => {
+            this.toggleMobileMenu();
+        });
+    }
+
+    // Создание мобильного меню
+    createMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        if (!nav) return;
+
+        // Создаем overlay для закрытия меню
+        const overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        document.body.appendChild(overlay);
+
+        // Добавляем класс для мобильного меню
+        nav.classList.add('mobile-menu');
+
+        // Обработчик закрытия по overlay
+        overlay.addEventListener('click', () => {
+            this.closeMobileMenu();
+        });
+
+        // Закрытие по клику на ссылку
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    this.closeMobileMenu();
+                }, 300);
+            });
+        });
+    }
+
+    // Переключение мобильного меню
+    toggleMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const burgerBtn = document.querySelector('.mobile-burger-btn');
+
+        if (!nav) return;
+
+        const isOpen = nav.classList.contains('active');
+
+        if (isOpen) {
+            this.closeMobileMenu();
+        } else {
+            this.openMobileMenu();
+        }
+    }
+
+    // Открытие мобильного меню
+    openMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const burgerBtn = document.querySelector('.mobile-burger-btn');
+
+        nav?.classList.add('active');
+        overlay?.classList.add('active');
+        burgerBtn?.classList.add('active');
+        document.body.classList.add('menu-open');
+    }
+
+    // Закрытие мобильного меню
+    closeMobileMenu() {
+        const nav = document.querySelector('.main-nav');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const burgerBtn = document.querySelector('.mobile-burger-btn');
+
+        nav?.classList.remove('active');
+        overlay?.classList.remove('active');
+        burgerBtn?.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+
+    // Адаптация стилей для мобильных устройств
+    setupMobileStyles() {
+        // Удаляем существующие стили, если есть
+        const existingStyles = document.getElementById('mobile-hero-styles');
+        if (existingStyles) {
+            existingStyles.remove();
+        }
+
+        // Добавляем CSS стили динамически
+        const styles = `
+            <style id="mobile-hero-styles">
+                /* Бургер-кнопка */
+                .mobile-burger-btn {
+                    display: none !important;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 30px;
+                    height: 25px;
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0;
+                    z-index: 1001;
+                    transition: all 0.3s ease;
+                    order: 3;
+                }
+
+                .burger-line {
+                    width: 100%;
+                    height: 3px;
+                    background-color: #ffffff !important;
+                    border-radius: 2px;
+                    transition: all 0.3s ease;
+                    transform-origin: center;
+                }
+
+                .mobile-burger-btn.active .burger-line:nth-child(1) {
+                    transform: translateY(11px) rotate(45deg);
+                }
+
+                .mobile-burger-btn.active .burger-line:nth-child(2) {
+                    opacity: 0;
+                }
+
+                .mobile-burger-btn.active .burger-line:nth-child(3) {
+                    transform: translateY(-11px) rotate(-45deg);
+                }
+
+                /* Overlay */
+                .mobile-menu-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 998;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                }
+
+                .mobile-menu-overlay.active {
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                }
+
+                /* Блокировка скролла */
+                body.menu-open {
+                    overflow: hidden !important;
+                }
+
+                /* Мобильные стили (до 768px) */
+                @media (max-width: 768px) {
+                    /* Показываем бургер */
+                    .mobile-burger-btn {
+                        display: flex !important;
+                        margin-left: 15px;
+                    }
+
+                    /* Адаптация header */
+                    .header-wrapper {
+                        flex-wrap: nowrap !important;
+                        align-items: center !important;
+                        justify-content: space-between !important;
+                    }
+
+                    .logo-wrapper {
+                        margin-left: 20px !important;
+                        flex: 1;
+                        order: 1;
+                    }
+
+                    .logo img {
+                        height: 80px !important;
+                    }
+
+                    .site-name {
+                        font-size: 20px !important;
+                    }
+
+                    .site-description {
+                        font-size: 14px !important;
+                    }
+
+                    .header-contacts {
+                        order: 2;
+                        margin-left: 15px !important;
+                        margin-right: 15px !important;
+                        flex-direction: column !important;
+                        align-items: flex-end !important;
+                    }
+
+                    .phone {
+                        font-size: 14px !important;
+                    }
+
+                    .callback-btn {
+                        padding: 6px 12px !important;
+                        font-size: 12px !important;
+                        margin-top: 5px !important;
+                    }
+
+                    /* Скрываем стандартное меню и адаптируем */
+                    .main-nav {
+                        position: fixed !important;
+                        top: 0 !important;
+                        right: -100% !important;
+                        width: 280px !important;
+                        height: 100vh !important;
+                        background: #ffffff !important;
+                        padding: 80px 30px 30px !important;
+                        z-index: 999 !important;
+                        transition: right 0.3s ease !important;
+                        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
+                        overflow-y: auto !important;
+                        display: block !important;
+                    }
+
+                    .main-nav.active {
+                        right: 0 !important;
+                    }
+
+                    .nav-list {
+                        flex-direction: column !important;
+                        gap: 0 !important;
+                        width: 100% !important;
+                    }
+
+                    .nav-item {
+                        width: 100% !important;
+                        border-bottom: 1px solid rgba(227, 30, 36, 0.1) !important;
+                    }
+
+                    .nav-link {
+                        display: block !important;
+                        padding: 15px 0 !important;
+                        color: var(--text-color) !important;
+                        font-size: 16px !important;
+                        width: 100% !important;
+                    }
+
+                    /* Адаптация hero-content */
+                    .hero-content {
+                        margin-top: 20% !important;
+                    }
+
+                    .hero-text {
+                        margin-left: 20px !important;
+                        margin-right: 20px !important;
+                        max-width: calc(100% - 40px) !important;
+                        padding: 20px !important;
+                    }
+
+                    .main-title {
+                        font-size: 28px !important;
+                        margin-bottom: 15px !important;
+                        line-height: 1.2 !important;
+                    }
+
+                    .subtitle {
+                        font-size: 16px !important;
+                        margin-bottom: 25px !important;
+                    }
+
+                    /* Адаптация benefits */
+                    .benefits-list {
+                        flex-direction: column !important;
+                        gap: 15px !important;
+                        margin: 20px 0 !important;
+                    }
+
+                    .benefit-item {
+                        flex-direction: row !important;
+                        text-align: left !important;
+                        width: 100% !important;
+                        padding: 10px !important;
+                        gap: 10px !important;
+                    }
+
+                    .benefit-icon {
+                        width: 40px !important;
+                        height: 40px !important;
+                        flex-shrink: 0 !important;
+                    }
+
+                    .benefit-text {
+                        font-size: 13px !important;
+                        flex: 1 !important;
+                    }
+
+                    .hero-button, .cta-button {
+                        padding: 12px 25px !important;
+                        font-size: 14px !important;
+                        margin-top: 15px !important;
+                    }
+
+                    /* Dropdown адаптация */
+                    .dropdown-menu {
+                        position: static !important;
+                        opacity: 1 !important;
+                        visibility: visible !important;
+                        transform: none !important;
+                        box-shadow: none !important;
+                        border: none !important;
+                        background: rgba(227, 30, 36, 0.05) !important;
+                        max-height: 0 !important;
+                        overflow: hidden !important;
+                        transition: max-height 0.3s ease !important;
+                        clip-path: none !important;
+                    }
+
+                    .dropdown.active .dropdown-menu {
+                        max-height: 500px !important;
+                    }
+
+                    .dropdown-item {
+                        padding: 10px 15px !important;
+                        font-size: 14px !important;
+                    }
+                }
+
+                /* Очень маленькие экраны (до 480px) */
+                @media (max-width: 480px) {
+                    .hero-content {
+                        margin-top: 25% !important;
+                    }
+
+                    .hero-text {
+                        margin-left: 15px !important;
+                        margin-right: 15px !important;
+                        max-width: calc(100% - 30px) !important;
+                        padding: 15px !important;
+                    }
+
+                    .main-title {
+                        font-size: 24px !important;
+                    }
+
+                    .subtitle {
+                        font-size: 15px !important;
+                    }
+
+                    .benefit-text {
+                        font-size: 12px !important;
+                    }
+
+                    .logo img {
+                        height: 60px !important;
+                    }
+
+                    .site-name {
+                        font-size: 16px !important;
+                    }
+
+                    .site-description {
+                        font-size: 12px !important;
+                    }
+
+                    .header-contacts {
+                        flex-direction: column !important;
+                        align-items: flex-end !important;
+                    }
+
+                    .phone {
+                        font-size: 12px !important;
+                    }
+
+                    .main-nav {
+                        width: 250px !important;
+                        padding: 70px 20px 20px !important;
+                    }
+
+                    .hero-button, .cta-button {
+                        padding: 10px 20px !important;
+                        font-size: 13px !important;
+                    }
+                }
+            </style>
+        `;
+
+        document.head.insertAdjacentHTML('beforeend', styles);
+    }
+
+    // Обработка изменения размера окна
+    handleResize() {
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    this.closeMobileMenu();
+                }
+            }, 250);
+        });
+    }
+
+    // Обработка dropdown меню на мобильных
+    setupMobileDropdowns() {
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.closest('.dropdown');
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+    }
+
+    // Настройка обработчиков событий
+    setupEventListeners() {
+        // Настройка dropdown при загрузке
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.setupMobileDropdowns();
+            });
+        } else {
+            this.setupMobileDropdowns();
+        }
+
+        // Закрытие меню по ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeMobileMenu();
+            }
+        });
+
+        // Предотвращение закрытия при клике внутри меню
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('.main-nav');
+            if (nav && nav.contains(e.target)) {
+                e.stopPropagation();
+            }
+        });
+    }
+}
+
+// Инициализация при загрузке страницы
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new MobileHeroAdapter();
+    });
+} else {
+    new MobileHeroAdapter();
+}
+
+// Дополнительная оптимизация для touch устройств
+if ('ontouchstart' in window) {
+    document.body.classList.add('touch-device');
+    
+    // Улучшение производительности на touch устройствах
+    const style = document.createElement('style');
+    style.textContent = `
+        .touch-device * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .touch-device .benefit-item:active,
+        .touch-device .hero-button:active,
+        .touch-device .nav-link:active {
+            transform: scale(0.98);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Функция для принудительного обновления стилей
+function forceStyleUpdate() {
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        heroSection.style.display = 'none';
+        heroSection.offsetHeight; // Trigger reflow
+        heroSection.style.display = '';
+    }
+}
+
+// Запускаем обновление стилей через небольшую задержку
+setTimeout(forceStyleUpdate, 100);
+
