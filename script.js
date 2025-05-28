@@ -1251,14 +1251,14 @@ if (companySlogan) {
 // ... existing code ...
 
 // Обработка клика по логотипу
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const logoWrapper = document.querySelector('.logo-wrapper');
     if (logoWrapper) {
-        logoWrapper.addEventListener('click', function(e) {
+        logoWrapper.addEventListener('click', function (e) {
             e.preventDefault(); // Предотвращаем стандартное поведение ссылки
             window.location.href = 'index.html';
         });
-        
+
         // Добавляем стиль курсора, чтобы показать, что элемент кликабельный
         logoWrapper.style.cursor = 'pointer';
     }
@@ -1288,3 +1288,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+// Создаем новый meta тег
+const viewportMeta = document.createElement('meta');
+viewportMeta.name = 'viewport';
+viewportMeta.content = 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes';
+
+// Добавляем meta тег в head
+document.head.appendChild(viewportMeta);
