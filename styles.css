@@ -6303,3 +6303,13 @@ img {
         max-width: none;
     }
 }
+
+
+@media screen and (orientation: portrait) {
+    /* Скрываем телефонные номера в шапке */
+    .header-phone,
+    .top-phone,
+    [class*="phone-number"] {
+        display: none !important;
+    }
+}
