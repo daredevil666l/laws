@@ -6650,4 +6650,144 @@ body {
       visibility: hidden !important;
     }
   }
+
   
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ ПРЕИМУЩЕСТВ НА МОБИЛЬНЫХ УСТРОЙСТВАХ ===== */
+
+/* Базовые стили для преимуществ (остаются прежними на десктопе) */
+/* .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 15px 0;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(227, 30, 36, 0.05);
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease;
+  } */
+  
+  /* МОБИЛЬНЫЕ СТИЛИ - горизонтальное расположение */
+  @media (max-width: 768px) {
+    .benefits-list {
+      display: flex;
+      flex-direction: row !important; /* Горизонтальный ряд */
+      flex-wrap: wrap; /* Перенос на новую строку при необходимости */
+      gap: 8px; /* Уменьшенные отступы */
+      margin: 20px 0;
+      justify-content: space-between;
+    }
+    
+    .benefit-item {
+      flex: 1 1 calc(50% - 4px); /* По 2 элемента в ряд */
+      min-width: 0; /* Позволяет сжиматься */
+      padding: 10px 8px; /* Уменьшенные отступы */
+      gap: 8px;
+      background: rgb(255 255 255 / 58%);
+      border-radius: 6px;
+      align-items: flex-start; /* Выравнивание по верху */
+      flex-direction: column; /* Иконка сверху, текст снизу */
+      text-align: center;
+      min-height: 80px; /* Минимальная высота для единообразия */
+    }
+    
+    .benefit-icon {
+      width: 32px !important; /* Уменьшенная иконка */
+      height: 32px !important;
+      margin-bottom: 5px;
+      flex-shrink: 0;
+    }
+    
+    .benefit-icon i {
+      font-size: 16px !important; /* Уменьшенный размер иконки */
+    }
+    
+    .benefit-text {
+      font-size: 11px !important; /* Уменьшенный текст */
+      line-height: 1.3 !important;
+      color: var(--text-color) !important;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  
+  /* Для очень маленьких экранов (до 480px) */
+  @media (max-width: 480px) {
+    .benefits-list {
+      gap: 6px;
+      margin: 15px 0;
+    }
+    
+    .benefit-item {
+      flex: 1 1 calc(50% - 3px); /* Все еще по 2 в ряд */
+      padding: 8px 6px;
+      min-height: 70px;
+      gap: 6px;
+    }
+    
+    .benefit-icon {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    
+    .benefit-icon i {
+      font-size: 14px !important;
+    }
+    
+    .benefit-text {
+      font-size: 10px !important;
+      line-height: 1.2 !important;
+    }
+  }
+  
+  /* Для Samsung A54 и подобных (специфичные размеры) */
+  @media (max-width: 768px) and (min-height: 600px) {
+    .benefits-list {
+      margin-top: 25px; /* Больше отступ от header */
+    }
+    
+    .benefit-item {
+      min-height: 85px; /* Чуть больше высота */
+    }
+    
+    .benefit-text {
+      font-size: 11px !important;
+    }
+  }
+  
+  /* Если нужно расположить в один ряд (4 элемента) */
+  @media (max-width: 768px) {
+    .benefits-list.horizontal-layout {
+      justify-content: space-around;
+    }
+    
+    .benefits-list.horizontal-layout .benefit-item {
+      flex: 1 1 calc(25% - 6px); /* По 4 элемента в ряд */
+      max-width: calc(25% - 6px);
+    }
+  }
+  
+  /* Альтернативный стиль - если хотите в одну строку скроллом */
+  @media (max-width: 768px) {
+    .benefits-list.scroll-horizontal {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 10px; /* Место для скроллбара */
+    }
+    
+    .benefits-list.scroll-horizontal .benefit-item {
+      flex: 0 0 140px; /* Фиксированная ширина */
+      min-width: 140px;
+    }
+  }
