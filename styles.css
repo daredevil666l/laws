@@ -5066,7 +5066,7 @@ img {
         font-size: 14px;
     }
 
-    .dropdown-menu {
+    /* .dropdown-menu {
         position: static;
         box-shadow: none;
         border: none;
@@ -5077,12 +5077,12 @@ img {
         visibility: visible;
         transform: none;
         clip-path: none;
-    }
+    } */
 
-    .dropdown-item {
+    /* .dropdown-item {
         padding: 8px 25px;
         font-size: 13px;
-    }
+    } */
 
     /* Контакты в хедере */
     .header-contacts {
@@ -5860,9 +5860,9 @@ img {
         white-space: nowrap;
     }
 
-    .dropdown-menu {
+    /* .dropdown-menu {
         min-width: 220px;
-    }
+    } */
 
     /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
     .page-container {
@@ -6196,6 +6196,7 @@ img {
     .callback-btn {
         margin-top: 5px;
     }
+
     .footer-logo img {
         width: 100px;
     }
@@ -6306,6 +6307,7 @@ img {
 
 
 @media screen and (orientation: portrait) {
+
     /* Скрываем телефонные номера в шапке */
     .header-phone,
     .top-phone,
@@ -6313,3 +6315,339 @@ img {
         display: none !important;
     }
 }
+
+/* ===== ИСПРАВЛЕНИЕ КНОПКИ ОБРАТНОГО ЗВОНКА НА МОБИЛЬНЫХ =====
+
+/* Базовые стили для кнопки обратного звонка */
+.callback-btn {
+    position: relative;
+    z-index: 100;
+    transition: all var(--transition-speed) ease;
+}
+
+/* Мобильная версия кнопки */
+@media (max-width: 768px) {
+    .callback-btn {
+        position: fixed !important;
+        top: env(safe-area-inset-top, 10px);
+        right: 10px;
+        z-index: 9999;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+        margin: 0 !important;
+
+        /* Убираем из нормального потока */
+        order: initial;
+        flex: none;
+
+        /* Анимация появления */
+        animation: slideInFromRight 0.5s ease-out;
+    }
+
+    /* Для iPhone с выемкой */
+    .callback-btn {
+        top: max(env(safe-area-inset-top, 10px), 15px);
+    }
+
+    /* Убираем кнопку из header-contacts на мобильных */
+    .header-contacts .callback-btn {
+        display: none;
+    }
+
+    /* Создаем отдельную фиксированную кнопку */
+    body::after {
+        content: "Обратный звонок";
+        position: fixed;
+        top: max(env(safe-area-inset-top, 10px), 15px);
+        right: 10px;
+        z-index: 9999;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+        color: var(--primary-color);
+        border: none;
+        border-radius: 20px;
+        padding: 8px 15px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+        animation: slideInFromRight 0.5s ease-out;
+        transition: all var(--transition-speed) ease;
+    }
+
+    /* Hover эффект для фиксированной кнопки */
+    body::after:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(227, 30, 36, 0.4);
+    }
+}
+
+/* Альтернативный вариант - если нужна кликабельная кнопка */
+@media (max-width: 768px) {
+
+    /* Скрываем оригинальную кнопку */
+    .header-contacts .callback-btn {
+        display: none !important;
+    }
+
+    /* Добавляем новую фиксированную кнопку через JavaScript или отдельный элемент */
+    .mobile-callback-btn {
+        position: fixed;
+        top: max(env(safe-area-inset-top, 10px), 15px);
+        right: 10px;
+        z-index: 9999;
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+        color: var(--primary-color);
+        border: none;
+        border-radius: 20px;
+        padding: 8px 15px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+        transition: all var(--transition-speed) ease;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 1;
+    }
+
+    .mobile-callback-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(227, 30, 36, 0.4);
+        background: linear-gradient(135deg, var(--accent-light), var(--accent-hover));
+    }
+
+    .mobile-callback-btn:active {
+        transform: translateY(0);
+    }
+}
+
+/* Анимация появления */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .mobile-callback-btn {
+        right: 8px;
+        top: max(env(safe-area-inset-top, 8px), 12px);
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+/* Дополнительные исправления для хедера */
+@media (max-width: 768px) {
+    .main-header {
+        padding-right: 100px;
+        /* Оставляем место для кнопки */
+    }
+
+    .header-wrapper {
+        padding-right: 0;
+    }
+
+    /* Убираем правый padding у контейнера на мобильных */
+    .main-header .container {
+        padding-right: 15px;
+    }
+}
+
+
+/* ===== ИСПРАВЛЕНИЯ ДЛЯ HEADERWRAPPER ===== */
+
+/* Основные исправления */
+.headerwrapper,
+.header-wrapper {
+    height: auto !important;
+    /* Убираем фиксированную высоту */
+    min-height: auto !important;
+    overflow: visible !important;
+    /* Позволяем контенту быть видимым */
+    position: relative;
+    z-index: 1000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* Исправления для главного хедера */
+.main-header {
+    height: auto !important;
+    overflow: visible !important;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Навигационное меню */
+.main-nav {
+    position: relative;
+    z-index: 1001;
+    overflow: visible !important;
+}
+
+.nav-list {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* Выпадающие меню */
+.dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0;
+    z-index: 1002 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover .dropdown-menu,
+.dropdown-menu:hover {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Убираем скролл с body/html если он появился */
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер */
+.container {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* Дополнительные исправления для навигации */
+.nav-item {
+    position: relative;
+    overflow: visible !important;
+}
+
+.nav-link {
+    position: relative;
+    z-index: 1001;
+}
+
+/* Если есть wrapper для всей страницы */
+.page-wrapper,
+.site-wrapper,
+.wrapper {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh;
+}
+
+/* ===== СПЕЦИАЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ ===== */
+@media (max-width: 768px) {
+
+    .headerwrapper,
+    .header-wrapper,
+    .main-header {
+        height: auto !important;
+        overflow: visible !important;
+        position: relative !important;
+    }
+
+    .main-nav {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    .nav-list {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: rgba(227, 30, 36, 0.05) !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* ===== ЕСЛИ ПРОБЛЕМА В КОНКРЕТНОМ КЛАССЕ ===== */
+
+/* Если используется .header-contacts */
+.header-contacts {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* Если используется .logo-wrapper */
+.logo-wrapper {
+    overflow: visible !important;
+    height: auto !important;
+}
+
+/* Принудительное исправление для всех header элементов */
+[class*="header"],
+[class*="nav"],
+[id*="header"],
+[id*="nav"] {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+/* ===== ОТЛАДОЧНЫЕ СТИЛИ (ВРЕМЕННО) ===== */
+/* Раскомментируйте для отладки */
+/*
+.headerwrapper,
+.header-wrapper {
+  border: 2px solid red !important;
+  background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.dropdown-menu {
+  border: 2px solid blue !important;
+  background: rgba(0, 0, 255, 0.1) !important;
+}
+*/
+
+
+/* Удаляем псевдоэлемент body::after на мобильных устройствах */
+@media (max-width: 768px) {
+    body::after {
+      content: none !important;
+      display: none !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+  }
+  
