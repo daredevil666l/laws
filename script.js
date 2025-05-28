@@ -1229,6 +1229,15 @@ link.rel = 'stylesheet';
 link.href = 'https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
 document.head.appendChild(link);
 
+// Создаем новый элемент link для favicon
+const favicon = document.createElement('link');
+favicon.rel = 'icon';
+favicon.type = 'image/x-icon';
+favicon.href = 'images/favicon.ico';
+
+// Добавляем элемент в head документа
+document.head.appendChild(favicon);
+
 // Применяем шрифт к слогану
 const companySlogan = document.querySelector('.company-slogan');
 if (companySlogan) {
