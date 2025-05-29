@@ -2263,3 +2263,85 @@ document.head.appendChild(viewportMeta);
 
     init();
 })();
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Функция для создания и управления кнопкой обратного звонка
+    function initCallbackButton() {
+        // Находим или создаем кнопку
+        let callbackBtn = document.querySelector('.mobile-callback-btn-auto');
+
+        // Если кнопки нет, создаем ее
+        if (!callbackBtn) {
+            callbackBtn = document.createElement('a');
+            callbackBtn.href = '#';
+            callbackBtn.className = 'mobile-callback-btn-auto';
+            callbackBtn.textContent = 'Звонок';
+            callbackBtn.setAttribute('aria-label', 'Заказать обратный звонок');
+
+            // Добавляем обработчик клика
+            callbackBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Ищем существующую кнопку обратного звонка в header
+                const existingCallbackBtn = document.querySelector('.callback-btn');
+                if (existingCallbackBtn) {
+                    existingCallbackBtn.click();
+                } else {
+                    // Если нет, можно добавить свою логику
+                    alert('Свяжитесь с нами: +7 (473) 295-48-24');
+                }
+            });
+
+            // Добавляем кнопку в body
+            document.body.appendChild(callbackBtn);
+            console.log('✅ Кнопка mobile-callback-btn-auto создана');
+        }
+
+        // Находим header для определения его высоты
+        const header = document.querySelector('.main-header');
+        const headerHeight = header ? header.offsetHeight : 100;
+
+        let isVisible = false;
+
+        // Функция для показа/скрытия кнопки
+        // Обновите функцию toggleButton в script.js
+        function toggleButton() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+            // Показываем кнопку только на мобильных и после прокрутки header
+            if (windowWidth <= 768 && scrollTop > headerHeight && !isVisible) {
+                isVisible = true;
+
+                // ПЛАВНОЕ появление
+                callbackBtn.style.transition = 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out';
+                callbackBtn.classList.add('show');
+
+                console.log('✅ Плавно показываем кнопку слева');
+            } else if ((scrollTop <= headerHeight || windowWidth > 768) && isVisible) {
+                isVisible = false;
+
+                // ПЛАВНОЕ исчезновение
+                callbackBtn.style.transition = 'opacity 0.4s ease-in-out, transform 0.4s ease-in-out';
+                callbackBtn.classList.remove('show');
+
+                console.log('❌ Плавно скрываем кнопку');
+            }
+        }
+
+        // Добавляем обработчики событий
+        window.addEventListener('scroll', toggleButton);
+        window.addEventListener('resize', toggleButton);
+
+        // Начальная проверка
+        setTimeout(toggleButton, 100);
+
+        console.log('🚀 Система кнопки обратного звонка инициализирована', {
+            headerHeight: headerHeight,
+            buttonElement: callbackBtn
+        });
+    }
+
+    // Инициализируем кнопку
+    initCallbackButton();
+});

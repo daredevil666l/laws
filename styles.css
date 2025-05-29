@@ -6644,14 +6644,14 @@ body {
 /* Удаляем псевдоэлемент body::after на мобильных устройствах */
 @media (max-width: 768px) {
     body::after {
-      content: none !important;
-      display: none !important;
-      pointer-events: none !important;
-      visibility: hidden !important;
+        content: none !important;
+        display: none !important;
+        pointer-events: none !important;
+        visibility: hidden !important;
     }
-  }
+}
 
-  
+
 
 /* ===== ИСПРАВЛЕНИЯ ДЛЯ ПРЕИМУЩЕСТВ НА МОБИЛЬНЫХ УСТРОЙСТВАХ ===== */
 
@@ -6672,122 +6672,774 @@ body {
     border-radius: 8px;
     transition: all var(--transition-speed) ease;
   } */
+
+/* МОБИЛЬНЫЕ СТИЛИ - горизонтальное расположение */
+@media (max-width: 768px) {
+    .benefits-list {
+        display: flex;
+        flex-direction: row !important;
+        /* Горизонтальный ряд */
+        flex-wrap: wrap;
+        /* Перенос на новую строку при необходимости */
+        gap: 8px;
+        /* Уменьшенные отступы */
+        margin: 20px 0;
+        justify-content: space-between;
+    }
+
+    .benefit-item {
+        flex: 1 1 calc(50% - 4px);
+        /* По 2 элемента в ряд */
+        min-width: 0;
+        /* Позволяет сжиматься */
+        padding: 10px 8px;
+        /* Уменьшенные отступы */
+        gap: 8px;
+        background: rgb(255 255 255 / 58%);
+        border-radius: 6px;
+        align-items: flex-start;
+        /* Выравнивание по верху */
+        flex-direction: column;
+        /* Иконка сверху, текст снизу */
+        text-align: center;
+        min-height: 80px;
+        /* Минимальная высота для единообразия */
+    }
+
+    .benefit-icon {
+        width: 32px !important;
+        /* Уменьшенная иконка */
+        height: 32px !important;
+        margin-bottom: 5px;
+        flex-shrink: 0;
+    }
+
+    .benefit-icon i {
+        font-size: 16px !important;
+        /* Уменьшенный размер иконки */
+    }
+
+    .benefit-text {
+        font-size: 11px !important;
+        /* Уменьшенный текст */
+        line-height: 1.3 !important;
+        color: var(--text-color) !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+/* Для очень маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    .benefits-list {
+        gap: 6px;
+        margin: 15px 0;
+    }
+
+    .benefit-item {
+        flex: 1 1 calc(50% - 3px);
+        /* Все еще по 2 в ряд */
+        padding: 8px 6px;
+        min-height: 70px;
+        gap: 6px;
+    }
+
+    .benefit-icon {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .benefit-icon i {
+        font-size: 14px !important;
+    }
+
+    .benefit-text {
+        font-size: 10px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* Для Samsung A54 и подобных (специфичные размеры) */
+@media (max-width: 768px) and (min-height: 600px) {
+    .benefits-list {
+        margin-top: 25px;
+        /* Больше отступ от header */
+    }
+
+    .benefit-item {
+        min-height: 85px;
+        /* Чуть больше высота */
+    }
+
+    .benefit-text {
+        font-size: 11px !important;
+    }
+}
+
+/* Если нужно расположить в один ряд (4 элемента) */
+@media (max-width: 768px) {
+    .benefits-list.horizontal-layout {
+        justify-content: space-around;
+    }
+
+    .benefits-list.horizontal-layout .benefit-item {
+        flex: 1 1 calc(25% - 6px);
+        /* По 4 элемента в ряд */
+        max-width: calc(25% - 6px);
+    }
+}
+
+/* Альтернативный стиль - если хотите в одну строку скроллом */
+@media (max-width: 768px) {
+    .benefits-list.scroll-horizontal {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 10px;
+        /* Место для скроллбара */
+    }
+
+    .benefits-list.scroll-horizontal .benefit-item {
+        flex: 0 0 140px;
+        /* Фиксированная ширина */
+        min-width: 140px;
+    }
+}
+
+
+/* ===== ПРЕДОТВРАЩЕНИЕ МЕРЦАНИЯ ПРИ ЗАГРУЗКЕ ===== */
+
+/* Изначально скрываем кнопку связи */
+/* .mobile-callback-btn-auto {
+    opacity: 0 !important;
+    transform: translateX(100px) !important;
+    transition: none !important;
+} */
+
+/* Скрываем кнопку связи пока JS не загрузился */
+/* body:not(.js-loaded) .mobile-callback-btn-auto {
+    display: none !important;
+} */
+
+/* Показываем кнопку только после инициализации */
+/* body.js-loaded .mobile-callback-btn-auto {
+    display: block !important;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+} */
+
+/* Скрываем бургер-меню если JS не загружен */
+body:not(.js-loaded) .mobile-menu-toggle {
+    display: none !important;
+}
+
+/* Показываем бургер-меню только на мобильных после загрузки JS */
+@media (max-width: 768px) {
+    body.js-loaded .mobile-menu-toggle {
+        display: flex !important;
+    }
+}
+
+/* ===== ИСПРАВЛЕННОЕ ПОЗИЦИОНИРОВАНИЕ БУРГЕР-КНОПКИ ===== */
+
+.mobile-menu-toggle {
+    position: fixed !important;
+    /* Фиксированное позиционирование */
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 9999 !important;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    /* background: rgba(255, 255, 255, 0.95) !important; */
+    border: 2px solid #e31e24 !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: #e31e24 !important;
+    transform: scale(1.05);
+}
+
+.burger-line {
+    width: 20px !important;
+    height: 2px !important;
+    background-color: #e31e24 !important;
+    margin: 2px 0 !important;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle:hover .burger-line {
+    background-color: #ffffff !important;
+}
+
+.mobile-menu-toggle.active {
+    background: #e31e24 !important;
+}
+
+.mobile-menu-toggle.active .burger-line {
+    background-color: #ffffff !important;
+}
+
+.mobile-menu-toggle.active .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Показываем только на мобильных */
+@media (max-width: 768px) {
+    body.js-loaded .mobile-menu-toggle {
+        display: flex !important;
+    }
+
+    /* Скрываем десктопное меню */
+    .main-nav,
+    .nav-list {
+        display: none !important;
+    }
+}
+
+/* Адаптация под разные размеры экранов */
+@media (max-width: 480px) {
+    .mobile-menu-toggle {
+        top: 10px !important;
+        right: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .burger-line {
+        width: 18px !important;
+    }
+}
+
+/* Специально для айфонов с вырезом */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        top: max(env(safe-area-inset-top, 15px), 15px) !important;
+    }
+}
+
+
+
+/* ===== КНОПКА ОБРАТНОГО ЗВОНКА СЛЕВА ===== */
+.mobile-callback-btn-auto {
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
+    right: auto !important;
+    z-index: 9998 !important;
+    background: linear-gradient(135deg, #e31e24, #ff3a40) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 8px 15px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3) !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+
+    /* Изначально скрыта */
+    opacity: 0 !important;
+    transform: translateX(-100%) !important;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    display: none !important;
+}
+
+.mobile-callback-btn-auto.show {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.mobile-callback-btn-auto:hover {
+    background: linear-gradient(135deg, #ff3a40, #e31e24) !important;
+    box-shadow: 0 6px 16px rgba(227, 30, 36, 0.4) !important;
+    transform: translateX(0) translateY(-2px) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.mobile-callback-btn-auto:active {
+    transform: translateX(0) translateY(0) !important;
+}
+
+/* Адаптация под разные размеры экранов */
+@media (max-width: 480px) {
+    .mobile-callback-btn-auto {
+        top: 10px !important;
+        left: 10px !important;
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* Специально для айфонов с вырезом */
+@media (max-width: 768px) {
+    .mobile-callback-btn-auto {
+        top: max(env(safe-area-inset-top, 15px), 15px) !important;
+    }
+}
+
+/* Показываем только на мобильных */
+@media (min-width: 769px) {
+    .mobile-callback-btn-auto {
+        display: none !important;
+    }
+}
+
+/* ===== АНИМАЦИЯ СКРЫТИЯ КНОПКИ МЕНЮ ===== */
+.mobile-menu-toggle {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transform-origin: center right !important;
+  }
   
-  /* МОБИЛЬНЫЕ СТИЛИ - горизонтальное расположение */
+  /* Состояние по умолчанию - видимая кнопка */
+  .mobile-menu-toggle:not(.hidden) {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Дополнительные стили для плавности */
   @media (max-width: 768px) {
-    .benefits-list {
-      display: flex;
-      flex-direction: row !important; /* Горизонтальный ряд */
-      flex-wrap: wrap; /* Перенос на новую строку при необходимости */
-      gap: 8px; /* Уменьшенные отступы */
-      margin: 20px 0;
-      justify-content: space-between;
+    .mobile-menu-toggle {
+      will-change: transform, opacity !important;
+      backface-visibility: hidden !important;
     }
     
-    .benefit-item {
-      flex: 1 1 calc(50% - 4px); /* По 2 элемента в ряд */
-      min-width: 0; /* Позволяет сжиматься */
-      padding: 10px 8px; /* Уменьшенные отступы */
-      gap: 8px;
-      background: rgb(255 255 255 / 58%);
-      border-radius: 6px;
-      align-items: flex-start; /* Выравнивание по верху */
-      flex-direction: column; /* Иконка сверху, текст снизу */
-      text-align: center;
-      min-height: 80px; /* Минимальная высота для единообразия */
+    /* Эффект при наведении только если кнопка видима */
+    .mobile-menu-toggle:not([style*="opacity: 0"]):hover {
+      transform: scale(1.05) !important;
     }
+  }
+
+  /* ===== УВЕЛИЧЕННАЯ КНОПКА С БЛЕСТЯЩИМ ЭФФЕКТОМ ===== */
+.mobile-callback-btn-auto {
+    /* Увеличиваем размер кнопки */
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    min-width: 120px !important;
     
-    .benefit-icon {
-      width: 32px !important; /* Уменьшенная иконка */
-      height: 32px !important;
-      margin-bottom: 5px;
-      flex-shrink: 0;
+    /* Добавляем постоянное блестящее свечение */
+    box-shadow: 
+      0 4px 12px rgba(227, 30, 36, 0.3),
+      0 0 15px 3px rgba(255, 255, 255, 0.6), 
+      0 0 30px 6px rgba(255, 255, 255, 0.4) !important;
+    
+    /* Анимация блеска */
+    animation: shine 2.5s ease-in-out infinite !important;
+    
+    /* Дополнительные стили для лучшей видимости */
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  }
+  
+  /* Анимация постоянного блеска */
+  @keyframes shine {
+    0% {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.3),
+        0 0 15px 3px rgba(255, 255, 255, 0.6), 
+        0 0 30px 6px rgba(255, 255, 255, 0.4);
+      transform: scale(1);
     }
-    
-    .benefit-icon i {
-      font-size: 16px !important; /* Уменьшенный размер иконки */
+    50% {
+      box-shadow: 
+        0 6px 16px rgba(227, 30, 36, 0.4),
+        0 0 25px 5px rgba(255, 255, 255, 1), 
+        0 0 40px 8px rgba(255, 255, 255, 0.7);
+      transform: scale(1.02);
     }
-    
-    .benefit-text {
-      font-size: 11px !important; /* Уменьшенный текст */
-      line-height: 1.3 !important;
-      color: var(--text-color) !important;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-      text-align: center;
-      margin: 0;
+    100% {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.3),
+        0 0 15px 3px rgba(255, 255, 255, 0.6), 
+        0 0 30px 6px rgba(255, 255, 255, 0.4);
+      transform: scale(1);
     }
   }
   
-  /* Для очень маленьких экранов (до 480px) */
+  /* Усиленный эффект при наведении */
+  .mobile-callback-btn-auto:hover {
+    animation: shine-hover 1s ease-in-out infinite !important;
+    box-shadow: 
+      0 8px 20px rgba(227, 30, 36, 0.5),
+      0 0 30px 6px rgba(255, 255, 255, 1), 
+      0 0 50px 10px rgba(255, 255, 255, 0.8) !important;
+    transform: scale(1.05) !important;
+  }
+  
+  /* Анимация при наведении */
+  @keyframes shine-hover {
+    0%, 100% {
+      box-shadow: 
+        0 8px 20px rgba(227, 30, 36, 0.5),
+        0 0 30px 6px rgba(255, 255, 255, 1), 
+        0 0 50px 10px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+      box-shadow: 
+        0 10px 25px rgba(227, 30, 36, 0.6),
+        0 0 40px 8px rgba(255, 255, 255, 1), 
+        0 0 60px 12px rgba(255, 255, 255, 1);
+    }
+  }
+  
+  /* Адаптация для разных размеров экранов */
   @media (max-width: 480px) {
-    .benefits-list {
-      gap: 6px;
-      margin: 15px 0;
-    }
-    
-    .benefit-item {
-      flex: 1 1 calc(50% - 3px); /* Все еще по 2 в ряд */
-      padding: 8px 6px;
-      min-height: 70px;
-      gap: 6px;
-    }
-    
-    .benefit-icon {
-      width: 28px !important;
-      height: 28px !important;
-    }
-    
-    .benefit-icon i {
+    .mobile-callback-btn-auto {
       font-size: 14px !important;
-    }
-    
-    .benefit-text {
-      font-size: 10px !important;
-      line-height: 1.2 !important;
+      padding: 10px 20px !important;
+      min-width: 100px !important;
     }
   }
   
-  /* Для Samsung A54 и подобных (специфичные размеры) */
-  @media (max-width: 768px) and (min-height: 600px) {
-    .benefits-list {
-      margin-top: 25px; /* Больше отступ от header */
+  @media (max-width: 375px) {
+    .mobile-callback-btn-auto {
+      font-size: 13px !important;
+      padding: 8px 16px !important;
+      min-width: 90px !important;
+    }
+  }
+  
+  /* Для устройств с высокой плотностью пикселей */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .mobile-callback-btn-auto {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.4),
+        0 0 20px 4px rgba(255, 255, 255, 0.7), 
+        0 0 35px 7px rgba(255, 255, 255, 0.5) !important;
+    }
+  }
+  
+  /* Дополнительная яркость для темных тем */
+  @media (prefers-color-scheme: dark) {
+    .mobile-callback-btn-auto {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.5),
+        0 0 20px 4px rgba(255, 255, 255, 0.8), 
+        0 0 35px 7px rgba(255, 255, 255, 0.6) !important;
+      border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    }
+  }
+  
+  /* Анимация появления кнопки */
+  .mobile-callback-btn-auto.show {
+    animation: slideInLeft 0.5s ease-out, shine 2.5s ease-in-out infinite !important;
+    animation-delay: 0s, 0.5s !important;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Пульсирующий эффект для привлечения внимания */
+  .mobile-callback-btn-auto::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    border-radius: inherit;
+    animation: pulse-border 3s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  @keyframes pulse-border {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  /* Убираем анимацию при движении пользователя (для экономии батареи) */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-callback-btn-auto {
+      animation: none !important;
     }
     
-    .benefit-item {
-      min-height: 85px; /* Чуть больше высота */
+    .mobile-callback-btn-auto::before {
+      animation: none !important;
+    }
+  }
+/* ===== ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПКИ ===== */
+.mobile-callback-btn-auto {
+    /* Основные стили остаются прежними */
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+    min-width: 120px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    
+    /* ПЛАВНЫЕ переходы вместо резких анимаций */
+    transition: all 0.5s ease-in-out !important;
+    
+    /* Убираем резкие анимации */
+    animation: gentleShine 3s ease-in-out infinite !important;
+    
+    /* Плавное свечение */
+    box-shadow: 
+      0 4px 12px rgba(227, 30, 36, 0.3),
+      0 0 15px 2px rgba(255, 255, 255, 0.4), 
+      0 0 25px 4px rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  /* ПЛАВНАЯ анимация блеска (медленнее и мягче) */
+  @keyframes gentleShine {
+    0%, 100% {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.3),
+        0 0 15px 2px rgba(255, 255, 255, 0.4), 
+        0 0 25px 4px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 4px 12px rgba(227, 30, 36, 0.3),
+        0 0 20px 3px rgba(255, 255, 255, 0.6), 
+        0 0 30px 5px rgba(255, 255, 255, 0.3);
+    }
+  }
+  
+  /* ПЛАВНОЕ появление кнопки */
+  .mobile-callback-btn-auto.show {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    /* Убираем сложные анимации - только плавный переход */
+    animation: gentleShine 3s ease-in-out infinite !important;
+  }
+  
+  /* Плавный эффект при наведении */
+  .mobile-callback-btn-auto:hover {
+    /* Убираем резкую анимацию hover */
+    animation: none !important;
+    box-shadow: 
+      0 6px 16px rgba(227, 30, 36, 0.4),
+      0 0 25px 4px rgba(255, 255, 255, 0.7), 
+      0 0 35px 6px rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1.02) !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+  
+  /* Убираем резкий псевдоэлемент */
+  .mobile-callback-btn-auto::before {
+    display: none !important;
+  }
+  
+  /* Адаптация для маленьких экранов */
+  @media (max-width: 480px) {
+    .mobile-callback-btn-auto {
+      font-size: 14px !important;
+      padding: 10px 20px !important;
+      min-width: 100px !important;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .mobile-callback-btn-auto {
+      font-size: 13px !important;
+      padding: 8px 16px !important;
+      min-width: 90px !important;
+    }
+  }
+
+  /* ===== ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЛОГОТИПА В МОБИЛЬНОЙ ВЕРСИИ ===== */
+@media (max-width: 768px) {
+  
+    /* Контейнер логотипа */
+    .header-wrapper {
+      justify-content: flex-start !important;
+      align-items: center !important;
     }
     
-    .benefit-text {
+    .logo-wrapper {
+      width: auto !important;
+      max-width: 70% !important;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+      display: flex !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      order: 1 !important;
+    }
+  
+    /* Ссылка логотипа */
+    .logo-wrapper .logo {
+      display: flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+      width: 100% !important;
+    }
+  
+    /* Изображение логотипа - УВЕЛИЧИВАЕМ */
+    .logo-wrapper .logo img {
+      width: 85px !important;
+      height: auto !important;
+      max-width: 85px !important;
+      margin-right: 15px !important;
+      flex-shrink: 0 !important;
+      object-fit: contain !important;
+      margin-left: 21px;
+    }
+  
+    /* Текст логотипа */
+    .logo-wrapper .logo .logo-text {
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+      flex: 1 !important;
+    }
+  
+    /* Название компании - УВЕЛИЧИВАЕМ */
+    .logo-wrapper .logo .logo-text .site-name,
+    .logo-wrapper .logo .logo-text h1 {
+      font-size: 22px !important;
+      line-height: 1.1 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-weight: 700 !important;
+      color: var(--text-color, #333) !important;
+    }
+  
+    /* Описание - УВЕЛИЧИВАЕМ */
+    .logo-wrapper .logo .logo-text .site-description,
+    .logo-wrapper .logo .logo-text p {
+      font-size: 13px !important;
+      line-height: 1.2 !important;
+      margin: 2px 0 0 0 !important;
+      padding: 0 !important;
+      color: var(--text-secondary, #666) !important;
+      text-transform: lowercase !important;
+    }
+  
+    /* Кнопка меню - перемещаем вправо */
+    .mobile-menu-toggle {
+      order: 3 !important;
+      margin-left: auto !important;
+    }
+  
+    /* Контакты - скрываем или делаем меньше */
+    .header-contacts {
+      order: 2 !important;
+      font-size: 12px !important;
+      margin: 0 10px 0 auto !important;
+    }
+  }
+  
+  /* Для маленьких экранов */
+  @media (max-width: 480px) {
+    .logo-wrapper .logo img {
+      width: 75px !important;
+      margin-right: 12px !important;
+    }
+  
+    .logo-wrapper .logo .logo-text .site-name,
+    .logo-wrapper .logo .logo-text h1 {
+      font-size: 20px !important;
+    }
+  
+    .logo-wrapper .logo .logo-text .site-description,
+    .logo-wrapper .logo .logo-text p {
+      font-size: 12px !important;
+    }
+  }
+  
+  /* Для очень маленьких экранов */
+  @media (max-width: 375px) {
+    .logo-wrapper .logo img {
+      width: 65px !important;
+      margin-right: 10px !important;
+    }
+  
+    .logo-wrapper .logo .logo-text .site-name,
+    .logo-wrapper .logo .logo-text h1 {
+      font-size: 18px !important;
+    }
+  
+    .logo-wrapper .logo .logo-text .site-description,
+    .logo-wrapper .logo .logo-text p {
       font-size: 11px !important;
     }
   }
   
-  /* Если нужно расположить в один ряд (4 элемента) */
-  @media (max-width: 768px) {
-    .benefits-list.horizontal-layout {
-      justify-content: space-around;
-    }
-    
-    .benefits-list.horizontal-layout .benefit-item {
-      flex: 1 1 calc(25% - 6px); /* По 4 элемента в ряд */
-      max-width: calc(25% - 6px);
-    }
-  }
+
+
+  /* ===== МИНИМАЛЬНЫЕ ОТСТУПЫ (ПЛОТНАЯ ВЕРСТКА) ===== */
+@media (max-width: 768px) {
   
-  /* Альтернативный стиль - если хотите в одну строку скроллом */
-  @media (max-width: 768px) {
-    .benefits-list.scroll-horizontal {
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 10px;
-      padding-bottom: 10px; /* Место для скроллбара */
+    .logo-wrapper {
+      margin-bottom: 5px !important;
+      padding-bottom: 0 !important;
     }
     
-    .benefits-list.scroll-horizontal .benefit-item {
-      flex: 0 0 140px; /* Фиксированная ширина */
-      min-width: 140px;
+    .header-wrapper,
+    .main-header {
+      margin-bottom: 0 !important;
+      padding-bottom: 3px !important;
+    }
+    
+    .main-title,
+    .section-title,
+    .content-title,
+    h1, h2 {
+      margin-top: 8px !important;
+      padding-top: 0 !important;
+    }
+    
+    .content-container,
+    .page-container,
+    .hero-section {
+      padding-top: 5px !important;
+      margin-top: 0 !important;
+    }
+    
+    .hero-text {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    .breadcrumbs {
+      margin: 3px 0 5px 0 !important;
+      padding: 3px 0 !important;
     }
   }
+
+  
