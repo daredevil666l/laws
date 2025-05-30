@@ -2347,3 +2347,28 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+const addMobileLogoStyles = () => {
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        @media (max-width: 480px) {
+            .footer-logo img {
+                width: 80px;
+                height: auto;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .footer-logo img {
+                width: 60px;
+                height: auto;
+            }
+            .footer-logo {
+                margin-bottom: 10px;
+            }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+};
+
+// Вызываем функцию при загрузке страницы
+document.addEventListener('DOMContentLoaded', addMobileLogoStyles);
