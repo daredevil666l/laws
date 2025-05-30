@@ -7442,4 +7442,24 @@ body:not(.js-loaded) .mobile-menu-toggle {
     }
   }
 
+  /* ===== СКРЫТИЕ КНОПКИ "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ" НА МОБИЛЬНЫХ ===== */
+
+@media (max-width: 768px) {
+    /* Скрываем кнопку по всем её классам */
+    .cta-button.hero-button.shine-effect.button-hover-effect.contact-arrow-btn {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    
+    /* Также скрываем по отдельным классам на всякий случай */
+    .contact-arrow-btn {
+      display: none !important;
+    }
+    
+    button[class*="contact-arrow-btn"] {
+      display: none !important;
+    }
+  }
   

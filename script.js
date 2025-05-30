@@ -2345,3 +2345,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Инициализируем кнопку
     initCallbackButton();
 });
+
+
