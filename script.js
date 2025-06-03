@@ -2374,13 +2374,13 @@ const addMobileLogoStyles = () => {
 document.addEventListener('DOMContentLoaded', addMobileLogoStyles);
 
 // Дополнительная логика для слайдера партнеров
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     function initPartnersSlider() {
         const partnersSection = document.querySelector('.partners-section');
         const partnersTrack = document.querySelector('.partners-track');
-        
+
         if (!partnersSection || !partnersTrack) return;
-        
+
         // Плавное появление при скролле
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -2392,19 +2392,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }, {
             threshold: 0.2
         });
-        
+
         // Начальное состояние
         partnersSection.style.opacity = '0';
         partnersSection.style.transform = 'translateY(30px)';
         partnersSection.style.transition = 'all 0.8s ease';
-        
+
         observer.observe(partnersSection);
-        
+
         // Адаптивная скорость анимации
         function adjustAnimationSpeed() {
             const screenWidth = window.innerWidth;
             let duration;
-            
+
             if (screenWidth <= 480) {
                 duration = '20s';
             } else if (screenWidth <= 768) {
@@ -2412,49 +2412,49 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 duration = '30s';
             }
-            
+
             partnersTrack.style.animationDuration = duration;
         }
-        
+
         adjustAnimationSpeed();
         window.addEventListener('resize', adjustAnimationSpeed);
-        
+
         console.log('✅ Слайдер партнеров инициализирован');
     }
-    
+
     initPartnersSlider();
 });
 
 
 // БЕСКОНЕЧНАЯ прокрутка партнеров в обе стороны
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     function initInfiniteScroll() {
         const slider = document.querySelector('.partners-slider');
         const track = document.querySelector('.partners-track');
-        
+
         if (!slider || !track) return;
-        
+
         let isDragging = false;
         let startX = 0;
         let currentX = 0;
         let autoScrollPosition = 0;
         let animationId = null;
-        
+
         // Вычисляем размеры
         const partnerItems = track.querySelectorAll('.partner-item');
         const itemCount = partnerItems.length / 3; // У нас 3 копии по 10 элементов
         const itemWidth = 220 + 30; // ширина + gap
         const sectionWidth = itemWidth * itemCount;
-        
+
         // Начальная позиция - по центру (средняя копия)
         autoScrollPosition = -sectionWidth;
         track.style.transform = `translateX(${autoScrollPosition}px)`;
-        
+
         console.log('Инициализация:', { itemCount, itemWidth, sectionWidth, startPosition: autoScrollPosition });
-        
+
         // Отключаем CSS анимацию
         track.style.animation = 'none';
-        
+
         // Функция для проверки и исправления позиции (бесконечная прокрутка)
         function checkInfiniteLoop() {
             // Если ушли слишком далеко вправо - перепрыгиваем к левой копии
@@ -2470,7 +2470,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Перепрыгнули к правой копии');
             }
         }
-        
+
         // Автоматическая прокрутка
         function autoScroll() {
             if (!isDragging) {
@@ -2480,70 +2480,328 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             animationId = requestAnimationFrame(autoScroll);
         }
-        
+
         autoScroll();
-        
+
         // Начало перетаскивания
         function startDrag(e) {
             isDragging = true;
             slider.style.cursor = 'grabbing';
-            
+
             startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-            
+
             // Запоминаем текущую позицию
             const transform = track.style.transform;
             const match = transform.match(/translateX\(([^)]+)px\)/);
             if (match) {
                 autoScrollPosition = parseFloat(match[1]);
             }
-            
+
             e.preventDefault();
         }
-        
+
         // Процесс перетаскивания
         function drag(e) {
             if (!isDragging) return;
-            
+
             e.preventDefault();
-            
+
             currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
             const deltaX = currentX - startX;
             const newPosition = autoScrollPosition + deltaX;
-            
+
             track.style.transform = `translateX(${newPosition}px)`;
         }
-        
+
         // Конец перетаскивания
         function stopDrag() {
             if (!isDragging) return;
-            
+
             isDragging = false;
             slider.style.cursor = 'grab';
-            
+
             // Обновляем позицию для автопрокрутки
             const transform = track.style.transform;
             const match = transform.match(/translateX\(([^)]+)px\)/);
             if (match) {
                 autoScrollPosition = parseFloat(match[1]);
             }
-            
+
             // Проверяем бесконечность
             checkInfiniteLoop();
         }
-        
+
         // События
         slider.addEventListener('mousedown', startDrag);
         document.addEventListener('mousemove', drag);
         document.addEventListener('mouseup', stopDrag);
-        
+
         slider.addEventListener('touchstart', startDrag, { passive: false });
         document.addEventListener('touchmove', drag, { passive: false });
         slider.addEventListener('touchend', stopDrag);
-        
+
         slider.addEventListener('selectstart', e => e.preventDefault());
-        
+
         console.log('✅ Бесконечная прокрутка инициализирована');
     }
-    
+
     initInfiniteScroll();
+});
+
+// Новый квиз с интеграцией Яндекс.Метрики
+class StrategyQuiz {
+    constructor(container) {
+        this.container = container;
+        this.steps = Array.from(container.querySelectorAll('.quiz-step'));
+        this.currentStep = 0;
+        this.answers = {};
+        this.selectedMessenger = null;
+
+        this.progressFill = container.querySelector('.progress-fill');
+        this.progressText = container.querySelector('.progress-text');
+
+        this.init();
+    }
+
+    init() {
+        this.showStep(this.currentStep);
+        this.setupOptions();
+        this.setupNavigation();
+        this.setupMessengerOptions();
+        this.setupForm();
+
+        // Отправляем событие начала квиза в Яндекс.Метрику
+        this.sendYandexMetricaEvent('quiz_start');
+    }
+
+    showStep(index) {
+        this.steps.forEach((step, i) => {
+            step.classList.toggle('active', i === index);
+        });
+        this.updateProgress();
+    }
+
+    updateProgress() {
+        const percent = Math.round(((this.currentStep) / (this.steps.length - 1)) * 100);
+        this.progressFill.style.width = percent + '%';
+        this.progressText.textContent = `Расчет пройден на ${percent}%`;
+    }
+
+    setupOptions() {
+        this.steps.forEach(step => {
+            const options = step.querySelectorAll('.option-item');
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    this.selectOption(step, option);
+                });
+            });
+        });
+    }
+
+    selectOption(step, option) {
+        const options = step.querySelectorAll('.option-item');
+        options.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+
+        const stepNum = step.dataset.step;
+        this.answers[stepNum] = option.dataset.value;
+
+        // Отправляем событие выбора ответа в Яндекс.Метрику
+        this.sendYandexMetricaEvent(`quiz_step_${stepNum}`, {
+            answer: option.dataset.value,
+            question: step.querySelector('.question-title').textContent
+        });
+    }
+
+    setupNavigation() {
+        this.container.addEventListener('click', e => {
+            if (e.target.closest('.next-btn')) {
+                e.preventDefault();
+                this.nextStep();
+            } else if (e.target.closest('.back-btn')) {
+                e.preventDefault();
+                this.prevStep();
+            }
+        });
+    }
+
+    nextStep() {
+        if (!this.isOptionSelected(this.currentStep)) {
+            alert('Пожалуйста, выберите вариант ответа.');
+            return;
+        }
+
+        if (this.currentStep < this.steps.length - 1) {
+            this.currentStep++;
+            this.showStep(this.currentStep);
+
+            // Отправляем событие перехода к следующему шагу
+            this.sendYandexMetricaEvent(`quiz_next_step_${this.currentStep}`);
+        }
+    }
+
+    prevStep() {
+        if (this.currentStep > 0) {
+            this.currentStep--;
+            this.showStep(this.currentStep);
+
+            // Отправляем событие возврата к предыдущему шагу
+            this.sendYandexMetricaEvent(`quiz_back_step_${this.currentStep}`);
+        }
+    }
+
+    isOptionSelected(stepIndex) {
+        const step = this.steps[stepIndex];
+        return step.querySelector('.selected') !== null;
+    }
+
+    setupMessengerOptions() {
+        const messengerOptions = this.container.querySelectorAll('.messenger-option');
+        messengerOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                messengerOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                this.selectedMessenger = option.dataset.messenger;
+
+                // Отправляем событие выбора мессенджера
+                this.sendYandexMetricaEvent('quiz_messenger_selected', {
+                    messenger: this.selectedMessenger
+                });
+            });
+        });
+    }
+
+    setupForm() {
+        const form = this.container.querySelector('#quizContactForm');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            this.submitForm(form);
+        });
+    }
+
+    // Обновленный метод submitForm с проверкой согласия
+    submitForm(form) {
+        const name = form.querySelector('input[name="name"]').value.trim();
+        const phone = form.querySelector('input[name="phone"]').value.trim();
+        const privacyCheckbox = form.querySelector('#privacy-policy-checkbox');
+        const messenger = this.selectedMessenger || 'phone';
+
+        // Проверяем заполнение полей
+        if (!name || !phone) {
+            alert('Пожалуйста, заполните все поля.');
+            return;
+        }
+
+        // Проверяем согласие с политикой конфиденциальности
+        if (!privacyCheckbox.checked) {
+            alert('Необходимо согласиться с политикой конфиденциальности данных.');
+
+            // Добавляем визуальную индикацию ошибки
+            const privacyGroup = form.querySelector('.privacy-policy-group');
+            privacyGroup.classList.add('error');
+
+            // Убираем индикацию ошибки через 3 секунды
+            setTimeout(() => {
+                privacyGroup.classList.remove('error');
+            }, 3000);
+
+            return;
+        }
+
+        // Собираем все данные для отправки
+        const quizData = {
+            name: name,
+            phone: phone,
+            messenger: messenger,
+            answers: this.answers,
+            privacyConsent: true, // Подтверждение согласия
+            timestamp: new Date().toISOString()
+        };
+
+        console.log('Отправка данных квиза:', quizData);
+
+        // Отправляем основное событие завершения квиза в Яндекс.Метрику
+        this.sendYandexMetricaEvent('quiz_completed', quizData);
+
+        // Отправляем цель "Заявка с квиза"
+        this.sendYandexMetricaGoal('quiz_lead');
+
+        // Отправляем событие согласия с политикой
+        this.sendYandexMetricaEvent('privacy_consent_given', {
+            source: 'quiz'
+        });
+
+        // Отправляем электронную торговлю (если настроена)
+        this.sendYandexMetricaEcommerce('quiz_conversion', {
+            currency: 'RUB',
+            value: 1 // Ценность лида
+        });
+
+        // Показываем сообщение об успехе
+        this.showSuccessMessage();
+
+        // Здесь можно добавить отправку данных на сервер
+        // this.sendToServer(quizData);
+    }
+
+    showSuccessMessage() {
+        const resultContent = this.container.querySelector('.result-content');
+        resultContent.innerHTML = `
+        <div class="success-message">
+          <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>Спасибо за заявку!</h3>
+          <p>Мы свяжемся с вами в ближайшее время для предоставления расчета стоимости услуг.</p>
+          <button type="button" class="reset-quiz-btn" onclick="location.reload()">
+            Пройти заново
+          </button>
+        </div>
+      `;
+    }
+
+    // Методы для работы с Яндекс.Метрикой
+    sendYandexMetricaEvent(eventName, params = {}) {
+        if (typeof ym !== 'undefined' && window.ymCounterId) {
+            try {
+                ym(window.ymCounterId, 'reachGoal', eventName, params);
+                console.log(`Яндекс.Метрика событие: ${eventName}`, params);
+            } catch (error) {
+                console.error('Ошибка отправки события в Яндекс.Метрику:', error);
+            }
+        } else {
+            console.log(`Яндекс.Метрика не загружена. Событие: ${eventName}`, params);
+        }
+    }
+
+    sendYandexMetricaGoal(goalName) {
+        if (typeof ym !== 'undefined' && window.ymCounterId) {
+            try {
+                ym(window.ymCounterId, 'reachGoal', goalName);
+                console.log(`Яндекс.Метрика цель: ${goalName}`);
+            } catch (error) {
+                console.error('Ошибка отправки цели в Яндекс.Метрику:', error);
+            }
+        }
+    }
+
+    sendYandexMetricaEcommerce(action, data) {
+        if (typeof ym !== 'undefined' && window.ymCounterId) {
+            try {
+                ym(window.ymCounterId, 'reachGoal', action, data);
+                console.log(`Яндекс.Метрика электронная торговля: ${action}`, data);
+            } catch (error) {
+                console.error('Ошибка отправки электронной торговли в Яндекс.Метрику:', error);
+            }
+        }
+    }
+}
+
+// Инициализация квиза
+document.addEventListener('DOMContentLoaded', function () {
+    const quizContainer = document.querySelector('.quiz-container');
+    if (quizContainer) {
+        new StrategyQuiz(quizContainer);
+        console.log('✅ Квиз "Стратегия" инициализирован');
+    }
 });
