@@ -2424,3 +2424,126 @@ document.addEventListener('DOMContentLoaded', function() {
     
     initPartnersSlider();
 });
+
+
+// БЕСКОНЕЧНАЯ прокрутка партнеров в обе стороны
+document.addEventListener('DOMContentLoaded', function() {
+    function initInfiniteScroll() {
+        const slider = document.querySelector('.partners-slider');
+        const track = document.querySelector('.partners-track');
+        
+        if (!slider || !track) return;
+        
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+        let autoScrollPosition = 0;
+        let animationId = null;
+        
+        // Вычисляем размеры
+        const partnerItems = track.querySelectorAll('.partner-item');
+        const itemCount = partnerItems.length / 3; // У нас 3 копии по 10 элементов
+        const itemWidth = 220 + 30; // ширина + gap
+        const sectionWidth = itemWidth * itemCount;
+        
+        // Начальная позиция - по центру (средняя копия)
+        autoScrollPosition = -sectionWidth;
+        track.style.transform = `translateX(${autoScrollPosition}px)`;
+        
+        console.log('Инициализация:', { itemCount, itemWidth, sectionWidth, startPosition: autoScrollPosition });
+        
+        // Отключаем CSS анимацию
+        track.style.animation = 'none';
+        
+        // Функция для проверки и исправления позиции (бесконечная прокрутка)
+        function checkInfiniteLoop() {
+            // Если ушли слишком далеко вправо - перепрыгиваем к левой копии
+            if (autoScrollPosition > 0) {
+                autoScrollPosition = -sectionWidth * 2;
+                track.style.transform = `translateX(${autoScrollPosition}px)`;
+                console.log('Перепрыгнули к левой копии');
+            }
+            // Если ушли слишком далеко влево - перепрыгиваем к правой копии
+            else if (autoScrollPosition < -sectionWidth * 2) {
+                autoScrollPosition = 0;
+                track.style.transform = `translateX(${autoScrollPosition}px)`;
+                console.log('Перепрыгнули к правой копии');
+            }
+        }
+        
+        // Автоматическая прокрутка
+        function autoScroll() {
+            if (!isDragging) {
+                autoScrollPosition -= 1; // Скорость автопрокрутки
+                track.style.transform = `translateX(${autoScrollPosition}px)`;
+                checkInfiniteLoop();
+            }
+            animationId = requestAnimationFrame(autoScroll);
+        }
+        
+        autoScroll();
+        
+        // Начало перетаскивания
+        function startDrag(e) {
+            isDragging = true;
+            slider.style.cursor = 'grabbing';
+            
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            
+            // Запоминаем текущую позицию
+            const transform = track.style.transform;
+            const match = transform.match(/translateX\(([^)]+)px\)/);
+            if (match) {
+                autoScrollPosition = parseFloat(match[1]);
+            }
+            
+            e.preventDefault();
+        }
+        
+        // Процесс перетаскивания
+        function drag(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            
+            currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            const deltaX = currentX - startX;
+            const newPosition = autoScrollPosition + deltaX;
+            
+            track.style.transform = `translateX(${newPosition}px)`;
+        }
+        
+        // Конец перетаскивания
+        function stopDrag() {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            slider.style.cursor = 'grab';
+            
+            // Обновляем позицию для автопрокрутки
+            const transform = track.style.transform;
+            const match = transform.match(/translateX\(([^)]+)px\)/);
+            if (match) {
+                autoScrollPosition = parseFloat(match[1]);
+            }
+            
+            // Проверяем бесконечность
+            checkInfiniteLoop();
+        }
+        
+        // События
+        slider.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDrag);
+        
+        slider.addEventListener('touchstart', startDrag, { passive: false });
+        document.addEventListener('touchmove', drag, { passive: false });
+        slider.addEventListener('touchend', stopDrag);
+        
+        slider.addEventListener('selectstart', e => e.preventDefault());
+        
+        console.log('✅ Бесконечная прокрутка инициализирована');
+    }
+    
+    initInfiniteScroll();
+});

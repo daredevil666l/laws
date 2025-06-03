@@ -7015,135 +7015,140 @@ body:not(.js-loaded) .mobile-menu-toggle {
 .mobile-menu-toggle {
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform-origin: center right !important;
-  }
-  
-  /* Состояние по умолчанию - видимая кнопка */
-  .mobile-menu-toggle:not(.hidden) {
+}
+
+/* Состояние по умолчанию - видимая кнопка */
+.mobile-menu-toggle:not(.hidden) {
     opacity: 1 !important;
     transform: translateX(0) !important;
     visibility: visible !important;
     pointer-events: auto !important;
-  }
-  
-  /* Дополнительные стили для плавности */
-  @media (max-width: 768px) {
+}
+
+/* Дополнительные стили для плавности */
+@media (max-width: 768px) {
     .mobile-menu-toggle {
-      will-change: transform, opacity !important;
-      backface-visibility: hidden !important;
+        will-change: transform, opacity !important;
+        backface-visibility: hidden !important;
     }
-    
+
     /* Эффект при наведении только если кнопка видима */
     .mobile-menu-toggle:not([style*="opacity: 0"]):hover {
-      transform: scale(1.05) !important;
+        transform: scale(1.05) !important;
     }
-  }
+}
 
-  /* ===== УВЕЛИЧЕННАЯ КНОПКА С БЛЕСТЯЩИМ ЭФФЕКТОМ ===== */
+/* ===== УВЕЛИЧЕННАЯ КНОПКА С БЛЕСТЯЩИМ ЭФФЕКТОМ ===== */
 .mobile-callback-btn-auto {
     /* Увеличиваем размер кнопки */
     font-size: 16px !important;
     padding: 12px 24px !important;
     min-width: 120px !important;
-    
+
     /* Добавляем постоянное блестящее свечение */
-    box-shadow: 
-      0 4px 12px rgba(227, 30, 36, 0.3),
-      0 0 15px 3px rgba(255, 255, 255, 0.6), 
-      0 0 30px 6px rgba(255, 255, 255, 0.4) !important;
-    
+    box-shadow:
+        0 4px 12px rgba(227, 30, 36, 0.3),
+        0 0 15px 3px rgba(255, 255, 255, 0.6),
+        0 0 30px 6px rgba(255, 255, 255, 0.4) !important;
+
     /* Анимация блеска */
     animation: shine 2.5s ease-in-out infinite !important;
-    
+
     /* Дополнительные стили для лучшей видимости */
     font-weight: 700 !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
-  }
-  
-  
-  /* Усиленный эффект при наведении */
-  .mobile-callback-btn-auto:hover {
+}
+
+
+/* Усиленный эффект при наведении */
+.mobile-callback-btn-auto:hover {
     animation: shine-hover 1s ease-in-out infinite !important;
-    box-shadow: 
-      0 8px 20px rgba(227, 30, 36, 0.5),
-      0 0 30px 6px rgba(255, 255, 255, 1), 
-      0 0 50px 10px rgba(255, 255, 255, 0.8) !important;
-    transform: scale(1.05) !important;
-  }
-  
-  /* Анимация при наведении */
-  @keyframes shine-hover {
-    0%, 100% {
-      box-shadow: 
+    box-shadow:
         0 8px 20px rgba(227, 30, 36, 0.5),
-        0 0 30px 6px rgba(255, 255, 255, 1), 
-        0 0 50px 10px rgba(255, 255, 255, 0.8);
+        0 0 30px 6px rgba(255, 255, 255, 1),
+        0 0 50px 10px rgba(255, 255, 255, 0.8) !important;
+    transform: scale(1.05) !important;
+}
+
+/* Анимация при наведении */
+@keyframes shine-hover {
+
+    0%,
+    100% {
+        box-shadow:
+            0 8px 20px rgba(227, 30, 36, 0.5),
+            0 0 30px 6px rgba(255, 255, 255, 1),
+            0 0 50px 10px rgba(255, 255, 255, 0.8);
     }
+
     50% {
-      box-shadow: 
-        0 10px 25px rgba(227, 30, 36, 0.6),
-        0 0 40px 8px rgba(255, 255, 255, 1), 
-        0 0 60px 12px rgba(255, 255, 255, 1);
+        box-shadow:
+            0 10px 25px rgba(227, 30, 36, 0.6),
+            0 0 40px 8px rgba(255, 255, 255, 1),
+            0 0 60px 12px rgba(255, 255, 255, 1);
     }
-  }
-  
-  /* Адаптация для разных размеров экранов */
-  @media (max-width: 480px) {
+}
+
+/* Адаптация для разных размеров экранов */
+@media (max-width: 480px) {
     .mobile-callback-btn-auto {
-      font-size: 14px !important;
-      padding: 10px 20px !important;
-      min-width: 100px !important;
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+        min-width: 100px !important;
     }
-  }
-  
-  @media (max-width: 375px) {
+}
+
+@media (max-width: 375px) {
     .mobile-callback-btn-auto {
-      font-size: 13px !important;
-      padding: 8px 16px !important;
-      min-width: 90px !important;
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+        min-width: 90px !important;
     }
-  }
-  
-  /* Для устройств с высокой плотностью пикселей */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+}
+
+/* Для устройств с высокой плотностью пикселей */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
     .mobile-callback-btn-auto {
-      box-shadow: 
-        0 4px 12px rgba(227, 30, 36, 0.4),
-        0 0 20px 4px rgba(255, 255, 255, 0.7), 
-        0 0 35px 7px rgba(255, 255, 255, 0.5) !important;
+        box-shadow:
+            0 4px 12px rgba(227, 30, 36, 0.4),
+            0 0 20px 4px rgba(255, 255, 255, 0.7),
+            0 0 35px 7px rgba(255, 255, 255, 0.5) !important;
     }
-  }
-  
-  /* Дополнительная яркость для темных тем */
-  @media (prefers-color-scheme: dark) {
+}
+
+/* Дополнительная яркость для темных тем */
+@media (prefers-color-scheme: dark) {
     .mobile-callback-btn-auto {
-      box-shadow: 
-        0 4px 12px rgba(227, 30, 36, 0.5),
-        0 0 20px 4px rgba(255, 255, 255, 0.8), 
-        0 0 35px 7px rgba(255, 255, 255, 0.6) !important;
-      border: 2px solid rgba(255, 255, 255, 0.5) !important;
+        box-shadow:
+            0 4px 12px rgba(227, 30, 36, 0.5),
+            0 0 20px 4px rgba(255, 255, 255, 0.8),
+            0 0 35px 7px rgba(255, 255, 255, 0.6) !important;
+        border: 2px solid rgba(255, 255, 255, 0.5) !important;
     }
-  }
-  
-  /* Анимация появления кнопки */
-  .mobile-callback-btn-auto.show {
+}
+
+/* Анимация появления кнопки */
+.mobile-callback-btn-auto.show {
     animation: slideInLeft 0.5s ease-out, shine 2.5s ease-in-out infinite !important;
     animation-delay: 0s, 0.5s !important;
-  }
-  
-  @keyframes slideInLeft {
+}
+
+@keyframes slideInLeft {
     from {
-      opacity: 0;
-      transform: translateX(-100%);
+        opacity: 0;
+        transform: translateX(-100%);
     }
+
     to {
-      opacity: 1;
-      transform: translateX(0);
+        opacity: 1;
+        transform: translateX(0);
     }
-  }
-  
-  /* Пульсирующий эффект для привлечения внимания */
-  .mobile-callback-btn-auto::before {
+}
+
+/* Пульсирующий эффект для привлечения внимания */
+.mobile-callback-btn-auto::before {
     content: '';
     position: absolute;
     top: -2px;
@@ -7155,27 +7160,31 @@ body:not(.js-loaded) .mobile-menu-toggle {
     animation: pulse-border 3s linear infinite;
     pointer-events: none;
     z-index: -1;
-  }
-  
-  @keyframes pulse-border {
-    0%, 100% {
-      opacity: 0;
+}
+
+@keyframes pulse-border {
+
+    0%,
+    100% {
+        opacity: 0;
     }
+
     50% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  /* Убираем анимацию при движении пользователя (для экономии батареи) */
-  @media (prefers-reduced-motion: reduce) {
+}
+
+/* Убираем анимацию при движении пользователя (для экономии батареи) */
+@media (prefers-reduced-motion: reduce) {
     .mobile-callback-btn-auto {
-      animation: none !important;
+        animation: none !important;
     }
-    
+
     .mobile-callback-btn-auto::before {
-      animation: none !important;
+        animation: none !important;
     }
-  }
+}
+
 /* ===== ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПКИ ===== */
 .mobile-callback-btn-auto {
     /* Основные стили остаются прежними */
@@ -7185,270 +7194,275 @@ body:not(.js-loaded) .mobile-menu-toggle {
     font-weight: 700 !important;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    
+
     /* ПЛАВНЫЕ переходы вместо резких анимаций */
     transition: all 0.5s ease-in-out !important;
-    
+
     /* Убираем резкие анимации */
     animation: gentleShine 3s ease-in-out infinite !important;
-    
+
     /* Плавное свечение */
-    box-shadow: 
-      0 4px 12px rgba(227, 30, 36, 0.3),
-      0 0 15px 2px rgba(255, 255, 255, 0.4), 
-      0 0 25px 4px rgba(255, 255, 255, 0.2) !important;
-  }
-  
-  /* ПЛАВНАЯ анимация блеска (медленнее и мягче) */
-  @keyframes gentleShine {
-    0%, 100% {
-      box-shadow: 
+    box-shadow:
         0 4px 12px rgba(227, 30, 36, 0.3),
-        0 0 15px 2px rgba(255, 255, 255, 0.4), 
-        0 0 25px 4px rgba(255, 255, 255, 0.2);
+        0 0 15px 2px rgba(255, 255, 255, 0.4),
+        0 0 25px 4px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ПЛАВНАЯ анимация блеска (медленнее и мягче) */
+@keyframes gentleShine {
+
+    0%,
+    100% {
+        box-shadow:
+            0 4px 12px rgba(227, 30, 36, 0.3),
+            0 0 15px 2px rgba(255, 255, 255, 0.4),
+            0 0 25px 4px rgba(255, 255, 255, 0.2);
     }
+
     50% {
-      box-shadow: 
-        0 4px 12px rgba(227, 30, 36, 0.3),
-        0 0 20px 3px rgba(255, 255, 255, 0.6), 
-        0 0 30px 5px rgba(255, 255, 255, 0.3);
+        box-shadow:
+            0 4px 12px rgba(227, 30, 36, 0.3),
+            0 0 20px 3px rgba(255, 255, 255, 0.6),
+            0 0 30px 5px rgba(255, 255, 255, 0.3);
     }
-  }
-  
-  /* ПЛАВНОЕ появление кнопки */
-  .mobile-callback-btn-auto.show {
+}
+
+/* ПЛАВНОЕ появление кнопки */
+.mobile-callback-btn-auto.show {
     opacity: 1 !important;
     transform: translateX(0) !important;
     /* Убираем сложные анимации - только плавный переход */
     animation: gentleShine 3s ease-in-out infinite !important;
-  }
-  
-  /* Плавный эффект при наведении */
-  .mobile-callback-btn-auto:hover {
+}
+
+/* Плавный эффект при наведении */
+.mobile-callback-btn-auto:hover {
     /* Убираем резкую анимацию hover */
     animation: none !important;
-    box-shadow: 
-      0 6px 16px rgba(227, 30, 36, 0.4),
-      0 0 25px 4px rgba(255, 255, 255, 0.7), 
-      0 0 35px 6px rgba(255, 255, 255, 0.4) !important;
+    box-shadow:
+        0 6px 16px rgba(227, 30, 36, 0.4),
+        0 0 25px 4px rgba(255, 255, 255, 0.7),
+        0 0 35px 6px rgba(255, 255, 255, 0.4) !important;
     transform: scale(1.02) !important;
     transition: all 0.3s ease-in-out !important;
-  }
-  
-  /* Убираем резкий псевдоэлемент */
-  .mobile-callback-btn-auto::before {
-    display: none !important;
-  }
-  
-  /* Адаптация для маленьких экранов */
-  @media (max-width: 480px) {
-    .mobile-callback-btn-auto {
-      font-size: 14px !important;
-      padding: 10px 20px !important;
-      min-width: 100px !important;
-    }
-  }
-  
-  @media (max-width: 375px) {
-    .mobile-callback-btn-auto {
-      font-size: 13px !important;
-      padding: 8px 16px !important;
-      min-width: 90px !important;
-    }
-  }
+}
 
-  /* ===== ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЛОГОТИПА В МОБИЛЬНОЙ ВЕРСИИ ===== */
+/* Убираем резкий псевдоэлемент */
+.mobile-callback-btn-auto::before {
+    display: none !important;
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 480px) {
+    .mobile-callback-btn-auto {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+        min-width: 100px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .mobile-callback-btn-auto {
+        font-size: 13px !important;
+        padding: 8px 16px !important;
+        min-width: 90px !important;
+    }
+}
+
+/* ===== ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЛОГОТИПА В МОБИЛЬНОЙ ВЕРСИИ ===== */
 @media (max-width: 768px) {
-  
+
     /* Контейнер логотипа */
     .header-wrapper {
-      justify-content: flex-start !important;
-      align-items: center !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
     }
-    
+
     .logo-wrapper {
-      width: auto !important;
-      max-width: 70% !important;
-      margin-left: 0 !important;
-      margin-right: auto !important;
-      display: flex !important;
-      justify-content: flex-start !important;
-      align-items: center !important;
-      order: 1 !important;
+        width: auto !important;
+        max-width: 70% !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        order: 1 !important;
     }
-  
+
     /* Ссылка логотипа */
     .logo-wrapper .logo {
-      display: flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-      width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        text-decoration: none !important;
+        width: 100% !important;
     }
-  
+
     /* Изображение логотипа - УВЕЛИЧИВАЕМ */
     .logo-wrapper .logo img {
-      width: 85px !important;
-      height: auto !important;
-      max-width: 85px !important;
-      margin-right: 15px !important;
-      flex-shrink: 0 !important;
-      object-fit: contain !important;
-      margin-left: 21px;
+        width: 85px !important;
+        height: auto !important;
+        max-width: 85px !important;
+        margin-right: 15px !important;
+        flex-shrink: 0 !important;
+        object-fit: contain !important;
+        margin-left: 21px;
     }
-  
+
     /* Текст логотипа */
     .logo-wrapper .logo .logo-text {
-      margin: 0 !important;
-      padding: 0 !important;
-      text-align: left !important;
-      flex: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+        flex: 1 !important;
     }
-  
+
     /* Название компании - УВЕЛИЧИВАЕМ */
     .logo-wrapper .logo .logo-text .site-name,
     .logo-wrapper .logo .logo-text h1 {
-      font-size: 22px !important;
-      line-height: 1.1 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      font-weight: 700 !important;
-      color: var(--text-color, #333) !important;
+        font-size: 22px !important;
+        line-height: 1.1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-weight: 700 !important;
+        color: var(--text-color, #333) !important;
     }
-  
+
     /* Описание - УВЕЛИЧИВАЕМ */
     .logo-wrapper .logo .logo-text .site-description,
     .logo-wrapper .logo .logo-text p {
-      font-size: 13px !important;
-      line-height: 1.2 !important;
-      margin: 2px 0 0 0 !important;
-      padding: 0 !important;
-      color: var(--text-secondary, #666) !important;
-      text-transform: lowercase !important;
+        font-size: 13px !important;
+        line-height: 1.2 !important;
+        margin: 2px 0 0 0 !important;
+        padding: 0 !important;
+        color: var(--text-secondary, #666) !important;
+        text-transform: lowercase !important;
     }
-  
+
     /* Кнопка меню - перемещаем вправо */
     .mobile-menu-toggle {
-      order: 3 !important;
-      margin-left: auto !important;
+        order: 3 !important;
+        margin-left: auto !important;
     }
-  
+
     /* Контакты - скрываем или делаем меньше */
     .header-contacts {
-      order: 2 !important;
-      font-size: 12px !important;
-      margin: 0 10px 0 auto !important;
+        order: 2 !important;
+        font-size: 12px !important;
+        margin: 0 10px 0 auto !important;
     }
-  }
-  
-  /* Для маленьких экранов */
-  @media (max-width: 480px) {
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
     .logo-wrapper .logo img {
-      width: 75px !important;
-      margin-right: 12px !important;
+        width: 75px !important;
+        margin-right: 12px !important;
     }
-  
+
     .logo-wrapper .logo .logo-text .site-name,
     .logo-wrapper .logo .logo-text h1 {
-      font-size: 20px !important;
+        font-size: 20px !important;
     }
-  
+
     .logo-wrapper .logo .logo-text .site-description,
     .logo-wrapper .logo .logo-text p {
-      font-size: 12px !important;
+        font-size: 12px !important;
     }
-  }
-  
-  /* Для очень маленьких экранов */
-  @media (max-width: 375px) {
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 375px) {
     .logo-wrapper .logo img {
-      width: 65px !important;
-      margin-right: 10px !important;
+        width: 65px !important;
+        margin-right: 10px !important;
     }
-  
+
     .logo-wrapper .logo .logo-text .site-name,
     .logo-wrapper .logo .logo-text h1 {
-      font-size: 18px !important;
+        font-size: 18px !important;
     }
-  
+
     .logo-wrapper .logo .logo-text .site-description,
     .logo-wrapper .logo .logo-text p {
-      font-size: 11px !important;
+        font-size: 11px !important;
     }
-  }
-  
+}
 
 
-  /* ===== МИНИМАЛЬНЫЕ ОТСТУПЫ (ПЛОТНАЯ ВЕРСТКА) ===== */
+
+/* ===== МИНИМАЛЬНЫЕ ОТСТУПЫ (ПЛОТНАЯ ВЕРСТКА) ===== */
 @media (max-width: 768px) {
-  
+
     .logo-wrapper {
-      margin-bottom: 5px !important;
-      padding-bottom: 0 !important;
+        margin-bottom: 5px !important;
+        padding-bottom: 0 !important;
     }
-    
+
     .header-wrapper,
     .main-header {
-      margin-bottom: 0 !important;
-      padding-bottom: 3px !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 3px !important;
     }
-    
+
     .main-title,
     .section-title,
     .content-title,
-    h1, h2 {
-      margin-top: 8px !important;
-      padding-top: 0 !important;
+    h1,
+    h2 {
+        margin-top: 8px !important;
+        padding-top: 0 !important;
     }
-    
+
     .content-container,
     .page-container,
     .hero-section {
-      padding-top: 5px !important;
-      margin-top: 0 !important;
+        padding-top: 5px !important;
+        margin-top: 0 !important;
     }
-    
-    .hero-text {
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-    
-    .breadcrumbs {
-      margin: 3px 0 5px 0 !important;
-      padding: 3px 0 !important;
-    }
-  }
 
-  /* ===== СКРЫТИЕ КНОПКИ "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ" НА МОБИЛЬНЫХ ===== */
+    .hero-text {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .breadcrumbs {
+        margin: 3px 0 5px 0 !important;
+        padding: 3px 0 !important;
+    }
+}
+
+/* ===== СКРЫТИЕ КНОПКИ "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ" НА МОБИЛЬНЫХ ===== */
 
 @media (max-width: 768px) {
+
     /* Скрываем кнопку по всем её классам */
     .cta-button.hero-button.shine-effect.button-hover-effect.contact-arrow-btn {
-      /* display: none !important;
+        /* display: none !important;
       visibility: hidden !important; */
-      opacity: 0 !important;
-      /* pointer-events: none !important; */
+        opacity: 0 !important;
+        /* pointer-events: none !important; */
     }
-    
+
     /* Также скрываем по отдельным классам на всякий случай */
     .contact-arrow-btn {
-      display: none !important;
+        display: none !important;
     }
-    
-    button[class*="contact-arrow-btn"] {
-      display: none !important;
-    }
-  }
 
-  /* ===== ОБНОВЛЕННЫЙ БЛОК ПАРТНЕРОВ - ЦВЕТНЫЕ И БОЛЬШЕ ===== */
+    button[class*="contact-arrow-btn"] {
+        display: none !important;
+    }
+}
+
+/* ===== ОБНОВЛЕННЫЙ БЛОК ПАРТНЕРОВ - ЦВЕТНЫЕ И БОЛЬШЕ ===== */
 
 .partners-section {
     padding: 80px 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
-  }
-  
-  .partners-section::before {
+}
+
+.partners-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -7456,26 +7470,26 @@ body:not(.js-loaded) .mobile-menu-toggle {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.2), transparent);
-  }
-  
-  .partners-header {
+}
+
+.partners-header {
     text-align: center;
     margin-bottom: 50px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-  }
-  
-  .partners-title {
+}
+
+.partners-title {
     font-size: 36px;
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 15px;
     line-height: 1.3;
     position: relative;
-  }
-  
-  .partners-title::after {
+}
+
+.partners-title::after {
     content: '';
     position: absolute;
     bottom: -8px;
@@ -7485,32 +7499,32 @@ body:not(.js-loaded) .mobile-menu-toggle {
     height: 3px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
     border-radius: 2px;
-  }
-  
-  .partners-subtitle {
+}
+
+.partners-subtitle {
     font-size: 18px;
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0;
     font-weight: 400;
-  }
-  
-  /* Слайдер партнеров с drag функциональностью */
-  .partners-slider {
+}
+
+/* Слайдер партнеров с drag функциональностью */
+.partners-slider {
     width: 100%;
     overflow: hidden;
     position: relative;
     padding: 30px 0;
     cursor: grab;
     user-select: none;
-  }
-  
-  .partners-slider.dragging {
+}
+
+.partners-slider.dragging {
     cursor: grabbing;
-  }
-  
-  .partners-slider::before,
-  .partners-slider::after {
+}
+
+.partners-slider::before,
+.partners-slider::after {
     content: '';
     position: absolute;
     top: 0;
@@ -7518,67 +7532,71 @@ body:not(.js-loaded) .mobile-menu-toggle {
     height: 100%;
     z-index: 2;
     pointer-events: none;
-  }
-  
-  .partners-slider::before {
+}
+
+.partners-slider::before {
     left: 0;
     background: linear-gradient(90deg, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
-  }
-  
-  .partners-slider::after {
+}
+
+.partners-slider::after {
     right: 0;
     background: linear-gradient(270deg, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
-  }
-  
-  .partners-track {
+}
+
+.partners-track {
     display: flex;
     gap: 30px;
     animation: scroll 30s linear infinite;
     width: max-content;
     transition: transform 0.3s ease;
-  }
-  
-  /* Анимация прокрутки */
-  @keyframes scroll {
+}
+
+/* Анимация прокрутки */
+@keyframes scroll {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
+
     100% {
-      transform: translateX(-50%);
+        transform: translateX(-50%);
     }
-  }
-  
-  /* Пауза анимации при взаимодействии */
-  .partners-slider:hover .partners-track,
-  .partners-slider.dragging .partners-track {
+}
+
+/* Пауза анимации при взаимодействии */
+.partners-slider:hover .partners-track,
+.partners-slider.dragging .partners-track {
     animation-play-state: paused;
-  }
-  
-  /* Элемент партнера - УВЕЛИЧЕННЫЙ */
-  .partner-item {
+}
+
+/* Элемент партнера - УВЕЛИЧЕННЫЙ */
+.partner-item {
     flex-shrink: 0;
-    width: 220px; /* Увеличено с 160px */
-    height: 140px; /* Увеличено с 100px */
+    width: 220px;
+    /* Увеличено с 160px */
+    height: 140px;
+    /* Увеличено с 100px */
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
-    padding: 25px; /* Увеличено с 15px */
+    padding: 25px;
+    /* Увеличено с 15px */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid rgba(227, 30, 36, 0.1);
-  }
-  
-  .partner-item:hover {
+}
+
+.partner-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     background: rgba(255, 255, 255, 1);
     border-color: rgba(227, 30, 36, 0.2);
-  }
-  
-  /* Логотип партнера - ЦВЕТНОЙ И БОЛЬШЕ */
-  .partner-logo {
+}
+
+/* Логотип партнера - ЦВЕТНОЙ И БОЛЬШЕ */
+.partner-logo {
     max-width: 100%;
     max-height: 100%;
     width: auto;
@@ -7588,123 +7606,160 @@ body:not(.js-loaded) .mobile-menu-toggle {
     filter: opacity(0.85);
     transition: all 0.3s ease;
     pointer-events: none;
-  }
-  
-  .partner-item:hover .partner-logo {
-    filter: opacity(1); /* Убрали grayscale(0) */
-    transform: scale(1.08); /* Увеличили с 1.05 */
-  }
-  
-  /* Мобильная версия */
-  @media (max-width: 768px) {
+}
+
+.partner-item:hover .partner-logo {
+    filter: opacity(1);
+    /* Убрали grayscale(0) */
+    transform: scale(1.08);
+    /* Увеличили с 1.05 */
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
     .partners-section {
-      padding: 50px 0;
+        padding: 50px 0;
     }
-    
+
     .partners-header {
-      margin-bottom: 30px;
-      padding: 0 20px;
+        margin-bottom: 30px;
+        padding: 0 20px;
     }
-    
+
     .partners-title {
-      font-size: 28px;
-      margin-bottom: 12px;
+        font-size: 28px;
+        margin-bottom: 12px;
     }
-    
+
     .partners-subtitle {
-      font-size: 16px;
+        font-size: 16px;
     }
-    
+
     .partners-track {
-      gap: 20px;
-      animation-duration: 25s;
+        gap: 20px;
+        animation-duration: 25s;
     }
-    
+
     .partner-item {
-      width: 180px; /* Увеличено с 130px */
-      height: 120px; /* Увеличено с 85px */
-      padding: 20px; /* Увеличено с 12px */
+        width: 180px;
+        /* Увеличено с 130px */
+        height: 120px;
+        /* Увеличено с 85px */
+        padding: 20px;
+        /* Увеличено с 12px */
     }
-    
+
     .partners-slider::before,
     .partners-slider::after {
-      width: 40px;
+        width: 40px;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .partners-title {
-      font-size: 24px;
+        font-size: 24px;
     }
-    
+
     .partners-subtitle {
-      font-size: 14px;
+        font-size: 14px;
     }
-    
+
     .partner-item {
-      width: 150px; /* Увеличено с 110px */
-      height: 100px; /* Увеличено с 70px */
-      padding: 15px; /* Увеличено с 8px */
+        width: 150px;
+        /* Увеличено с 110px */
+        height: 100px;
+        /* Увеличено с 70px */
+        padding: 15px;
+        /* Увеличено с 8px */
     }
-    
+
     .partners-track {
-      gap: 15px;
-      animation-duration: 20s;
+        gap: 15px;
+        animation-duration: 20s;
     }
-  }
-  
-  /* Дополнительные стили для лучшего отображения цветных логотипов */
-  .partner-item {
+}
+
+/* Дополнительные стили для лучшего отображения цветных логотипов */
+.partner-item {
     /* Более яркий фон для лучшего контраста */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-  }
-  
-  .partner-item:hover {
+}
+
+.partner-item:hover {
     /* Более выраженная тень для цветных логотипов */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 1);
-  }
-  
-  /* Плавное появление логотипов */
-  .partner-logo {
+}
+
+/* Плавное появление логотипов */
+.partner-logo {
     opacity: 0;
     animation: fadeInLogo 0.6s ease forwards;
-  }
-  
-  @keyframes fadeInLogo {
-    to {
-      opacity: 0.85;
-    }
-  }
-  
-  .partner-item:hover .partner-logo {
-    opacity: 1;
-  }
-  
-  /* Добавляем задержку для каждого логотипа */
-  .partner-item:nth-child(1) .partner-logo { animation-delay: 0.1s; }
-  .partner-item:nth-child(2) .partner-logo { animation-delay: 0.2s; }
-  .partner-item:nth-child(3) .partner-logo { animation-delay: 0.3s; }
-  .partner-item:nth-child(4) .partner-logo { animation-delay: 0.4s; }
-  .partner-item:nth-child(5) .partner-logo { animation-delay: 0.5s; }
-  .partner-item:nth-child(6) .partner-logo { animation-delay: 0.6s; }
-  .partner-item:nth-child(7) .partner-logo { animation-delay: 0.7s; }
-  .partner-item:nth-child(8) .partner-logo { animation-delay: 0.8s; }
-  .partner-item:nth-child(9) .partner-logo { animation-delay: 0.9s; }
-  .partner-item:nth-child(10) .partner-logo { animation-delay: 1.0s; }
-  
+}
 
-  /* ===== БЛОК С ОТЗЫВАМИ ===== */
+@keyframes fadeInLogo {
+    to {
+        opacity: 0.85;
+    }
+}
+
+.partner-item:hover .partner-logo {
+    opacity: 1;
+}
+
+/* Добавляем задержку для каждого логотипа */
+.partner-item:nth-child(1) .partner-logo {
+    animation-delay: 0.1s;
+}
+
+.partner-item:nth-child(2) .partner-logo {
+    animation-delay: 0.2s;
+}
+
+.partner-item:nth-child(3) .partner-logo {
+    animation-delay: 0.3s;
+}
+
+.partner-item:nth-child(4) .partner-logo {
+    animation-delay: 0.4s;
+}
+
+.partner-item:nth-child(5) .partner-logo {
+    animation-delay: 0.5s;
+}
+
+.partner-item:nth-child(6) .partner-logo {
+    animation-delay: 0.6s;
+}
+
+.partner-item:nth-child(7) .partner-logo {
+    animation-delay: 0.7s;
+}
+
+.partner-item:nth-child(8) .partner-logo {
+    animation-delay: 0.8s;
+}
+
+.partner-item:nth-child(9) .partner-logo {
+    animation-delay: 0.9s;
+}
+
+.partner-item:nth-child(10) .partner-logo {
+    animation-delay: 1.0s;
+}
+
+
+/* ===== БЛОК С ОТЗЫВАМИ ===== */
 
 .reviews-section {
-    padding: 100px 0;
+    padding: 100px 60px;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     position: relative;
     overflow: hidden;
-  }
-  
-  .reviews-section::before {
+}
+
+.reviews-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -7712,32 +7767,32 @@ body:not(.js-loaded) .mobile-menu-toggle {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.2), transparent);
-  }
-  
-  .reviews-wrapper {
+}
+
+.reviews-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1199px;
     margin: 0 auto;
-  }
-  
-  /* Левая часть с текстом */
-  .reviews-content {
-    padding-right: 40px;
-  }
-  
-  .reviews-title {
+}
+
+/* Левая часть с текстом */
+.reviews-content {
+    padding-right: 29px;
+}
+
+.reviews-title {
     font-size: 42px;
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.2;
     position: relative;
-  }
-  
-  .reviews-title::after {
+}
+
+.reviews-title::after {
     content: '';
     position: absolute;
     bottom: -15px;
@@ -7746,97 +7801,97 @@ body:not(.js-loaded) .mobile-menu-toggle {
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
     border-radius: 2px;
-  }
-  
-  .reviews-subtitle {
+}
+
+.reviews-subtitle {
     font-size: 20px;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 40px;
     font-weight: 400;
-  }
-  
-  /* Преимущества */
-  .reviews-benefits {
+}
+
+/* Преимущества */
+.reviews-benefits {
     margin-bottom: 40px;
-  }
-  
-  .review-benefit {
+}
+
+.review-benefit {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
     padding: 15px 0;
     border-bottom: 1px solid rgba(227, 30, 36, 0.1);
-  }
-  
-  .review-benefit:last-child {
+}
+
+.review-benefit:last-child {
     border-bottom: none;
     margin-bottom: 0;
-  }
-  
-  .benefit-icon {
+}
+
+.benefit-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    /* background: linear-gradient(135deg, var(--accent-color), var(--accent-light)); */
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
-  }
-  
-  .review-benefit span {
+    /* box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3); */
+}
+
+.review-benefit span {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
     line-height: 1.4;
-  }
-  
-  /* Статистика */
-  .reviews-stats {
+}
+
+/* Статистика */
+.reviews-stats {
     display: flex;
     gap: 40px;
     margin-bottom: 30px;
     padding: 30px 0;
     border-top: 2px solid rgba(227, 30, 36, 0.1);
     border-bottom: 2px solid rgba(227, 30, 36, 0.1);
-  }
-  
-  .stat-item {
+}
+
+.stat-item {
     text-align: left;
-  }
-  
-  .stat-number {
+}
+
+.stat-number {
     display: block;
     font-size: 36px;
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1;
     margin-bottom: 8px;
-  }
-  
-  .stat-label {
+}
+
+.stat-label {
     font-size: 14px;
     color: var(--text-secondary);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-  }
-  
-  /* Призыв к действию */
-  .reviews-cta {
+}
+
+/* Призыв к действию */
+.reviews-cta {
     font-size: 18px;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 35px;
     font-style: italic;
-  }
-  
-  /* Кнопка */
-  .reviews-button {
+}
+
+/* Кнопка */
+.reviews-button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -7851,139 +7906,209 @@ body:not(.js-loaded) .mobile-menu-toggle {
     box-shadow: 0 4px 16px rgba(227, 30, 36, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-  }
-  
-  .reviews-button:hover {
+}
+
+.reviews-button:hover {
     background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(227, 30, 36, 0.4);
     color: white;
     text-decoration: none;
-  }
-  
-  .reviews-button svg {
+}
+
+.reviews-button svg {
     transition: transform 0.3s ease;
-  }
-  
-  .reviews-button:hover svg {
+}
+
+.reviews-button:hover svg {
     transform: translateX(3px);
-  }
-  
-  /* Правая часть с виджетом */
-  .reviews-widget {
+}
+
+/* Правая часть с виджетом */
+.reviews-widget {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .widget-container {
+}
+
+.widget-container {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-  }
-  
-  .widget-container:hover {
+}
+
+.widget-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Мобильная версия */
-  @media (max-width: 1200px) {
+}
+
+/* Мобильная версия */
+@media (max-width: 1200px) {
     .reviews-wrapper {
-      gap: 60px;
+        gap: 60px;
     }
-    
+
     .reviews-content {
-      padding-right: 20px;
+        padding-right: 20px;
     }
-    
-    .widget-container > div {
-      width: 480px !important;
-      height: 700px !important;
+
+    .widget-container>div {
+        width: 480px !important;
+        height: 700px !important;
     }
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .reviews-section {
-      padding: 60px 0;
+        padding: 60px 0;
     }
-    
+
     .reviews-wrapper {
-      grid-template-columns: 1fr;
-      gap: 50px;
+        grid-template-columns: 1fr;
+        gap: 50px;
     }
-    
+
     .reviews-content {
-      padding-right: 0;
-      order: 2;
+        padding-right: 0;
+        order: 2;
     }
-    
+
     .reviews-widget {
-      order: 1;
+        order: 1;
     }
-    
+
     .reviews-title {
-      font-size: 32px;
-      margin-bottom: 15px;
+        font-size: 32px;
+        margin-bottom: 15px;
     }
-    
+
     .reviews-subtitle {
-      font-size: 18px;
-      margin-bottom: 30px;
+        font-size: 18px;
+        margin-bottom: 30px;
     }
-    
+
     .reviews-stats {
-      gap: 30px;
+        gap: 30px;
     }
-    
+
     .stat-number {
-      font-size: 28px;
+        font-size: 28px;
     }
-    
-    .widget-container > div {
-      width: 100% !important;
-      max-width: 400px !important;
-      height: 600px !important;
+
+    .widget-container>div {
+        width: 100% !important;
+        max-width: 400px !important;
+        height: 600px !important;
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .reviews-title {
-      font-size: 28px;
+        font-size: 28px;
     }
-    
+
     .reviews-subtitle {
-      font-size: 16px;
+        font-size: 16px;
     }
-    
+
     .reviews-stats {
-      flex-direction: column;
-      gap: 20px;
+        flex-direction: column;
+        gap: 20px;
     }
-    
+
     .stat-item {
-      text-align: center;
+        text-align: center;
     }
-    
+
     .review-benefit {
-      padding: 10px 0;
+        padding: 10px 0;
     }
-    
+
     .benefit-icon {
-      width: 40px;
-      height: 40px;
+        width: 40px;
+        height: 40px;
     }
-    
+
     .reviews-button {
-      width: 100%;
-      justify-content: center;
-      padding: 14px 24px;
+        width: 100%;
+        justify-content: center;
+        padding: 14px 24px;
     }
-    
-    .widget-container > div {
-      height: 500px !important;
+
+    .widget-container>div {
+        height: 500px !important;
     }
-  }
-  
+}
+
+
+/* ===== КРАСИВЫЕ ШРИФТЫ ДЛЯ СТАТИСТИКИ ===== */
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 42px !important;
+    /* Увеличено для красоты */
+    font-weight: 700 !important;
+    color: var(--accent-color) !important;
+    line-height: 1 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -1px !important;
+    /* Улучшает вид больших цифр */
+}
+
+.stat-label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    line-height: 1.2 !important;
+}
+
+
+/* ===== ОПТИМИЗАЦИЯ ДЛЯ ПЛАВНОГО DRAG-TO-SCROLL ===== */
+
+.partners-slider {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    /* Аппаратное ускорение */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.partners-slider:active {
+    cursor: grabbing;
+}
+
+.partners-track {
+    /* Убираем CSS анимацию - управляем через JS */
+    animation: none !important;
+
+    /* Оптимизация для плавности */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.partner-item {
+    /* Оптимизация рендеринга */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Убираем паузу анимации при hover - теперь управляем через JS */
+.partners-slider:hover .partners-track {
+    animation-play-state: running;
+}

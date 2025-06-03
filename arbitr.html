@@ -31,7 +31,218 @@
     <!-- /Yandex.Metrika counter -->
     <script src="script.js"></script>
     <script src="dropdown-menu.js"></script>
+    <style>
+        /* ===== ИСПРАВЛЕНИЕ ПЕРЕНОСОВ СТРОК НА СТРАНИЦЕ АРБИТРАЖА ===== */
 
+        .procedure-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(227, 30, 36, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            /* Предотвращаем выход контента за границы */
+        }
+
+        .procedure-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Изменено с center на flex-start */
+            margin-bottom: 20px;
+            gap: 15px;
+            /* Добавляем отступ между элементами */
+        }
+
+        .procedure-header h3 {
+            flex: 1;
+            /* Заголовок занимает доступное пространство */
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.3;
+            /* Управление переносами */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+        }
+
+        .procedure-icon {
+            flex-shrink: 0;
+            /* Иконка не сжимается */
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .procedure-content {
+            width: 100%;
+        }
+
+        .sum-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sum-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Выравнивание по верху */
+            gap: 15px;
+            /* Отступ между label и value */
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(227, 30, 36, 0.1);
+            /* Управление переносами для всего блока */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .sum-item:last-child {
+            border-bottom: none;
+        }
+
+        .sum-label {
+            flex: 1;
+            /* Занимает доступное пространство */
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            /* Правильные переносы */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            /* Предотвращаем слишком узкие строки */
+            min-width: 120px;
+        }
+
+        .sum-value {
+            flex-shrink: 0;
+            /* Значение не сжимается */
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: right;
+            line-height: 1.4;
+            /* Предотвращаем разрыв валютных значений */
+            white-space: nowrap;
+            /* Если все же нужен перенос для длинных значений */
+            overflow-wrap: break-word;
+        }
+
+        /* Мобильная версия */
+        @media (max-width: 768px) {
+            .procedure-card {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+
+            .procedure-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .procedure-header h3 {
+                font-size: 18px;
+                margin-bottom: 0;
+            }
+
+            .procedure-icon {
+                align-self: center;
+                /* Центрируем иконку */
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .sum-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 10px 0;
+            }
+
+            .sum-label {
+                min-width: unset;
+                font-size: 14px;
+            }
+
+            .sum-value {
+                align-self: flex-end;
+                /* Выравниваем значение по правому краю */
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .procedure-card {
+                padding: 15px;
+            }
+
+            .procedure-header h3 {
+                font-size: 16px;
+            }
+
+            .procedure-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .sum-label {
+                font-size: 13px;
+            }
+
+            .sum-value {
+                font-size: 14px;
+            }
+        }
+
+        /* Дополнительные правила для предотвращения странных переносов */
+        .procedure-card * {
+            /* Глобальные правила переносов для всех элементов */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Специально для длинных текстов */
+        .sum-label,
+        .sum-value {
+            /* Принудительные переносы для очень длинных слов */
+            word-break: break-word;
+            /* Но сохраняем целостность коротких фраз */
+            white-space: normal;
+        }
+
+        /* Исключение для валютных обозначений - не разрывать */
+        .sum-value {
+            word-break: keep-all;
+            /* Для валют и чисел */
+        }
+
+        /* Если текст все равно выходит за границы */
+        .procedure-content {
+            min-width: 0;
+            /* Позволяет flex-элементам сжиматься */
+            overflow-wrap: anywhere;
+            /* Переносы в любом месте если необходимо */
+        }
+    </style>
     <!-- Главное меню и баннер -->
     <div class="hero-section">
         <div class="main-image-container">
@@ -60,7 +271,8 @@
 
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Для бизнеса</a>
+                                <a href="#" class="nav-link dropdown-toggle">Для Бизнеса <i
+                                        class="fas fa-chevron-down"></i></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle">Лицензирование <i
@@ -589,6 +801,7 @@
                     padding: 25px;
                     background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
                     color: var(--primary-color);
+                    border-radius: 10px;
                 }
 
                 .procedure-header h3 {

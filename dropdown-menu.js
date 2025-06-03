@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Создаем все меню
     createDropdownMenu('Для Граждан', citizenMenuItems);
-    createDropdownMenu('Для бизнеса', businessMenuItems);
+    createDropdownMenu('Для Бизнеса', businessMenuItems);
     createDropdownMenu('Лицензирование', licensingMenuItems);
 
     // Добавляем стили
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Создаем выпадающие меню
     createDropdownMenu('Для Граждан', citizenMenuItems);
-    createDropdownMenu('Для бизнеса', businessMenuItems);
+    createDropdownMenu('Для Бизнеса', businessMenuItems);
     createDropdownMenu('Лицензирование', licensingMenuItems);
 
     // ИСПРАВЛЕННОЕ СОЗДАНИЕ МОБИЛЬНОГО МЕНЮ
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 <div class="mobile-nav-item has-submenu">
                     <button class="mobile-nav-link submenu-toggle">
-                        Для бизнеса
+                        Для Бизнеса
                         <span class="submenu-arrow">›</span>
                     </button>
                     <div class="mobile-submenu">
