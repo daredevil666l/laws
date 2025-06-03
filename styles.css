@@ -7060,30 +7060,6 @@ body:not(.js-loaded) .mobile-menu-toggle {
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
   }
   
-  /* Анимация постоянного блеска */
-  @keyframes shine {
-    0% {
-      box-shadow: 
-        0 4px 12px rgba(227, 30, 36, 0.3),
-        0 0 15px 3px rgba(255, 255, 255, 0.6), 
-        0 0 30px 6px rgba(255, 255, 255, 0.4);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow: 
-        0 6px 16px rgba(227, 30, 36, 0.4),
-        0 0 25px 5px rgba(255, 255, 255, 1), 
-        0 0 40px 8px rgba(255, 255, 255, 0.7);
-      transform: scale(1.02);
-    }
-    100% {
-      box-shadow: 
-        0 4px 12px rgba(227, 30, 36, 0.3),
-        0 0 15px 3px rgba(255, 255, 255, 0.6), 
-        0 0 30px 6px rgba(255, 255, 255, 0.4);
-      transform: scale(1);
-    }
-  }
   
   /* Усиленный эффект при наведении */
   .mobile-callback-btn-auto:hover {
@@ -7447,10 +7423,10 @@ body:not(.js-loaded) .mobile-menu-toggle {
 @media (max-width: 768px) {
     /* Скрываем кнопку по всем её классам */
     .cta-button.hero-button.shine-effect.button-hover-effect.contact-arrow-btn {
-      display: none !important;
-      visibility: hidden !important;
+      /* display: none !important;
+      visibility: hidden !important; */
       opacity: 0 !important;
-      pointer-events: none !important;
+      /* pointer-events: none !important; */
     }
     
     /* Также скрываем по отдельным классам на всякий случай */
@@ -7460,6 +7436,554 @@ body:not(.js-loaded) .mobile-menu-toggle {
     
     button[class*="contact-arrow-btn"] {
       display: none !important;
+    }
+  }
+
+  /* ===== ОБНОВЛЕННЫЙ БЛОК ПАРТНЕРОВ - ЦВЕТНЫЕ И БОЛЬШЕ ===== */
+
+.partners-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .partners-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.2), transparent);
+  }
+  
+  .partners-header {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .partners-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    line-height: 1.3;
+    position: relative;
+  }
+  
+  .partners-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+    border-radius: 2px;
+  }
+  
+  .partners-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 400;
+  }
+  
+  /* Слайдер партнеров с drag функциональностью */
+  .partners-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 30px 0;
+    cursor: grab;
+    user-select: none;
+  }
+  
+  .partners-slider.dragging {
+    cursor: grabbing;
+  }
+  
+  .partners-slider::before,
+  .partners-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .partners-slider::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
+  }
+  
+  .partners-slider::after {
+    right: 0;
+    background: linear-gradient(270deg, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
+  }
+  
+  .partners-track {
+    display: flex;
+    gap: 30px;
+    animation: scroll 30s linear infinite;
+    width: max-content;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Анимация прокрутки */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Пауза анимации при взаимодействии */
+  .partners-slider:hover .partners-track,
+  .partners-slider.dragging .partners-track {
+    animation-play-state: paused;
+  }
+  
+  /* Элемент партнера - УВЕЛИЧЕННЫЙ */
+  .partner-item {
+    flex-shrink: 0;
+    width: 220px; /* Увеличено с 160px */
+    height: 140px; /* Увеличено с 100px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 25px; /* Увеличено с 15px */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(227, 30, 36, 0.1);
+  }
+  
+  .partner-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(227, 30, 36, 0.2);
+  }
+  
+  /* Логотип партнера - ЦВЕТНОЙ И БОЛЬШЕ */
+  .partner-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    /* УБРАЛИ grayscale фильтр - теперь логотипы цветные */
+    filter: opacity(0.85);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .partner-item:hover .partner-logo {
+    filter: opacity(1); /* Убрали grayscale(0) */
+    transform: scale(1.08); /* Увеличили с 1.05 */
+  }
+  
+  /* Мобильная версия */
+  @media (max-width: 768px) {
+    .partners-section {
+      padding: 50px 0;
+    }
+    
+    .partners-header {
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    
+    .partners-title {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    
+    .partners-subtitle {
+      font-size: 16px;
+    }
+    
+    .partners-track {
+      gap: 20px;
+      animation-duration: 25s;
+    }
+    
+    .partner-item {
+      width: 180px; /* Увеличено с 130px */
+      height: 120px; /* Увеличено с 85px */
+      padding: 20px; /* Увеличено с 12px */
+    }
+    
+    .partners-slider::before,
+    .partners-slider::after {
+      width: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .partners-title {
+      font-size: 24px;
+    }
+    
+    .partners-subtitle {
+      font-size: 14px;
+    }
+    
+    .partner-item {
+      width: 150px; /* Увеличено с 110px */
+      height: 100px; /* Увеличено с 70px */
+      padding: 15px; /* Увеличено с 8px */
+    }
+    
+    .partners-track {
+      gap: 15px;
+      animation-duration: 20s;
+    }
+  }
+  
+  /* Дополнительные стили для лучшего отображения цветных логотипов */
+  .partner-item {
+    /* Более яркий фон для лучшего контраста */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  .partner-item:hover {
+    /* Более выраженная тень для цветных логотипов */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  /* Плавное появление логотипов */
+  .partner-logo {
+    opacity: 0;
+    animation: fadeInLogo 0.6s ease forwards;
+  }
+  
+  @keyframes fadeInLogo {
+    to {
+      opacity: 0.85;
+    }
+  }
+  
+  .partner-item:hover .partner-logo {
+    opacity: 1;
+  }
+  
+  /* Добавляем задержку для каждого логотипа */
+  .partner-item:nth-child(1) .partner-logo { animation-delay: 0.1s; }
+  .partner-item:nth-child(2) .partner-logo { animation-delay: 0.2s; }
+  .partner-item:nth-child(3) .partner-logo { animation-delay: 0.3s; }
+  .partner-item:nth-child(4) .partner-logo { animation-delay: 0.4s; }
+  .partner-item:nth-child(5) .partner-logo { animation-delay: 0.5s; }
+  .partner-item:nth-child(6) .partner-logo { animation-delay: 0.6s; }
+  .partner-item:nth-child(7) .partner-logo { animation-delay: 0.7s; }
+  .partner-item:nth-child(8) .partner-logo { animation-delay: 0.8s; }
+  .partner-item:nth-child(9) .partner-logo { animation-delay: 0.9s; }
+  .partner-item:nth-child(10) .partner-logo { animation-delay: 1.0s; }
+  
+
+  /* ===== БЛОК С ОТЗЫВАМИ ===== */
+
+.reviews-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .reviews-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.2), transparent);
+  }
+  
+  .reviews-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Левая часть с текстом */
+  .reviews-content {
+    padding-right: 40px;
+  }
+  
+  .reviews-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative;
+  }
+  
+  .reviews-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+    border-radius: 2px;
+  }
+  
+  .reviews-subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  
+  /* Преимущества */
+  .reviews-benefits {
+    margin-bottom: 40px;
+  }
+  
+  .review-benefit {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(227, 30, 36, 0.1);
+  }
+  
+  .review-benefit:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(227, 30, 36, 0.3);
+  }
+  
+  .review-benefit span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    line-height: 1.4;
+  }
+  
+  /* Статистика */
+  .reviews-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    padding: 30px 0;
+    border-top: 2px solid rgba(227, 30, 36, 0.1);
+    border-bottom: 2px solid rgba(227, 30, 36, 0.1);
+  }
+  
+  .stat-item {
+    text-align: left;
+  }
+  
+  .stat-number {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Призыв к действию */
+  .reviews-cta {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    font-style: italic;
+  }
+  
+  /* Кнопка */
+  .reviews-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(227, 30, 36, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .reviews-button:hover {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(227, 30, 36, 0.4);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .reviews-button svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .reviews-button:hover svg {
+    transform: translateX(3px);
+  }
+  
+  /* Правая часть с виджетом */
+  .reviews-widget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .widget-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .widget-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Мобильная версия */
+  @media (max-width: 1200px) {
+    .reviews-wrapper {
+      gap: 60px;
+    }
+    
+    .reviews-content {
+      padding-right: 20px;
+    }
+    
+    .widget-container > div {
+      width: 480px !important;
+      height: 700px !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .reviews-section {
+      padding: 60px 0;
+    }
+    
+    .reviews-wrapper {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    
+    .reviews-content {
+      padding-right: 0;
+      order: 2;
+    }
+    
+    .reviews-widget {
+      order: 1;
+    }
+    
+    .reviews-title {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+    
+    .reviews-subtitle {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .reviews-stats {
+      gap: 30px;
+    }
+    
+    .stat-number {
+      font-size: 28px;
+    }
+    
+    .widget-container > div {
+      width: 100% !important;
+      max-width: 400px !important;
+      height: 600px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .reviews-title {
+      font-size: 28px;
+    }
+    
+    .reviews-subtitle {
+      font-size: 16px;
+    }
+    
+    .reviews-stats {
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .review-benefit {
+      padding: 10px 0;
+    }
+    
+    .benefit-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .reviews-button {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 24px;
+    }
+    
+    .widget-container > div {
+      height: 500px !important;
     }
   }
   

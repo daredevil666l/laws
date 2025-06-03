@@ -319,13 +319,13 @@ document.addEventListener('DOMContentLoaded', function () {
             
             <div class="mobile-menu-contacts">
                 <div class="mobile-contact-item">
-                    <a href="tel:+74732954824" class="mobile-contact-link">
-                        📞 +7 (473) 295-48-24
+                    <a href="tel:8(473)295-48-24" class="mobile-contact-link">
+                        📞 8(473)295-48-24
                     </a>
                 </div>
                 <div class="mobile-contact-item">
-                    <a href="tel:+79192076550" class="mobile-contact-link">
-                        📞 +7 (919) 207-65-50
+                    <a href="tel:tel:8(952)553-44-88" class="mobile-contact-link">
+                        📞 8(952)553-44-88
                     </a>
                 </div>
             </div>

@@ -2372,3 +2372,55 @@ const addMobileLogoStyles = () => {
 
 // Вызываем функцию при загрузке страницы
 document.addEventListener('DOMContentLoaded', addMobileLogoStyles);
+
+// Дополнительная логика для слайдера партнеров
+document.addEventListener('DOMContentLoaded', function() {
+    function initPartnersSlider() {
+        const partnersSection = document.querySelector('.partners-section');
+        const partnersTrack = document.querySelector('.partners-track');
+        
+        if (!partnersSection || !partnersTrack) return;
+        
+        // Плавное появление при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        // Начальное состояние
+        partnersSection.style.opacity = '0';
+        partnersSection.style.transform = 'translateY(30px)';
+        partnersSection.style.transition = 'all 0.8s ease';
+        
+        observer.observe(partnersSection);
+        
+        // Адаптивная скорость анимации
+        function adjustAnimationSpeed() {
+            const screenWidth = window.innerWidth;
+            let duration;
+            
+            if (screenWidth <= 480) {
+                duration = '20s';
+            } else if (screenWidth <= 768) {
+                duration = '25s';
+            } else {
+                duration = '30s';
+            }
+            
+            partnersTrack.style.animationDuration = duration;
+        }
+        
+        adjustAnimationSpeed();
+        window.addEventListener('resize', adjustAnimationSpeed);
+        
+        console.log('✅ Слайдер партнеров инициализирован');
+    }
+    
+    initPartnersSlider();
+});
