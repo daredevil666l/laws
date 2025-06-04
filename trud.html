@@ -416,71 +416,68 @@
 
     <form class="quiz-container">
         <h2 class="quiz-title">Рассчитайте предварительную стоимость услуги</h2>
+
         <!-- Прогресс-бар -->
         <div class="progress-wrapper">
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 20%"></div>
+                <div class="progress-fill"></div>
             </div>
-            <div class="progress-text">Расчет пройден на 20%</div>
+            <div class="progress-text">Расчет пройден на 0%</div>
         </div>
 
         <!-- Контейнер с вопросами -->
         <div class="quiz-content">
-            <!-- Вопрос 1 (активен по умолчанию) -->
+            <!-- Вопрос 1 -->
             <div class="quiz-step active" data-step="1">
                 <div class="question-header">
                     <div class="question-number">Вопрос 1</div>
-                    <h2 class="question-title">Какой тип юридической помощи вам необходим?</h2>
+                    <h2 class="question-title">Какой тип юридической помощи Вам необходим?</h2>
                 </div>
 
                 <div class="options-grid">
-                    <div class="option-card" data-value="family">
-                        <div class="option-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="option-title">Семейное право</div>
-                        <div class="option-description">Развод, алименты, опека, брачный договор</div>
-                        <div class="option-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>
-
-                    <div class="option-card" data-value="property">
-                        <div class="option-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="option-title">Недвижимость</div>
-                        <div class="option-description">Купля-продажа, аренда, споры о границах</div>
-                        <div class="option-check">
-                            <i class="fas fa-check"></i>
-                        </div>
-                    </div>
-
                     <div class="option-card" data-value="business">
                         <div class="option-icon">
                             <i class="fas fa-briefcase"></i>
                         </div>
-                        <div class="option-title">Бизнес</div>
-                        <div class="option-description">Регистрация, сопровождение, споры</div>
+                        <div class="option-title">Для бизнеса</div>
+                        <div class="option-description">Юридическое сопровождение компаний</div>
                         <div class="option-check">
                             <i class="fas fa-check"></i>
                         </div>
                     </div>
 
-                    <div class="option-card" data-value="criminal">
+                    <div class="option-card" data-value="citizens">
                         <div class="option-icon">
-                            <i class="fas fa-gavel"></i>
+                            <i class="fas fa-users"></i>
                         </div>
-                        <div class="option-title">Уголовное право</div>
-                        <div class="option-description">Защита по уголовным делам</div>
+                        <div class="option-title">Для граждан</div>
+                        <div class="option-description">Помощь физическим лицам</div>
                         <div class="option-check">
                             <i class="fas fa-check"></i>
                         </div>
                     </div>
-                </div>
 
-                <div class="quiz-navigation">
-                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                    <div class="option-card" data-value="licensing">
+                        <div class="option-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="option-title">Лицензирование</div>
+                        <div class="option-description">Получение лицензий и разрешений</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="option-card" data-value="intellectual-property">
+                        <div class="option-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="option-title">Интеллектуальная собственность</div>
+                        <div class="option-description">Защита авторских прав</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -488,39 +485,29 @@
             <div class="quiz-step" data-step="2">
                 <div class="question-header">
                     <div class="question-number">Вопрос 2</div>
-                    <h2 class="question-title">На какой стадии находится ваше дело?</h2>
+                    <h2 class="question-title">Какой тип помощи Вам нужен?</h2>
                 </div>
 
                 <div class="options-list">
                     <div class="option-item" data-value="consultation">
                         <div class="option-radio"></div>
-                        <div class="option-text">Нужна консультация, проблема только возникла</div>
+                        <div class="option-text">Требуется консультация</div>
                     </div>
 
                     <div class="option-item" data-value="documents">
                         <div class="option-radio"></div>
-                        <div class="option-text">Требуется составление документов</div>
+                        <div class="option-text">Необходимо составить некоторые документы</div>
                     </div>
 
-                    <div class="option-item" data-value="negotiation">
+                    <div class="option-item" data-value="full-solution">
                         <div class="option-radio"></div>
-                        <div class="option-text">Идут переговоры, нужен специалист</div>
-                    </div>
-
-                    <div class="option-item" data-value="court">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Дело уже в суде или скоро будет передано</div>
-                    </div>
-
-                    <div class="option-item" data-value="execution">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Исполнительное производство</div>
+                        <div class="option-text">Комплексное решение "под ключ"</div>
                     </div>
                 </div>
 
                 <div class="quiz-navigation">
-                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
-                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button type="button" class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
 
@@ -528,152 +515,69 @@
             <div class="quiz-step" data-step="3">
                 <div class="question-header">
                     <div class="question-number">Вопрос 3</div>
-                    <h2 class="question-title">Как давно возникла проблема?</h2>
+                    <h2 class="question-title">Как срочно требуется решение?</h2>
                 </div>
 
                 <div class="options-list">
-                    <div class="option-item" data-value="days">
+                    <div class="option-item" data-value="24h">
                         <div class="option-radio"></div>
-                        <div class="option-text">Несколько дней назад</div>
+                        <div class="option-text">В течение 24 часов</div>
                     </div>
 
-                    <div class="option-item" data-value="month">
-                        <div class="option-radio"></div>
-                        <div class="option-text">В течение последнего месяца</div>
-                    </div>
-
-                    <div class="option-item" data-value="several-months">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Несколько месяцев назад</div>
-                    </div>
-
-                    <div class="option-item" data-value="year">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Более года назад</div>
-                    </div>
-                </div>
-
-                <div class="quiz-navigation">
-                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
-                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Вопрос 4 -->
-            <div class="quiz-step" data-step="4">
-                <div class="question-header">
-                    <div class="question-number">Вопрос 4</div>
-                    <h2 class="question-title">Какой бюджет вы готовы выделить на решение проблемы?</h2>
-                </div>
-
-                <div class="options-list">
-                    <div class="option-item" data-value="economy">
-                        <div class="option-radio"></div>
-                        <div class="option-text">До 15 000 ₽</div>
-                    </div>
-
-                    <div class="option-item" data-value="standard">
-                        <div class="option-radio"></div>
-                        <div class="option-text">15 000 - 30 000 ₽</div>
-                    </div>
-
-                    <div class="option-item" data-value="premium">
-                        <div class="option-radio"></div>
-                        <div class="option-text">30 000 - 50 000 ₽</div>
-                    </div>
-
-                    <div class="option-item" data-value="vip">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Более 50 000 ₽</div>
-                    </div>
-
-                    <div class="option-item" data-value="discuss">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Готов обсудить после консультации</div>
-                    </div>
-                </div>
-
-                <div class="quiz-navigation">
-                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
-                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Вопрос 5 -->
-            <div class="quiz-step" data-step="5">
-                <div class="question-header">
-                    <div class="question-number">Вопрос 5</div>
-                    <h2 class="question-title">Насколько срочно требуется решение?</h2>
-                </div>
-
-                <div class="options-list">
-                    <div class="option-item" data-value="urgent">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Очень срочно (в течение 24 часов)</div>
-                    </div>
-
-                    <div class="option-item" data-value="quick">
+                    <div class="option-item" data-value="week">
                         <div class="option-radio"></div>
                         <div class="option-text">В течение недели</div>
                     </div>
 
-                    <div class="option-item" data-value="normal">
+                    <div class="option-item" data-value="month">
                         <div class="option-radio"></div>
                         <div class="option-text">В течение месяца</div>
                     </div>
 
-                    <div class="option-item" data-value="not-urgent">
+                    <div class="option-item" data-value="no-matter">
                         <div class="option-radio"></div>
                         <div class="option-text">Срок не имеет значения</div>
                     </div>
                 </div>
 
                 <div class="quiz-navigation">
-                    <button class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
-                    <button class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+                    <button type="button" class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
 
-            <!-- Финальный шаг (улучшенный дизайн) -->
-            <div class="quiz-step result-step" data-step="6">
+            <!-- Финальный шаг -->
+            <div class="quiz-step result-step" data-step="4">
                 <div class="result-content">
                     <div class="result-header">
                         <div class="complete-badge">
                             <i class="fas fa-check-circle"></i> Расчет готов
                         </div>
-                        <h2 class="result-title">Где вам удобней получить расчет стоимости?</h2>
+                        <h2 class="result-title">Где удобнее получить ответ?</h2>
                     </div>
 
                     <div class="messenger-options">
                         <div class="messenger-option" data-messenger="whatsapp">
                             <div class="messenger-icon">
-                                <img src="images/whatsapp.png" alt="WhatsApp">
+                                <i class="fab fa-whatsapp"><img src="images/whatsapp.png" alt=""></i>
                             </div>
                             <div class="messenger-name">WhatsApp</div>
                             <div class="messenger-check"><i class="fas fa-check"></i></div>
                         </div>
 
-                        <div class="messenger-option" data-messenger="viber">
-                            <div class="messenger-icon">
-                                <img src="images/vk.png" alt="VK">
-                            </div>
-                            <div class="messenger-name">VK</div>
-                            <div class="messenger-check"><i class="fas fa-check"></i></div>
-                        </div>
-
                         <div class="messenger-option" data-messenger="telegram">
                             <div class="messenger-icon">
-                                <img src="images/telegram.webp" alt="Telegram">
+                                <i class="fab fa-telegram-plane"><img src="images/telegram.webp" alt=""></i>
                             </div>
                             <div class="messenger-name">Telegram</div>
                             <div class="messenger-check"><i class="fas fa-check"></i></div>
                         </div>
 
-                        <div class="messenger-option" data-messenger="email">
+                        <div class="messenger-option" data-messenger="phone">
                             <div class="messenger-icon">
-                                <img src="images/mail.png" alt="E-mail">
+                                <i class="fas fa-phone-alt"><img src="images/phone.png" alt=""></i>
                             </div>
-                            <div class="messenger-name">E-mail</div>
+                            <div class="messenger-name">Телефон</div>
                             <div class="messenger-check"><i class="fas fa-check"></i></div>
                         </div>
                     </div>
@@ -689,16 +593,23 @@
 
                         <div class="contact-form">
                             <div class="form-group">
-                                <div class="input-with-icon">
-                                    <i class="fas fa-user"></i>
-                                    <input type="text" placeholder="Ваше имя" required>
-                                </div>
+                                <input type="text" name="name" placeholder="Ваше имя" required>
                             </div>
 
                             <div class="form-group">
-                                <div class="input-with-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                    <input type="tel" placeholder="Ваш телефон" required>
+                                <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                            </div>
+
+                            <div class="privacy-policy">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="privacy-policy-checkbox" name="privacy-policy-checkbox"
+                                        class="custom-checkbox" required>
+                                    <label for="privacy-policy-checkbox" class="checkbox-label">
+                                        Согласен с условиями <a href="conf.docx" target="_blank"
+                                            class="privacy-link">политики конфиденциальности</a> и <a
+                                            href="sogl.docx" target="_blank" class="privacy-link">согласия на
+                                            обработку</a> данных
+                                    </label>
                                 </div>
                             </div>
 
@@ -708,41 +619,6 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </button>
                             </div>
-
-                            <div class="privacy-policy">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" id="privacy-policy-checkbox" name="privacy-policy-checkbox"
-                                        class="custom-checkbox">
-                                    <label for="privacy-policy-checkbox" class="checkbox-label">Согласен с условиями
-                                        политики конфиденциальности данных</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="result-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <img src="images/guaranty.png" alt="Гарантия конфиденциальности">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="feature-text">Гарантия конфиденциальности</div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <img src="images/clock.png" alt="Быстрый ответ">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="feature-text">Быстрый ответ в течение 45 минут</div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <img src="images/employee.png" alt="Индивидуальный подход">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <div class="feature-text">Индивидуальный подход к вашей ситуации</div>
                         </div>
                     </div>
                 </div>

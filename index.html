@@ -64,7 +64,8 @@
                                         class="fas fa-chevron-down"></i></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">Для бизнеса</a>
+                                <a href="#" class="nav-link dropdown-toggle">Для Бизнеса <i
+                                        class="fas fa-chevron-down"></i></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle">Лицензирование <i
@@ -972,7 +973,7 @@
         <!-- Прогресс-бар -->
         <div class="progress-wrapper">
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 0%"></div>
+                <div class="progress-fill"></div>
             </div>
             <div class="progress-text">Расчет пройден на 0%</div>
         </div>
@@ -985,26 +986,51 @@
                     <div class="question-number">Вопрос 1</div>
                     <h2 class="question-title">Какой тип юридической помощи Вам необходим?</h2>
                 </div>
-                <div class="options-list">
-                    <div class="option-item" data-value="business">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Для бизнеса</div>
+
+                <div class="options-grid">
+                    <div class="option-card" data-value="business">
+                        <div class="option-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="option-title">Для бизнеса</div>
+                        <div class="option-description">Юридическое сопровождение компаний</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
                     </div>
-                    <div class="option-item" data-value="citizens">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Для граждан</div>
+
+                    <div class="option-card" data-value="citizens">
+                        <div class="option-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="option-title">Для граждан</div>
+                        <div class="option-description">Помощь физическим лицам</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
                     </div>
-                    <div class="option-item" data-value="licensing">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Лицензирование</div>
+
+                    <div class="option-card" data-value="licensing">
+                        <div class="option-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="option-title">Лицензирование</div>
+                        <div class="option-description">Получение лицензий и разрешений</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
                     </div>
-                    <div class="option-item" data-value="intellectual-property">
-                        <div class="option-radio"></div>
-                        <div class="option-text">Интеллектуальная собственность</div>
+
+                    <div class="option-card" data-value="intellectual-property">
+                        <div class="option-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="option-title">Интеллектуальная собственность</div>
+                        <div class="option-description">Защита авторских прав</div>
+                        <div class="option-check">
+                            <i class="fas fa-check"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="quiz-navigation">
-                    <button type="button" class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
 
@@ -1014,20 +1040,24 @@
                     <div class="question-number">Вопрос 2</div>
                     <h2 class="question-title">Какой тип помощи Вам нужен?</h2>
                 </div>
+
                 <div class="options-list">
                     <div class="option-item" data-value="consultation">
                         <div class="option-radio"></div>
                         <div class="option-text">Требуется консультация</div>
                     </div>
+
                     <div class="option-item" data-value="documents">
                         <div class="option-radio"></div>
                         <div class="option-text">Необходимо составить некоторые документы</div>
                     </div>
+
                     <div class="option-item" data-value="full-solution">
                         <div class="option-radio"></div>
                         <div class="option-text">Комплексное решение "под ключ"</div>
                     </div>
                 </div>
+
                 <div class="quiz-navigation">
                     <button type="button" class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
                     <button type="button" class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
@@ -1040,29 +1070,35 @@
                     <div class="question-number">Вопрос 3</div>
                     <h2 class="question-title">Как срочно требуется решение?</h2>
                 </div>
+
                 <div class="options-list">
                     <div class="option-item" data-value="24h">
                         <div class="option-radio"></div>
                         <div class="option-text">В течение 24 часов</div>
                     </div>
+
                     <div class="option-item" data-value="week">
                         <div class="option-radio"></div>
                         <div class="option-text">В течение недели</div>
                     </div>
+
                     <div class="option-item" data-value="month">
                         <div class="option-radio"></div>
                         <div class="option-text">В течение месяца</div>
                     </div>
+
                     <div class="option-item" data-value="no-matter">
                         <div class="option-radio"></div>
                         <div class="option-text">Срок не имеет значения</div>
                     </div>
                 </div>
+
                 <div class="quiz-navigation">
                     <button type="button" class="back-btn"><i class="fas fa-chevron-left"></i> Назад</button>
                     <button type="button" class="next-btn">Далее <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
+
             <!-- Финальный шаг -->
             <div class="quiz-step result-step" data-step="4">
                 <div class="result-content">
@@ -1100,37 +1136,49 @@
                     </div>
 
                     <div class="contact-form-wrapper">
-                        <form class="contact-form" id="quizContactForm">
+                        <div class="time-badge">
+                            <div class="badge-content">
+                                <div class="badge-label">Засекайте</div>
+                                <div class="badge-value">45</div>
+                                <div class="badge-unit">минут</div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form">
                             <div class="form-group">
                                 <input type="text" name="name" placeholder="Ваше имя" required>
                             </div>
+
                             <div class="form-group">
-                                <input type="tel" name="phone" placeholder="Телефон" required>
+                                <input type="tel" name="phone" placeholder="Ваш телефон" required>
                             </div>
 
-                            <!-- Галочка согласия с политикой конфиденциальности -->
-                            <!-- Галочка согласия с политикой конфиденциальности -->
-                            <div class="form-group privacy-policy-group">
-                                <label class="privacy-checkbox-wrapper" for="privacy-policy-checkbox">
+                            <div class="privacy-policy">
+                                <div class="checkbox-wrapper">
                                     <input type="checkbox" id="privacy-policy-checkbox" name="privacy-policy-checkbox"
-                                        class="privacy-checkbox-input" required>
-                                    <span class="privacy-checkbox-custom"></span>
-                                    <span class="privacy-checkbox-text">Согласен с условиями <a
-                                            href="/privacy-policy.html" target="_blank" class="privacy-link">политики
-                                            конфиденциальности</a> данных</span>
-                                </label>
+                                        class="custom-checkbox" required>
+                                    <label for="privacy-policy-checkbox" class="checkbox-label">
+                                        Согласен с условиями <a href="conf.docx" target="_blank"
+                                            class="privacy-link">политики конфиденциальности</a> и <a
+                                            href="sogl.docx" target="_blank" class="privacy-link">согласия на
+                                            обработку</a> данных
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="form-submit">
-                                <button type="submit" class="submit-btn">Получить ответ</button>
+                                <button type="submit" class="submit-button">
+                                    <span>Получить расчет</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </form>
+
 
 
     <footer class="main-footer">

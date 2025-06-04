@@ -8113,18 +8113,18 @@ body:not(.js-loaded) .mobile-menu-toggle {
     animation-play-state: running;
 }
 
-/* ===== НОВЫЙ КВИЗ В СТИЛЯХ САЙТА "СТРАТЕГИЯ" ===== */
+/* ===== НОВЫЙ КВИЗ С УВЕЛИЧЕННЫМИ РАЗМЕРАМИ И ЖИВЫМИ ЭФФЕКТАМИ ===== */
 
 .quiz-container {
-    max-width: 700px;
-    margin: 40px auto;
+    max-width: 720px;
+    margin: 50px auto;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 15px;
-    padding: 40px 35px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    padding: 50px 45px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
     font-family: 'Montserrat', sans-serif;
     color: var(--text-color);
-    border: 2px solid rgba(227, 30, 36, 0.1);
+    border: 2px solid rgba(227, 30, 36, 0.15);
     position: relative;
     overflow: hidden;
 }
@@ -8135,57 +8135,59 @@ body:not(.js-loaded) .mobile-menu-toggle {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 5px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
 }
 
 .quiz-title {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-align: center;
     color: var(--text-color);
     line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Прогресс-бар */
 .progress-wrapper {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .progress-bar {
     width: 100%;
-    height: 10px;
+    height: 14px;
     background: #e9ecef;
-    border-radius: 5px;
+    border-radius: 7px;
     overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.12);
 }
 
 .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
     width: 0%;
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border-radius: 5px;
+    transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 7px;
 }
 
 .progress-text {
     text-align: right;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-secondary);
-    margin-top: 8px;
-    font-weight: 500;
+    margin-top: 10px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* Шаги квиза */
 .quiz-content {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .quiz-step {
     display: none;
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn 0.5s ease;
 }
 
 .quiz-step.active {
@@ -8195,7 +8197,7 @@ body:not(.js-loaded) .mobile-menu-toggle {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(15px);
     }
 
     to {
@@ -8206,47 +8208,50 @@ body:not(.js-loaded) .mobile-menu-toggle {
 
 /* Заголовки вопросов */
 .question-header {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .question-number {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 8px;
-    font-size: 16px;
+    margin-bottom: 12px;
+    font-size: 18px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .question-title {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     color: var(--text-color);
     line-height: 1.3;
     margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Варианты ответов */
 .options-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
 .option-item {
     display: flex;
     align-items: center;
     background: white;
-    border: 2px solid rgba(227, 30, 36, 0.1);
-    border-radius: 12px;
-    padding: 18px 20px;
+    border: 3px solid rgba(227, 30, 36, 0.15);
+    border-radius: 16px;
+    padding: 22px 28px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     user-select: none;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 6px 20px rgba(227, 30, 36, 0.05);
 }
 
 .option-item::before {
@@ -8256,8 +8261,9 @@ body:not(.js-loaded) .mobile-menu-toggle {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.05), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(227, 30, 36, 0.07), transparent);
+    transition: left 0.6s ease;
+    border-radius: 16px;
 }
 
 .option-item:hover::before {
@@ -8265,28 +8271,28 @@ body:not(.js-loaded) .mobile-menu-toggle {
 }
 
 .option-item:hover {
-    border-color: rgba(227, 30, 36, 0.3);
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(227, 30, 36, 0.1);
+    border-color: var(--accent-color);
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(227, 30, 36, 0.15);
 }
 
 .option-item.selected {
     border-color: var(--accent-color);
-    background: linear-gradient(135deg, rgba(227, 30, 36, 0.05), rgba(227, 30, 36, 0.02));
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(227, 30, 36, 0.2);
+    background: linear-gradient(135deg, rgba(227, 30, 36, 0.1), rgba(227, 30, 36, 0.05));
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(227, 30, 36, 0.25);
 }
 
 /* Радио-кнопки */
 .option-radio {
-    width: 24px;
-    height: 24px;
-    border: 2px solid #ccc;
+    width: 28px;
+    height: 28px;
+    border: 3px solid #ccc;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 20px;
     position: relative;
     flex-shrink: 0;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .option-item.selected .option-radio {
@@ -8297,14 +8303,14 @@ body:not(.js-loaded) .mobile-menu-toggle {
 .option-radio::after {
     content: '';
     position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 8px;
-    height: 8px;
+    top: 8px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
     background: white;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
 .option-item.selected .option-radio::after {
@@ -8312,9 +8318,9 @@ body:not(.js-loaded) .mobile-menu-toggle {
 }
 
 .option-text {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.4;
 }
 
@@ -8323,23 +8329,23 @@ body:not(.js-loaded) .mobile-menu-toggle {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 20px;
+    margin-top: 35px;
 }
 
 .quiz-navigation button {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
+    gap: 12px;
+    padding: 18px 36px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: none;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
 .next-btn {
@@ -8350,8 +8356,8 @@ body:not(.js-loaded) .mobile-menu-toggle {
 
 .next-btn:hover {
     background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(227, 30, 36, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(227, 30, 36, 0.3);
 }
 
 .back-btn {
@@ -8361,7 +8367,7 @@ body:not(.js-loaded) .mobile-menu-toggle {
 
 .back-btn:hover {
     background: #5a6268;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 /* Финальный шаг */
@@ -8370,22 +8376,22 @@ body:not(.js-loaded) .mobile-menu-toggle {
 }
 
 .result-header {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .complete-badge {
     color: #28a745;
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-weight: 800;
+    font-size: 22px;
+    margin-bottom: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .result-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--text-color);
     margin: 0;
@@ -8395,52 +8401,52 @@ body:not(.js-loaded) .mobile-menu-toggle {
 .messenger-options {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
+    gap: 25px;
+    margin: 35px 0;
     flex-wrap: wrap;
 }
 
 .messenger-option {
     cursor: pointer;
-    border: 2px solid rgba(227, 30, 36, 0.1);
-    border-radius: 12px;
-    padding: 15px 20px;
+    border: 3px solid rgba(227, 30, 36, 0.15);
+    border-radius: 14px;
+    padding: 20px 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
+    gap: 10px;
+    transition: all 0.4s ease;
     user-select: none;
     background: white;
-    min-width: 100px;
+    min-width: 110px;
 }
 
 .messenger-option:hover {
     border-color: rgba(227, 30, 36, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(227, 30, 36, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(227, 30, 36, 0.15);
 }
 
 .messenger-option.selected {
     border-color: var(--accent-color);
-    background: linear-gradient(135deg, rgba(227, 30, 36, 0.05), rgba(227, 30, 36, 0.02));
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, rgba(227, 30, 36, 0.1), rgba(227, 30, 36, 0.03));
+    transform: translateY(-4px);
 }
 
 .messenger-icon {
-    font-size: 32px;
+    font-size: 36px;
     color: var(--accent-color);
 }
 
 .messenger-name {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-color);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .messenger-check {
     color: var(--accent-color);
-    font-size: 18px;
+    font-size: 20px;
     display: none;
 }
 
@@ -8450,23 +8456,23 @@ body:not(.js-loaded) .mobile-menu-toggle {
 
 /* Форма контактов */
 .contact-form-wrapper {
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 15px 18px;
-    border: 2px solid rgba(227, 30, 36, 0.1);
-    border-radius: 10px;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    padding: 18px 22px;
+    border: 3px solid rgba(227, 30, 36, 0.15);
+    border-radius: 12px;
+    font-size: 18px;
+    transition: all 0.4s ease;
     box-sizing: border-box;
     background: white;
 }
@@ -8474,14 +8480,398 @@ body:not(.js-loaded) .mobile-menu-toggle {
 .form-group input:focus {
     outline: none;
     border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(227, 30, 36, 0.15);
+}
+
+/* Галочка согласия */
+.privacy-policy-group {
+    margin: 25px 0 30px 0;
+}
+
+.privacy-checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.privacy-checkbox-input {
+    display: none;
+}
+
+.privacy-checkbox-custom {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border: 3px solid rgba(227, 30, 36, 0.3);
+    border-radius: 6px;
+    transition: all 0.4s ease;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.privacy-checkbox-custom::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.privacy-checkbox-wrapper:hover .privacy-checkbox-custom {
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.1);
 }
 
+.privacy-checkbox-input:checked+.privacy-checkbox-custom {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-color: var(--accent-color);
+}
+
+.privacy-checkbox-input:checked+.privacy-checkbox-custom::after {
+    display: block;
+}
+
+.privacy-checkbox-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.privacy-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.privacy-link:hover {
+    color: var(--accent-light);
+    text-decoration: none;
+}
+
+.privacy-policy-group.error .privacy-checkbox-custom {
+    border-color: #dc3545;
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-3px);
+    }
+
+    75% {
+        transform: translateX(3px);
+    }
+}
+
+/* Кнопка отправки */
 .submit-btn {
     background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
     color: white;
     border: none;
-    padding: 16px 32px;
+    padding: 18px 36px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(227, 30, 36, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .quiz-container {
+        margin: 30px 20px;
+        padding: 30px 25px;
+    }
+
+    .quiz-title {
+        font-size: 26px;
+    }
+
+    .question-title {
+        font-size: 22px;
+    }
+
+    .quiz-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .quiz-navigation button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .messenger-options {
+        gap: 20px;
+    }
+
+    .messenger-option {
+        flex: 1 1 45%;
+        min-width: 90px;
+    }
+
+    .privacy-checkbox-wrapper {
+        gap: 12px;
+    }
+
+    .privacy-checkbox-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quiz-title {
+        font-size: 22px;
+    }
+
+    .question-title {
+        font-size: 20px;
+    }
+
+    .option-item {
+        padding: 18px 22px;
+    }
+
+    .option-text {
+        font-size: 17px;
+    }
+
+    .messenger-option {
+        flex: 1 1 100%;
+    }
+
+    .privacy-checkbox-text {
+        font-size: 13px;
+    }
+}
+
+/* ===== СТИЛИ ДЛЯ УВЕДОМЛЕНИЙ КВИЗА ===== */
+
+/* Обычные уведомления */
+.quiz-notification {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 350px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    animation: slideInRight 0.4s ease;
+}
+
+.quiz-notification.error {
+    border-left: 4px solid #dc3545;
+}
+
+.quiz-notification.info {
+    border-left: 4px solid #17a2b8;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+}
+
+.notification-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.quiz-notification.error .notification-icon {
+    color: #dc3545;
+}
+
+.quiz-notification.info .notification-icon {
+    color: #17a2b8;
+}
+
+.notification-message {
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.notification-close:hover {
+    background: #f8f9fa;
+    color: #666;
+}
+
+/* Успешное уведомление */
+.quiz-notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.quiz-success-notification {
+    background: white;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.4s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-notification-content {
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 64px;
+    color: #28a745;
+    margin-bottom: 20px;
+    animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 15px 0;
+}
+
+.success-message {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 30px 0;
+}
+
+.success-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.detail-item i {
+    color: var(--accent-color);
+    font-size: 16px;
+}
+
+.success-close-btn {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    color: white;
+    border: none;
+    padding: 15px 40px;
     border-radius: 10px;
     font-size: 16px;
     font-weight: 600;
@@ -8491,478 +8881,220 @@ body:not(.js-loaded) .mobile-menu-toggle {
     letter-spacing: 0.5px;
 }
 
-.submit-btn:hover {
+.success-close-btn:hover {
     background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(227, 30, 36, 0.3);
 }
 
-/* Мобильная версия */
+/* Анимация загрузки на кнопке */
+.submit-btn .fa-spinner {
+    margin-right: 8px;
+}
+
+/* Мобильная версия уведомлений */
 @media (max-width: 768px) {
-    .quiz-container {
-        margin: 20px;
-        padding: 25px 20px;
+    .quiz-notification {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        max-width: none;
     }
 
-    .quiz-title {
+    .quiz-success-notification {
+        width: 95%;
+        max-width: none;
+    }
+
+    .success-notification-content {
+        padding: 30px 25px;
+    }
+
+    .success-title {
         font-size: 24px;
     }
 
-    .question-title {
-        font-size: 20px;
-    }
-
-    .quiz-navigation {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .quiz-navigation button {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .messenger-options {
-        gap: 15px;
-    }
-
-    .messenger-option {
-        flex: 1 1 45%;
-        min-width: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .quiz-title {
-        font-size: 20px;
-    }
-
-    .question-title {
-        font-size: 18px;
-    }
-
-    .option-item {
-        padding: 15px 18px;
-    }
-
-    .option-text {
+    .success-message {
         font-size: 15px;
     }
 
-    .messenger-option {
-        flex: 1 1 100%;
+    .success-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detail-item {
+        justify-content: center;
     }
 }
 
-/* ===== СТИЛИ ДЛЯ ГАЛОЧКИ СОГЛАСИЯ ===== */
-
-.privacy-policy-group {
-    margin: 20px 0 25px 0;
-}
-
-.privacy-checkbox-wrapper {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-}
-
-/* Скрываем стандартный checkbox */
-.custom-checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-/* Кастомная галочка */
-.checkbox-custom {
+/* Дополнительные стили для кнопки отправки */
+.submit-btn {
     position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 2px solid rgba(227, 30, 36, 0.3);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.checkbox-custom::after {
-    content: '';
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-/* Состояние при наведении */
-.privacy-checkbox-wrapper:hover .checkbox-custom {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(227, 30, 36, 0.1);
-}
-
-/* Состояние когда отмечено */
-.custom-checkbox:checked+.checkbox-label .checkbox-custom {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
-    border-color: var(--accent-color);
-}
-
-.custom-checkbox:checked+.checkbox-label .checkbox-custom::after {
-    display: block;
-}
-
-/* Анимация при клике */
-.custom-checkbox:active+.checkbox-label .checkbox-custom {
-    transform: scale(0.95);
-}
-
-/* Текст рядом с галочкой */
-.checkbox-text {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    user-select: none;
-}
-
-/* Ссылка на политику конфиденциальности */
-.privacy-link {
-    color: var(--accent-color);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.privacy-link:hover {
-    color: var(--accent-light);
-    text-decoration: none;
-}
-
-/* Состояние ошибки */
-.privacy-policy-group.error .checkbox-custom {
-    border-color: #dc3545;
-    animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-2px);
-    }
-
-    75% {
-        transform: translateX(2px);
-    }
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
-    .privacy-checkbox-wrapper {
-        gap: 10px;
-    }
-
-    .checkbox-text {
-        font-size: 13px;
-    }
-
-    .checkbox-custom {
-        width: 18px;
-        height: 18px;
-    }
-
-    .checkbox-custom::after {
-        left: 5px;
-        top: 1px;
-        width: 5px;
-        height: 9px;
-    }
-}
-
-@media (max-width: 480px) {
-    .checkbox-text {
-        font-size: 12px;
-    }
-}
-
-/* ===== ИСПРАВЛЕННЫЕ СТИЛИ ГАЛОЧКИ БЕЗ ДУБЛИРОВАНИЯ ===== */
+    overflow: hidden;
+  }
+  
+  .submit-btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .submit-btn .fa-spinner {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  /* ===== ИСПРАВЛЕННАЯ КАСТОМНАЯ ГАЛОЧКА ===== */
 
 .privacy-policy-group {
-    margin: 20px 0 25px 0;
-}
-
-.privacy-checkbox-wrapper {
+    margin: 25px 0 30px 0;
+  }
+  
+  .privacy-checkbox-wrapper {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 15px;
     cursor: pointer;
     user-select: none;
-}
-
-/* Полностью скрываем стандартный checkbox */
-.privacy-checkbox-input {
+  }
+  
+  /* Полностью скрываем стандартный checkbox */
+  .privacy-checkbox-input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
-    height: 0;
     width: 0;
+    height: 0;
     margin: 0;
     padding: 0;
-    /* ВАЖНО: убираем все отображение */
-    display: none;
-}
-
-/* Единственная видимая кастомная галочка */
-.privacy-checkbox-custom {
+    pointer-events: none;
+    /* ВАЖНО: не используем display: none, так как это может нарушить accessibility */
+  }
+  
+  /* Кастомная галочка */
+  .privacy-checkbox-custom {
     position: relative;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background: white;
-    border: 2px solid rgba(227, 30, 36, 0.3);
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    border: 3px solid rgba(227, 30, 36, 0.3);
+    border-radius: 6px;
+    transition: all 0.4s ease;
     flex-shrink: 0;
-    margin-top: 2px;
-}
-
-/* Галочка внутри */
-.privacy-checkbox-custom::after {
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  
+  /* Галочка внутри (изначально скрыта) */
+  .privacy-checkbox-custom::after {
     content: '';
     position: absolute;
     display: none;
-    left: 6px;
-    top: 2px;
+    left: 7px;
+    top: 3px;
     width: 6px;
     height: 10px;
     border: solid white;
-    border-width: 0 2px 2px 0;
+    border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-}
-
-/* Состояние при наведении */
-.privacy-checkbox-wrapper:hover .privacy-checkbox-custom {
+  }
+  
+  /* При наведении */
+  .privacy-checkbox-wrapper:hover .privacy-checkbox-custom {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(227, 30, 36, 0.1);
-}
-
-/* Состояние когда отмечено */
-.privacy-checkbox-input:checked+.privacy-checkbox-custom {
+    box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.1);
+  }
+  
+  /* Когда checkbox отмечен */
+  .privacy-checkbox-input:checked + .privacy-checkbox-custom {
     background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
     border-color: var(--accent-color);
-}
-
-.privacy-checkbox-input:checked+.privacy-checkbox-custom::after {
+  }
+  
+  .privacy-checkbox-input:checked + .privacy-checkbox-custom::after {
     display: block;
-}
-
-/* Текст рядом с галочкой */
-.privacy-checkbox-text {
-    font-size: 14px;
+  }
+  
+  /* Текст рядом с галочкой */
+  .privacy-checkbox-text {
+    font-size: 15px;
     line-height: 1.5;
     color: var(--text-secondary);
     user-select: none;
-}
-
-/* Ссылка на политику */
-.privacy-link {
+    cursor: pointer;
+  }
+  
+  /* Ссылки в тексте */
+  .privacy-link {
     color: var(--accent-color);
     text-decoration: underline;
     transition: color 0.3s ease;
-}
-
-.privacy-link:hover {
+  }
+  
+  .privacy-link:hover {
     color: var(--accent-light);
     text-decoration: none;
-}
-
-/* Состояние ошибки */
-.privacy-policy-group.error .privacy-checkbox-custom {
+  }
+  
+  /* Анимация ошибки */
+  .privacy-policy-group.error .privacy-checkbox-custom {
     border-color: #dc3545;
-    animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-2px);
-    }
-
-    75% {
-        transform: translateX(2px);
-    }
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
+    animation: shake 0.4s ease-in-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+  }
+  
+  /* Мобильная версия */
+  @media (max-width: 768px) {
     .privacy-checkbox-wrapper {
-        gap: 10px;
+      gap: 12px;
     }
-
+    
     .privacy-checkbox-text {
-        font-size: 13px;
+      font-size: 14px;
     }
-
+    
     .privacy-checkbox-custom {
-        width: 18px;
-        height: 18px;
+      width: 20px;
+      height: 20px;
     }
-
+    
     .privacy-checkbox-custom::after {
-        left: 5px;
-        top: 1px;
-        width: 5px;
-        height: 9px;
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border-width: 0 2px 2px 0;
     }
-}
-
-/* ===== ИСПРАВЛЕННЫЕ СТИЛИ ГАЛОЧКИ БЕЗ ДУБЛИРОВАНИЯ ===== */
-
-.privacy-policy-group {
-    margin: 20px 0 25px 0;
-}
-
-.privacy-checkbox-wrapper {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+  }
+  /* Стили для ссылок в checkbox label */
+.checkbox-label .privacy-link {
+    color: var(--accent-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .checkbox-label .privacy-link:hover {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+  
+  /* Обеспечиваем правильную работу ссылок при клике на label */
+  .checkbox-label {
     cursor: pointer;
-    user-select: none;
-}
-
-/* Полностью скрываем стандартный checkbox */
-.privacy-checkbox-input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    margin: 0;
-    padding: 0;
-    /* ВАЖНО: убираем все отображение */
-    display: none;
-}
-
-/* Единственная видимая кастомная галочка */
-.privacy-checkbox-custom {
+  }
+  
+  .checkbox-label .privacy-link {
     position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 2px solid rgba(227, 30, 36, 0.3);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-/* Галочка внутри */
-.privacy-checkbox-custom::after {
-    content: '';
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-/* Состояние при наведении */
-.privacy-checkbox-wrapper:hover .privacy-checkbox-custom {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(227, 30, 36, 0.1);
-}
-
-/* Состояние когда отмечено */
-.privacy-checkbox-input:checked+.privacy-checkbox-custom {
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
-    border-color: var(--accent-color);
-}
-
-.privacy-checkbox-input:checked+.privacy-checkbox-custom::after {
-    display: block;
-}
-
-/* Текст рядом с галочкой */
-.privacy-checkbox-text {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--text-secondary);
-    user-select: none;
-}
-
-/* Ссылка на политику */
-.privacy-link {
-    color: var(--accent-color);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-.privacy-link:hover {
-    color: var(--accent-light);
-    text-decoration: none;
-}
-
-/* Состояние ошибки */
-.privacy-policy-group.error .privacy-checkbox-custom {
-    border-color: #dc3545;
-    animation: shake 0.3s ease-in-out;
-}
-
-@keyframes shake {
-
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-2px);
-    }
-
-    75% {
-        transform: translateX(2px);
-    }
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
-    .privacy-checkbox-wrapper {
-        gap: 10px;
-    }
-
-    .privacy-checkbox-text {
-        font-size: 13px;
-    }
-
-    .privacy-checkbox-custom {
-        width: 18px;
-        height: 18px;
-    }
-
-    .privacy-checkbox-custom::after {
-        left: 5px;
-        top: 1px;
-        width: 5px;
-        height: 9px;
-    }
-}
+    z-index: 10;
+  }
+  

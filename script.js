@@ -293,413 +293,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Элементы для работы с тестом
-    const progressFill = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
-    const quizSteps = document.querySelectorAll('.quiz-step');
-    const nextButtons = document.querySelectorAll('.next-btn');
-    const backButtons = document.querySelectorAll('.back-btn');
-    const optionCards = document.querySelectorAll('.option-card');
-    const optionItems = document.querySelectorAll('.option-item');
-    const messengerOptions = document.querySelectorAll('.messenger-option');
-    const submitButton = document.querySelector('.submit-button');
-
-    // Общее количество шагов
-    const totalSteps = quizSteps.length;
-    let currentStep = 1;
-
-    // Объект для хранения ответов пользователя
-    const userAnswers = {};
-
-    // Обновление прогресс-бара
-    function updateProgress() {
-        const progress = Math.round((currentStep / totalSteps) * 100);
-        progressFill.style.width = progress + '%';
-        progressText.textContent = `Расчет пройден на ${progress}%`;
-    }
-
-    // Переход к следующему шагу с анимацией
-    function goToNextStep() {
-        if (currentStep < totalSteps) {
-            // Плавно скрываем текущий шаг
-            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-            currentStepEl.style.opacity = '0';
-            currentStepEl.style.transform = 'translateY(10px)';
-
-            setTimeout(() => {
-                // Скрываем текущий шаг
-                currentStepEl.classList.remove('active');
-
-                // Показываем следующий шаг
-                currentStep++;
-                const nextStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-                nextStepEl.classList.add('active');
-
-                // Плавно показываем следующий шаг
-                setTimeout(() => {
-                    nextStepEl.style.opacity = '1';
-                    nextStepEl.style.transform = 'translateY(0)';
-                }, 50);
-
-                // Обновляем прогресс
-                updateProgress();
-
-                // Скроллим к началу теста
-                document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
-            }, 300);
-        }
-    }
-
-    // Возврат к предыдущему шагу с анимацией
-    function goToPreviousStep() {
-        if (currentStep > 1) {
-            // Плавно скрываем текущий шаг
-            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-            currentStepEl.style.opacity = '0';
-            currentStepEl.style.transform = 'translateY(10px)';
-
-            setTimeout(() => {
-                // Скрываем текущий шаг
-                currentStepEl.classList.remove('active');
-
-                // Показываем предыдущий шаг
-                currentStep--;
-                const prevStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-                prevStepEl.classList.add('active');
-
-                // Плавно показываем предыдущий шаг
-                setTimeout(() => {
-                    prevStepEl.style.opacity = '1';
-                    prevStepEl.style.transform = 'translateY(0)';
-                }, 50);
-
-                // Обновляем прогресс
-                updateProgress();
-
-                // Скроллим к началу теста
-                document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
-            }, 300);
-        }
-    }
-
-    // Обработчики клика на карточки опций
-    // Обработчики клика на карточки опций
-    optionCards.forEach(card => {
-        card.addEventListener('click', function () {
-            // Находим все карточки в текущем шаге
-            const stepCards = this.closest('.quiz-step').querySelectorAll('.option-card');
-
-            // Снимаем выделение со всех карточек
-            stepCards.forEach(c => c.classList.remove('selected'));
-
-            // Выделяем выбранную карточку
-            this.classList.add('selected');
-
-            // Сохраняем ответ пользователя
-            const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
-            userAnswers[`step${stepNumber}`] = this.dataset.value;
-
-            // Отправляем событие в Яндекс Метрику
-            if (stepNumber === 1) {
-                sendYandexMetricaEvent('quiz_step1_complete', {
-                    quiz_step: stepNumber,
-                    legal_help_type: this.dataset.value,
-                    option_title: this.querySelector('.option-title').textContent
-                });
-            }
-
-            // Автоматический переход к следующему шагу через небольшую задержку
-            setTimeout(goToNextStep, 500);
-        });
-    });
-
-    // Обработчики клика на элементы списка опций
-    optionItems.forEach(item => {
-        item.addEventListener('click', function () {
-            // Находим все элементы в текущем шаге
-            const stepItems = this.closest('.quiz-step').querySelectorAll('.option-item');
-
-            // Снимаем выделение со всех элементов
-            stepItems.forEach(i => i.classList.remove('selected'));
-
-            // Выделяем выбранный элемент
-            this.classList.add('selected');
-
-            // Сохраняем ответ пользователя
-            const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
-            userAnswers[`step${stepNumber}`] = this.dataset.value;
-
-            // Отправляем события в Яндекс Метрику для разных шагов
-            const eventParams = {
-                quiz_step: stepNumber,
-                selected_value: this.dataset.value,
-                option_text: this.querySelector('.option-text').textContent
-            };
-
-            switch (stepNumber) {
-                case 2:
-                    sendYandexMetricaEvent('quiz_step2_complete', {
-                        ...eventParams,
-                        case_stage: this.dataset.value
-                    });
-                    break;
-                case 3:
-                    sendYandexMetricaEvent('quiz_step3_complete', {
-                        ...eventParams,
-                        problem_timeframe: this.dataset.value
-                    });
-                    break;
-                case 4:
-                    sendYandexMetricaEvent('quiz_step4_complete', {
-                        ...eventParams,
-                        budget_range: this.dataset.value
-                    });
-                    break;
-                case 5:
-                    sendYandexMetricaEvent('quiz_step5_complete', {
-                        ...eventParams,
-                        urgency_level: this.dataset.value
-                    });
-                    break;
-            }
-        });
-    });
-
-
-    // Обработчики клика на опции мессенджеров
-    messengerOptions.forEach(option => {
-        option.addEventListener('click', function () {
-            // Снимаем выделение со всех опций
-            messengerOptions.forEach(o => o.classList.remove('selected'));
-
-            // Выделяем выбранную опцию
-            this.classList.add('selected');
-
-            // Сохраняем выбранный мессенджер
-            userAnswers.messenger = this.dataset.messenger;
-
-            // Отправляем событие в Яндекс Метрику
-            sendYandexMetricaEvent('quiz_step6_messenger', {
-                quiz_step: 6,
-                selected_messenger: this.dataset.messenger,
-                messenger_name: this.querySelector('.messenger-name').textContent
-            });
-
-            // Обновляем текст кнопки (остальной код без изменений)
-            const submitButtonText = document.querySelector('.submit-button span');
-            switch (this.dataset.messenger) {
-                case 'whatsapp':
-                    submitButtonText.textContent = 'Получить расчет в WhatsApp';
-                    break;
-                case 'viber':
-                    submitButtonText.textContent = 'Получить расчет в Viber';
-                    break;
-                case 'telegram':
-                    submitButtonText.textContent = 'Получить расчет в Telegram';
-                    break;
-                case 'email':
-                    submitButtonText.textContent = 'Получить расчет на E-mail';
-                    break;
-                default:
-                    submitButtonText.textContent = 'Получить расчет';
-            }
-        });
-    });
-
-    // Обработчики клика на кнопки "Далее"
-    nextButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Проверяем, был ли сделан выбор на текущем шаге
-            const currentStepEl = this.closest('.quiz-step');
-            const stepNumber = parseInt(currentStepEl.dataset.step);
-
-            // Для шагов со списком опций проверяем наличие выбранного элемента
-            if (currentStepEl.querySelector('.options-list')) {
-                const selectedOption = currentStepEl.querySelector('.option-item.selected');
-                if (!selectedOption) {
-                    // Показываем анимацию пульсации для подсвечивания необходимости выбора
-                    const optionsList = currentStepEl.querySelector('.options-list');
-                    optionsList.style.animation = 'pulse 0.5s';
-                    setTimeout(() => {
-                        optionsList.style.animation = '';
-                    }, 500);
-                    return;
-                }
-            }
-
-            goToNextStep();
-        });
-    });
-
-    // Обработчики клика на кнопки "Назад"
-    backButtons.forEach(button => {
-        button.addEventListener('click', goToPreviousStep);
-    });
-
-    // Обработчик отправки формы
-    if (submitButton) {
-        submitButton.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Проверка заполнения формы
-            const nameInput = document.querySelector('.contact-form input[type="text"]');
-            const phoneInput = document.querySelector('.contact-form input[type="tel"]');
-            const checkbox = document.querySelector('.contact-form input[type="checkbox"]');
-
-            // Проверка имени
-            if (!nameInput.value.trim()) {
-                nameInput.style.borderColor = 'var(--red-color)';
-                nameInput.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    nameInput.style.animation = '';
-                }, 500);
-                return;
-            }
-
-            // Проверка телефона
-            if (!phoneInput.value.trim()) {
-                phoneInput.style.borderColor = 'var(--red-color)';
-                phoneInput.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    phoneInput.style.animation = '';
-                }, 500);
-                return;
-            }
-
-            // Проверка согласия
-            if (!checkbox.checked) {
-                const checkboxContainer = document.querySelector('.checkbox-container');
-                checkboxContainer.style.color = 'var(--red-color)';
-                checkboxContainer.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    checkboxContainer.style.animation = '';
-                    checkboxContainer.style.color = '';
-                }, 500);
-                return;
-            }
-
-            // Проверка выбора мессенджера
-            const selectedMessenger = document.querySelector('.messenger-option.selected');
-            if (!selectedMessenger) {
-                const messengerOptionsContainer = document.querySelector('.messenger-options');
-                messengerOptionsContainer.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    messengerOptionsContainer.style.animation = '';
-                }, 500);
-                return;
-            }
-
-            // Собираем все данные формы
-            userAnswers.name = nameInput.value.trim();
-            userAnswers.phone = phoneInput.value.trim();
-
-            // Анимация отправки
-            submitButton.style.pointerEvents = 'none';
-            const submitButtonText = submitButton.querySelector('span');
-            const submitButtonIcon = submitButton.querySelector('i');
-            const originalText = submitButtonText.textContent;
-            const originalIcon = submitButtonIcon.className;
-
-            submitButtonText.textContent = 'Отправка';
-            submitButtonIcon.className = 'fas fa-spinner fa-spin';
-
-            // Имитация отправки данных на сервер
-            setTimeout(() => {
-                submitButtonText.textContent = 'Отправлено!';
-                submitButtonIcon.className = 'fas fa-check';
-                submitButton.style.backgroundColor = '#2ecc71';
-
-                // Здесь был бы код для отправки данных на сервер
-                console.log('Данные для отправки:', userAnswers);
-                sendYandexMetricaEvent('quiz_form_submitted', {
-                    name: userAnswers.name,
-                    phone: userAnswers.phone,
-                    messenger: userAnswers.messenger,
-                    legal_help_type: userAnswers.step1,
-                    case_stage: userAnswers.step2,
-                    problem_timeframe: userAnswers.step3,
-                    budget_range: userAnswers.step4,
-                    urgency_level: userAnswers.step5,
-                    quiz_completed: true
-                });
-
-
-                // Показываем сообщение об успешной отправке через небольшую задержку
-                setTimeout(() => {
-                    // Создаем и добавляем уведомление об успехе
-                    const successNotification = document.createElement('div');
-                    successNotification.className = 'success-notification';
-                    successNotification.innerHTML = `
-              <div class="notification-icon">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <div class="notification-content">
-                <div class="notification-title">Заявка принята!</div>
-                <div class="notification-text">Юрист свяжется с вами в течение 45 минут</div>
-              </div>
-              <div class="notification-close">
-                <i class="fas fa-times"></i>
-              </div>
-            `;
-
-                    // Стили для уведомления
-                    successNotification.style.cssText = `
-              position: fixed;
-              top: 20px;
-              right: 20px;
-              background-color: rgba(46, 204, 113, 0.95);
-              color: white;
-              padding: 15px 20px;
-              border-radius: 5px;
-              display: flex;
-              align-items: center;
-              max-width: 320px;
-              box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-              z-index: 9999;
-              animation: slideIn 0.3s forwards;
-            `;
-
-                    document.body.appendChild(successNotification);
-
-                    // Восстановление формы
-                    setTimeout(() => {
-                        submitButtonText.textContent = originalText;
-                        submitButtonIcon.className = originalIcon;
-                        submitButton.style.backgroundColor = '';
-                        submitButton.style.pointerEvents = 'auto';
-                        nameInput.value = '';
-                        phoneInput.value = '';
-                    }, 1500);
-
-                    // Удаление уведомления через 5 секунд
-                    setTimeout(() => {
-                        successNotification.style.animation = 'slideOut 0.3s forwards';
-                        setTimeout(() => {
-                            document.body.removeChild(successNotification);
-                        }, 300);
-                    }, 5000);
-                }, 1000);
-            }, 1500);
-        });
-    }
-
-    // Инициализация первого шага
-    updateProgress();
-
-    // Установка начального стиля для элементов
-    quizSteps.forEach(step => {
-        step.style.opacity = '0';
-        step.style.transform = 'translateY(10px)';
-    });
-
-    // Показываем первый шаг с анимацией
-    setTimeout(() => {
-        const firstStep = document.querySelector('.quiz-step[data-step="1"]');
-        firstStep.style.opacity = '1';
-        firstStep.style.transform = 'translateY(0)';
-    }, 100);
-});
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -2548,260 +2141,444 @@ document.addEventListener('DOMContentLoaded', function () {
     initInfiniteScroll();
 });
 
-// Новый квиз с интеграцией Яндекс.Метрики
-class StrategyQuiz {
-    constructor(container) {
-        this.container = container;
-        this.steps = Array.from(container.querySelectorAll('.quiz-step'));
-        this.currentStep = 0;
-        this.answers = {};
-        this.selectedMessenger = null;
-
-        this.progressFill = container.querySelector('.progress-fill');
-        this.progressText = container.querySelector('.progress-text');
-
-        this.init();
-    }
-
-    init() {
-        this.showStep(this.currentStep);
-        this.setupOptions();
-        this.setupNavigation();
-        this.setupMessengerOptions();
-        this.setupForm();
-
-        // Отправляем событие начала квиза в Яндекс.Метрику
-        this.sendYandexMetricaEvent('quiz_start');
-    }
-
-    showStep(index) {
-        this.steps.forEach((step, i) => {
-            step.classList.toggle('active', i === index);
-        });
-        this.updateProgress();
-    }
-
-    updateProgress() {
-        const percent = Math.round(((this.currentStep) / (this.steps.length - 1)) * 100);
-        this.progressFill.style.width = percent + '%';
-        this.progressText.textContent = `Расчет пройден на ${percent}%`;
-    }
-
-    setupOptions() {
-        this.steps.forEach(step => {
-            const options = step.querySelectorAll('.option-item');
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    this.selectOption(step, option);
-                });
-            });
-        });
-    }
-
-    selectOption(step, option) {
-        const options = step.querySelectorAll('.option-item');
-        options.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-
-        const stepNum = step.dataset.step;
-        this.answers[stepNum] = option.dataset.value;
-
-        // Отправляем событие выбора ответа в Яндекс.Метрику
-        this.sendYandexMetricaEvent(`quiz_step_${stepNum}`, {
-            answer: option.dataset.value,
-            question: step.querySelector('.question-title').textContent
-        });
-    }
-
-    setupNavigation() {
-        this.container.addEventListener('click', e => {
-            if (e.target.closest('.next-btn')) {
-                e.preventDefault();
-                this.nextStep();
-            } else if (e.target.closest('.back-btn')) {
-                e.preventDefault();
-                this.prevStep();
-            }
-        });
-    }
-
-    nextStep() {
-        if (!this.isOptionSelected(this.currentStep)) {
-            alert('Пожалуйста, выберите вариант ответа.');
-            return;
-        }
-
-        if (this.currentStep < this.steps.length - 1) {
-            this.currentStep++;
-            this.showStep(this.currentStep);
-
-            // Отправляем событие перехода к следующему шагу
-            this.sendYandexMetricaEvent(`quiz_next_step_${this.currentStep}`);
-        }
-    }
-
-    prevStep() {
-        if (this.currentStep > 0) {
-            this.currentStep--;
-            this.showStep(this.currentStep);
-
-            // Отправляем событие возврата к предыдущему шагу
-            this.sendYandexMetricaEvent(`quiz_back_step_${this.currentStep}`);
-        }
-    }
-
-    isOptionSelected(stepIndex) {
-        const step = this.steps[stepIndex];
-        return step.querySelector('.selected') !== null;
-    }
-
-    setupMessengerOptions() {
-        const messengerOptions = this.container.querySelectorAll('.messenger-option');
-        messengerOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                messengerOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                this.selectedMessenger = option.dataset.messenger;
-
-                // Отправляем событие выбора мессенджера
-                this.sendYandexMetricaEvent('quiz_messenger_selected', {
-                    messenger: this.selectedMessenger
-                });
-            });
-        });
-    }
-
-    setupForm() {
-        const form = this.container.querySelector('#quizContactForm');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            this.submitForm(form);
-        });
-    }
-
-    // Обновленный метод submitForm с проверкой согласия
-    submitForm(form) {
-        const name = form.querySelector('input[name="name"]').value.trim();
-        const phone = form.querySelector('input[name="phone"]').value.trim();
-        const privacyCheckbox = form.querySelector('#privacy-policy-checkbox');
-        const messenger = this.selectedMessenger || 'phone';
-
-        // Проверяем заполнение полей
-        if (!name || !phone) {
-            alert('Пожалуйста, заполните все поля.');
-            return;
-        }
-
-        // Проверяем согласие с политикой конфиденциальности
-        if (!privacyCheckbox.checked) {
-            alert('Необходимо согласиться с политикой конфиденциальности данных.');
-
-            // Добавляем визуальную индикацию ошибки
-            const privacyGroup = form.querySelector('.privacy-policy-group');
-            privacyGroup.classList.add('error');
-
-            // Убираем индикацию ошибки через 3 секунды
-            setTimeout(() => {
-                privacyGroup.classList.remove('error');
-            }, 3000);
-
-            return;
-        }
-
-        // Собираем все данные для отправки
-        const quizData = {
-            name: name,
-            phone: phone,
-            messenger: messenger,
-            answers: this.answers,
-            privacyConsent: true, // Подтверждение согласия
-            timestamp: new Date().toISOString()
-        };
-
-        console.log('Отправка данных квиза:', quizData);
-
-        // Отправляем основное событие завершения квиза в Яндекс.Метрику
-        this.sendYandexMetricaEvent('quiz_completed', quizData);
-
-        // Отправляем цель "Заявка с квиза"
-        this.sendYandexMetricaGoal('quiz_lead');
-
-        // Отправляем событие согласия с политикой
-        this.sendYandexMetricaEvent('privacy_consent_given', {
-            source: 'quiz'
-        });
-
-        // Отправляем электронную торговлю (если настроена)
-        this.sendYandexMetricaEcommerce('quiz_conversion', {
-            currency: 'RUB',
-            value: 1 // Ценность лида
-        });
-
-        // Показываем сообщение об успехе
-        this.showSuccessMessage();
-
-        // Здесь можно добавить отправку данных на сервер
-        // this.sendToServer(quizData);
-    }
-
-    showSuccessMessage() {
-        const resultContent = this.container.querySelector('.result-content');
-        resultContent.innerHTML = `
-        <div class="success-message">
-          <div class="success-icon">
-            <i class="fas fa-check-circle"></i>
-          </div>
-          <h3>Спасибо за заявку!</h3>
-          <p>Мы свяжемся с вами в ближайшее время для предоставления расчета стоимости услуг.</p>
-          <button type="button" class="reset-quiz-btn" onclick="location.reload()">
-            Пройти заново
-          </button>
-        </div>
-      `;
-    }
-
-    // Методы для работы с Яндекс.Метрикой
-    sendYandexMetricaEvent(eventName, params = {}) {
-        if (typeof ym !== 'undefined' && window.ymCounterId) {
-            try {
-                ym(window.ymCounterId, 'reachGoal', eventName, params);
-                console.log(`Яндекс.Метрика событие: ${eventName}`, params);
-            } catch (error) {
-                console.error('Ошибка отправки события в Яндекс.Метрику:', error);
-            }
-        } else {
-            console.log(`Яндекс.Метрика не загружена. Событие: ${eventName}`, params);
-        }
-    }
-
-    sendYandexMetricaGoal(goalName) {
-        if (typeof ym !== 'undefined' && window.ymCounterId) {
-            try {
-                ym(window.ymCounterId, 'reachGoal', goalName);
-                console.log(`Яндекс.Метрика цель: ${goalName}`);
-            } catch (error) {
-                console.error('Ошибка отправки цели в Яндекс.Метрику:', error);
-            }
-        }
-    }
-
-    sendYandexMetricaEcommerce(action, data) {
-        if (typeof ym !== 'undefined' && window.ymCounterId) {
-            try {
-                ym(window.ymCounterId, 'reachGoal', action, data);
-                console.log(`Яндекс.Метрика электронная торговля: ${action}`, data);
-            } catch (error) {
-                console.error('Ошибка отправки электронной торговли в Яндекс.Метрику:', error);
-            }
-        }
-    }
-}
-
-// Инициализация квиза
+// Квиз на основе принципов старого кода
 document.addEventListener('DOMContentLoaded', function () {
-    const quizContainer = document.querySelector('.quiz-container');
-    if (quizContainer) {
-        new StrategyQuiz(quizContainer);
-        console.log('✅ Квиз "Стратегия" инициализирован');
+    // Элементы для работы с квизом
+    const progressFill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+    const quizSteps = document.querySelectorAll('.quiz-step');
+    const nextButtons = document.querySelectorAll('.next-btn');
+    const backButtons = document.querySelectorAll('.back-btn');
+    const optionCards = document.querySelectorAll('.option-card');
+    const optionItems = document.querySelectorAll('.option-item');
+    const messengerOptions = document.querySelectorAll('.messenger-option');
+    const submitButton = document.querySelector('.submit-button');
+    const quizForm = document.querySelector('.quiz-container');
+
+    // Общее количество шагов
+    const totalSteps = quizSteps.length;
+    let currentStep = 1;
+
+    // Объект для хранения ответов пользователя
+    const userAnswers = {};
+
+    // Функция для отправки событий в Яндекс Метрику
+    function sendYandexMetricaEvent(goalId, params = {}) {
+        if (typeof ym !== 'undefined') {
+            ym(102159330, 'reachGoal', goalId, params);
+            console.log('Отправлено событие в Метрику:', goalId, params);
+        } else {
+            console.warn('Яндекс Метрика не загружена');
+        }
     }
+
+    // Обновление прогресс-бара
+    function updateProgress() {
+        const progress = Math.round((currentStep / totalSteps) * 100);
+        progressFill.style.width = progress + '%';
+        progressText.textContent = `Расчет пройден на ${progress}%`;
+    }
+
+    // Переход к следующему шагу с анимацией
+    function goToNextStep() {
+        if (currentStep < totalSteps) {
+            // Плавно скрываем текущий шаг
+            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+            currentStepEl.style.opacity = '0';
+            currentStepEl.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                // Скрываем текущий шаг
+                currentStepEl.classList.remove('active');
+
+                // Показываем следующий шаг
+                currentStep++;
+                const nextStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+                nextStepEl.classList.add('active');
+
+                // Плавно показываем следующий шаг
+                setTimeout(() => {
+                    nextStepEl.style.opacity = '1';
+                    nextStepEl.style.transform = 'translateY(0)';
+                }, 50);
+
+                // Обновляем прогресс
+                updateProgress();
+
+                // Скроллим к началу квиза
+                document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }
+
+    // Возврат к предыдущему шагу с анимацией
+    function goToPreviousStep() {
+        if (currentStep > 1) {
+            // Плавно скрываем текущий шаг
+            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+            currentStepEl.style.opacity = '0';
+            currentStepEl.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                // Скрываем текущий шаг
+                currentStepEl.classList.remove('active');
+
+                // Показываем предыдущий шаг
+                currentStep--;
+                const prevStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+                prevStepEl.classList.add('active');
+
+                // Плавно показываем предыдущий шаг
+                setTimeout(() => {
+                    prevStepEl.style.opacity = '1';
+                    prevStepEl.style.transform = 'translateY(0)';
+                }, 50);
+
+                // Обновляем прогресс
+                updateProgress();
+
+                // Скроллим к началу квиза
+                document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }
+
+    // Обработчики клика на карточки опций
+    optionCards.forEach(card => {
+        card.addEventListener('click', function () {
+            // Находим все карточки в текущем шаге
+            const stepCards = this.closest('.quiz-step').querySelectorAll('.option-card');
+
+            // Снимаем выделение со всех карточек
+            stepCards.forEach(c => c.classList.remove('selected'));
+
+            // Выделяем выбранную карточку
+            this.classList.add('selected');
+
+            // Сохраняем ответ пользователя
+            const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
+            userAnswers[`step${stepNumber}`] = this.dataset.value;
+
+            // Отправляем событие в Яндекс Метрику
+            sendYandexMetricaEvent('quiz_step1_complete', {
+                quiz_step: stepNumber,
+                legal_help_type: this.dataset.value,
+                option_title: this.querySelector('.option-title').textContent
+            });
+
+            // Автоматический переход к следующему шагу через небольшую задержку
+            setTimeout(goToNextStep, 500);
+        });
+    });
+
+    // Обработчики клика на элементы списка опций
+    optionItems.forEach(item => {
+        item.addEventListener('click', function () {
+            // Находим все элементы в текущем шаге
+            const stepItems = this.closest('.quiz-step').querySelectorAll('.option-item');
+
+            // Снимаем выделение со всех элементов
+            stepItems.forEach(i => i.classList.remove('selected'));
+
+            // Выделяем выбранный элемент
+            this.classList.add('selected');
+
+            // Сохраняем ответ пользователя
+            const stepNumber = parseInt(this.closest('.quiz-step').dataset.step);
+            userAnswers[`step${stepNumber}`] = this.dataset.value;
+
+            // Отправляем события в Яндекс Метрику для разных шагов
+            const eventParams = {
+                quiz_step: stepNumber,
+                selected_value: this.dataset.value,
+                option_text: this.querySelector('.option-text').textContent
+            };
+
+            switch (stepNumber) {
+                case 2:
+                    sendYandexMetricaEvent('quiz_step2_complete', eventParams);
+                    break;
+                case 3:
+                    sendYandexMetricaEvent('quiz_step3_complete', eventParams);
+                    break;
+            }
+        });
+    });
+
+    // Обработчики клика на опции мессенджеров
+    messengerOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            // Снимаем выделение со всех опций
+            messengerOptions.forEach(o => o.classList.remove('selected'));
+
+            // Выделяем выбранную опцию
+            this.classList.add('selected');
+
+            // Сохраняем выбранный мессенджер
+            userAnswers.messenger = this.dataset.messenger;
+
+            // Отправляем событие в Яндекс Метрику
+            sendYandexMetricaEvent('quiz_messenger_selected', {
+                selected_messenger: this.dataset.messenger,
+                messenger_name: this.querySelector('.messenger-name').textContent
+            });
+        });
+    });
+
+    // Обработчики клика на кнопки "Далее"
+    nextButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            // Проверяем, был ли сделан выбор на текущем шаге
+            const currentStepEl = this.closest('.quiz-step');
+            const selectedOption = currentStepEl.querySelector('.option-item.selected');
+            
+            if (!selectedOption) {
+                // Показываем анимацию пульсации для подсвечивания необходимости выбора
+                const optionsList = currentStepEl.querySelector('.options-list');
+                optionsList.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    optionsList.style.animation = '';
+                }, 500);
+                return;
+            }
+
+            goToNextStep();
+        });
+    });
+
+    // Обработчики клика на кнопки "Назад"
+    backButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            goToPreviousStep();
+        });
+    });
+
+    // Обработчик отправки формы
+    if (submitButton) {
+        submitButton.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Проверка заполнения формы
+            const nameInput = document.querySelector('input[name="name"]');
+            const phoneInput = document.querySelector('input[name="phone"]');
+            const checkbox = document.querySelector('#privacy-policy-checkbox');
+
+            // Проверка имени
+            if (!nameInput.value.trim()) {
+                nameInput.style.borderColor = '#e31e24';
+                nameInput.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    nameInput.style.animation = '';
+                    nameInput.style.borderColor = '';
+                }, 500);
+                return;
+            }
+
+            // Проверка телефона
+            if (!phoneInput.value.trim()) {
+                phoneInput.style.borderColor = '#e31e24';
+                phoneInput.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    phoneInput.style.animation = '';
+                    phoneInput.style.borderColor = '';
+                }, 500);
+                return;
+            }
+
+            // Проверка согласия
+            if (!checkbox.checked) {
+                const checkboxContainer = document.querySelector('.checkbox-wrapper');
+                checkboxContainer.style.color = '#e31e24';
+                checkboxContainer.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    checkboxContainer.style.animation = '';
+                    checkboxContainer.style.color = '';
+                }, 500);
+                return;
+            }
+
+            // Проверка выбора мессенджера
+            const selectedMessenger = document.querySelector('.messenger-option.selected');
+            if (!selectedMessenger) {
+                const messengerOptionsContainer = document.querySelector('.messenger-options');
+                messengerOptionsContainer.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    messengerOptionsContainer.style.animation = '';
+                }, 500);
+                return;
+            }
+
+            // Собираем все данные формы
+            userAnswers.name = nameInput.value.trim();
+            userAnswers.phone = phoneInput.value.trim();
+
+            // Анимация отправки
+            submitButton.style.pointerEvents = 'none';
+            const submitButtonText = submitButton.querySelector('span');
+            const submitButtonIcon = submitButton.querySelector('i');
+            const originalText = submitButtonText.textContent;
+            const originalIcon = submitButtonIcon.className;
+
+            submitButtonText.textContent = 'Отправка...';
+            submitButtonIcon.className = 'fas fa-spinner fa-spin';
+
+            // Имитация отправки данных на сервер
+            setTimeout(() => {
+                submitButtonText.textContent = 'Отправлено!';
+                submitButtonIcon.className = 'fas fa-check';
+                submitButton.style.backgroundColor = '#28a745';
+
+                // Здесь был бы код для отправки данных на сервер
+                console.log('Данные для отправки:', userAnswers);
+                sendYandexMetricaEvent('quiz_form_submitted', userAnswers);
+
+                // Показываем сообщение об успешной отправке
+                showSuccessNotification();
+
+                // Восстановление формы через некоторое время
+                setTimeout(() => {
+                    submitButtonText.textContent = originalText;
+                    submitButtonIcon.className = originalIcon;
+                    submitButton.style.backgroundColor = '';
+                    submitButton.style.pointerEvents = 'auto';
+                }, 3000);
+            }, 2000);
+        });
+    }
+
+    // Функция показа уведомления об успехе
+    function showSuccessNotification() {
+        const successNotification = document.createElement('div');
+        successNotification.className = 'success-notification';
+        successNotification.innerHTML = `
+            <div class="notification-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">Заявка принята!</div>
+                <div class="notification-text">Юрист свяжется с вами в течение 45 минут</div>
+            </div>
+            <div class="notification-close">
+                <i class="fas fa-times"></i>
+            </div>
+        `;
+
+        // Стили для уведомления
+        successNotification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 350px;
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+            z-index: 9999;
+            animation: slideIn 0.5s ease-out;
+        `;
+
+        document.body.appendChild(successNotification);
+
+        // Обработчик закрытия
+        const closeBtn = successNotification.querySelector('.notification-close');
+        closeBtn.addEventListener('click', () => {
+            successNotification.style.animation = 'slideOut 0.3s ease-in';
+            setTimeout(() => {
+                document.body.removeChild(successNotification);
+            }, 300);
+        });
+
+        // Автоматическое удаление через 7 секунд
+        setTimeout(() => {
+            if (successNotification.parentNode) {
+                successNotification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(successNotification);
+                }, 300);
+            }
+        }, 7000);
+    }
+
+    // Инициализация первого шага
+    updateProgress();
+
+    // Установка начального стиля для элементов
+    quizSteps.forEach(step => {
+        step.style.opacity = '0';
+        step.style.transform = 'translateY(10px)';
+    });
+
+    // Показываем первый шаг с анимацией
+    setTimeout(() => {
+        const firstStep = document.querySelector('.quiz-step[data-step="1"]');
+        firstStep.style.opacity = '1';
+        firstStep.style.transform = 'translateY(0)';
+    }, 100);
+
+    console.log('✅ Квиз инициализирован по принципам старого кода');
 });
+
+// Добавляем CSS анимации для уведомлений
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+    
+    .notification-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+    
+    .notification-content {
+        flex: 1;
+    }
+    
+    .notification-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .notification-text {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+    
+    .notification-close {
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+    }
+    
+    .notification-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+`;
+document.head.appendChild(notificationStyles);
