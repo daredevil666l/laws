@@ -91,7 +91,7 @@ get_header();
                             </p>
                         </div>
                         <div class="contact-action">
-                            <button class="callback-btn contact-banner-btn" onclick="openCallbackModal()">
+                            <button class="callback-btn2 contact-banner-btn" onclick="openCallbackModal()">
                                 Заказать звонок
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <!-- <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" -->
@@ -171,7 +171,7 @@ get_header();
                         }
 
                         /* Кнопка "Заказать звонок" */
-                        .callback-btn {
+                        .callback-btn2 {
                             display: inline-flex;
                             align-items: center;
                             gap: 10px;
@@ -192,7 +192,7 @@ get_header();
                             letter-spacing: 0.5px;
                         }
 
-                        .callback-btn::before {
+                        .callback-btn2::before {
                             content: '';
                             position: absolute;
                             top: 0;
@@ -203,27 +203,27 @@ get_header();
                             transition: left 0.5s ease;
                         }
 
-                        .callback-btn:hover::before {
+                        .callback-btn2:hover::before {
                             left: 100%;
                         }
 
-                        .callback-btn:hover {
+                        .callback-btn2:hover {
                             background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
                             transform: translateY(-2px);
                             box-shadow: 0 8px 25px rgba(227, 30, 36, 0.4);
                         }
 
-                        .callback-btn:active {
+                        .callback-btn2:active {
                             transform: translateY(0);
                             box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3);
                         }
 
-                        .callback-btn svg {
+                        .callback-btn2 svg {
                             transition: transform 0.3s ease;
                             flex-shrink: 0;
                         }
 
-                        .callback-btn:hover svg {
+                        .callback-btn2:hover svg {
                             transform: translateX(3px);
                         }
 
@@ -254,7 +254,7 @@ get_header();
                                 align-self: center;
                             }
 
-                            .callback-btn {
+                            .callback-btn2 {
                                 width: 100%;
                                 max-width: 280px;
                                 justify-content: center;
@@ -279,7 +279,7 @@ get_header();
                                 font-size: 14px;
                             }
 
-                            .callback-btn {
+                            .callback-btn2 {
                                 padding: 10px 20px;
                                 font-size: 14px;
                             }
@@ -287,8 +287,8 @@ get_header();
 
                         /* ===== ПРИНУДИТЕЛЬНОЕ ОТОБРАЖЕНИЕ КНОПКИ В CONTACT-BANNER ===== */
 
-                        /* Убеждаемся что кнопка .callback-btn всегда видна */
-                        .contact-banner .callback-btn {
+                        /* Убеждаемся что кнопка .callback-btn2 всегда видна */
+                        .contact-banner .callback-btn2 {
                             display: inline-flex !important;
                             visibility: visible !important;
                             opacity: 1 !important;
@@ -299,7 +299,7 @@ get_header();
 
                         /* Специально для мобильных - кнопка должна быть видна */
                         @media (max-width: 768px) {
-                            .contact-banner .callback-btn {
+                            .contact-banner .callback-btn2 {
                                 display: flex !important;
                                 visibility: visible !important;
                                 opacity: 1 !important;
@@ -312,7 +312,7 @@ get_header();
                         }
 
                         @media (max-width: 480px) {
-                            .contact-banner .callback-btn {
+                            .contact-banner .callback-btn2 {
                                 display: flex !important;
                                 width: 100% !important;
                                 max-width: 250px !important;
@@ -320,7 +320,7 @@ get_header();
                         }
 
                         /* Исключение из общих правил скрытия кнопок */
-                        .contact-banner .callback-btn:not(.mobile-callback-btn-auto) {
+                        .contact-banner .callback-btn2:not(.mobile-callback-btn-auto) {
                             display: inline-flex !important;
                         }
 
@@ -328,7 +328,7 @@ get_header();
                         @media (max-width: 768px) {
 
                             .contact-banner button,
-                            .contact-banner .callback-btn,
+                            .contact-banner .callback-btn2,
                             .contact-banner a[class*="btn"] {
                                 display: flex !important;
                                 visibility: visible !important;

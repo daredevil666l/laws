@@ -2371,6 +2371,7 @@ body {
 
 .checkbox-label {
     position: relative;
+    text-align: left;
     padding-left: 35px;
     cursor: pointer;
     font-size: 14px;
@@ -8725,8 +8726,11 @@ body:not(.js-loaded) .mobile-menu-toggle {
 
 .notification-content {
     display: flex;
-    align-items: flex-start;
-    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 6px;
     padding: 20px;
 }
 
