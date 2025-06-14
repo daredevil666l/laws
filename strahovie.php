@@ -1,0 +1,548 @@
+<?php
+/**
+ * Template Name: strahovie
+ */
+get_header();
+?>
+
+        <div class="main-image-container">
+            <img src="<?php echo get_stylesheet_directory_uri();?>/img/strahovye-spory.jpg" alt="Страховой юрист" class="main-image">
+        </div>
+        <!-- Заголовок и подзаголовок -->
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="main-title">СТРАХОВОЙ ЮРИСТ</h1>
+                    <h2 class="subtitle">Юридическая помощь по любым спорам</h2>
+
+                    <!-- Блок с галочками -->
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <img src="<?php echo get_stylesheet_directory_uri();?>/img/12.svg" alt="Галочка">
+                            </div>
+                            <div class="benefit-text">Быстро, надежно, юридически чисто</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <img src="<?php echo get_stylesheet_directory_uri();?>/img/12.svg" alt="Галочка">
+                            </div>
+                            <div class="benefit-text">Вся ответственность на нас по договору</div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <img src="<?php echo get_stylesheet_directory_uri();?>/img/12.svg" alt="Галочка">
+                            </div>
+                            <div class="benefit-text">Сопровождаем на всех этапах от выбора до подписания сделки</div>
+                        </div>
+                    </div>
+
+                    <button class="cta-button hero-button">Получить консультацию</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Основной контент -->
+    <div class="page-container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a href="/services" class="breadcrumb-link">Юридические услуги</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-current">Земельный юрист</span>
+        </div>
+
+        <div class="content-sidebar-wrapper">
+            <!-- Основной контент -->
+            <div class="content-container">
+                <div class="article-content">
+                    <!-- Главный заголовок -->
+                    <h2 class="content-title">Споры со страховыми компаниями</h2>
+
+                    <!-- Вводный текст -->
+                    <p class="text-paragraph">
+                        Безусловно, практически каждый из нас хоть раз в жизни «добровольно» страховал свою жизнь,
+                        здоровье, риск потери трудоспособности или заключал такой обязательный договор страхования, как
+                        страхование автомобиля по ОСАГО.
+                    </p>
+
+                    <div class="contact-info-box">
+                        <div class="contact-icon">
+                            <span class="fas fa-phone-alt">☝️</span>
+                        </div>
+                        <div class="contact-text">
+                            <p>Чтобы заказать услуги или получить консультацию — звоните по телефонам или оставьте
+                                заявку на сайте.</p>
+                        </div>
+                    </div>
+
+                    <!-- Раздел о кредитном страховании -->
+                    <h3 class="content-subtitle">Итак, Вы заключили договор займа с банком</h3>
+
+                    <p class="text-paragraph">
+                        При заключении практически каждого кредитного договора банк «предлагает» заемщику оформить
+                        договор страхования, без него заем вряд-ли одобрят. При этом причина отказа в предоставлении
+                        кредита заемщику озвучена не будет.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h4 class="highlight-title">Можно ли вернуть сумму страховки и как это сделать на законных
+                            основаниях?</h4>
+                        <p><strong>Можно!</strong></p>
+                    </div>
+
+                    <p class="text-paragraph">
+                        Расторгнуть такой договор можно даже после его заключения и уплаты денежных средств.
+                        Естественно, при том условии, если таковая страховка не является обязательной в силу закона.
+                        Главное не нарушить срок на подачу заявления о расторжении и возврате и условиями страхователя
+                        (страховщика).
+                    </p>
+
+                    <div class="info-box">
+                        <h4 class="info-title">Обязательное страхование</h4>
+                        <p>Обязательным при получении кредита является страхование имущества (ипотека) и при
+                            приобретении в кредит автомобиля (автокредит).</p>
+                    </div>
+
+                    <p class="text-paragraph">
+                        При иных целях получения от банка заемных средств, страхование является добровольным, а значит
+                        сумма страховой премии — возвратной. Это касается в частности возврата:
+                    </p>
+
+                    <ul class="custom-list">
+                        <li>Страховки жизни</li>
+                        <li>Страховки риска потери трудоспособности</li>
+                        <li>Страховки здоровья</li>
+                        <li>И т.п.</li>
+                    </ul>
+
+                    <!-- Период охлаждения -->
+                    <h3 class="content-subtitle accent">Период охлаждения — 14 дней</h3>
+
+                    <p class="text-paragraph">
+                        Для того чтобы вернуть сумму страховой премии для начала нужно обратиться в банк (или к самому
+                        страховщику) с заявлением о расторжении договора страхования Срок на обращение – 14 дней с
+                        момента заключения такового договора. Этот срок называется – периодом охлаждения и обязаны это
+                        делать все банки, в соответствии с Указанием Центрального банка РФ.
+                    </p>
+
+                    <div class="warning-box">
+                        <div class="warning-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="warning-content">
+                            <h4>Это условие обязательно для всех банков!</h4>
+                            <p>Но на деле в банке скрывают от заемщика это условие разнообразными способами. Поэтому
+                                очень важно внимательно знакомиться с условиями кредитного и договора страхования перед
+                                их заключением.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-paragraph">
+                        При соблюдении этого срока – страховая сумма подлежит возврату полностью.
+                    </p>
+
+                    <p class="text-paragraph">
+                        Обратите внимание, что данное указание ЦБ не распространяется на договора коллективного
+                        страхования. В этом случае – знакомьтесь с условиями договора.
+                    </p>
+
+                    <p class="text-paragraph">
+                        В случае если вышеупомянутый срок истек расторгнуть договор страхования можно, но вот возврат
+                        страховой премии уже регулируется самим банком.
+                    </p>
+
+                    <p class="text-paragraph">
+                        Если срок действия кредитного договора истек (выплата по договору произошла досрочно) вернуть
+                        страховую премию можно только в том, случае если такое условие есть в самом договоре.
+                    </p>
+
+                    <blockquote class="content-quote">
+                        Как правило, в этом случае банки руководствуются положениями пункта 3 статьи 958 ГК РФ.
+                    </blockquote>
+
+                    <!-- Процедура возврата -->
+                    <div class="procedure-box">
+                        <h4>Процедура возврата страховки</h4>
+                        <div class="procedure-steps">
+                            <div class="procedure-step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Заявление на возврат страховки по кредиту может быть составлено
+                                    в свободной форме или по форме банка</span>
+                            </div>
+                            <div class="procedure-step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Срок на возврат по заявлению – 10 дней</span>
+                            </div>
+                            <div class="procedure-step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">При нарушении этого срока обращайтесь с жалобой в
+                                    Роспотребнадзор</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-paragraph">
+                        В случае если сроки Вами соблюдены, но страховщик направил Вам отказ в выплате страховой премии
+                        – подавайте на страховую в суд. Иск к страховой должен быть составлен грамотно, с учетом всех
+                        нюансов и особенностей конкретного страхового спора. Судебная практика по возврату неоднозначна
+                        и противоречива, поэтому помочь Вам сможет только опытный страховой юрист или адвокат. Страховое
+                        право достаточно сложная область, самодеятельность здесь недопустима.
+                    </p>
+
+                    <p class="text-paragraph">
+                        В случае если заемщику или его представителю удастся доказать, что страховка навязана
+                        (поставлена в обязанность), то такая сделка может быть признана ничтожной.
+                    </p>
+
+                    <div class="important-note">
+                        <i class="fas fa-clock"></i>
+                        <span>Исковая давность по таким спорам – 3 года.</span>
+                    </div>
+
+                    <!-- ОСАГО -->
+                    <h3 class="content-subtitle">Страхование ОСАГО</h3>
+
+                    <p class="text-paragraph">
+                        Следующий вид страхования, при котором у страхователя (лица, в пользу которого заключается
+                        договор страхования) возникает вопрос – можно ли расторгнуть договор и получить страховку
+                        обратно – это обязательное страхование автомобиля по ОСАГО.
+                    </p>
+
+                    <p class="text-paragraph">
+                        Расторгнуть договор – да. Об этом прямо указано в статье 958 ГК РФ (пункт 2). Но вот вернуть
+                        сумму страховой премии – нет, если условие об этом прямо не предусмотрено договором (спешим Вас
+                        обрадовать, что на сегодняшний день страховщики добавляют этот пункт в свои договора, поэтому
+                        вернуть страховую премию пропорционально неизрасходованному периоду можно).
+                    </p>
+
+                    <p class="text-paragraph">
+                        Если такое условие есть, то страховой надо обосновать причину возврата и это, как правило, может
+                        быть (в соответствии с условиями договора):
+                    </p>
+
+                    <ul class="custom-list">
+                        <li>отчуждение имущества (продажа, дарение);</li>
+                        <li>утрата имущества (угон, утилизация, авария с невозможностью восстановления);</li>
+                        <li>смерть лица заключившего договор страхования;</li>
+                        <li>отзыв лицензии у страховщика;</li>
+                        <li>ошибки при предоставлении данных страхователя;</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4 class="info-title">Документальные доказательства</h4>
+                        <p>Безусловно, всем вышеизложенным причинам должно быть документальное доказательство.</p>
+                    </div>
+
+                    <!-- Порядок действий -->
+                    <h3 class="content-subtitle">Порядок действий</h3>
+
+                    <p class="text-paragraph">
+                        Естественно в первую очередь в страховую должна быть направлена соответствующая претензия. При
+                        этом к обращению должны быть приложены все подтверждающие Ваши требования документы. Обращение
+                        должно быть составлено в двух экземплярах. Один Вам, другой страховщику. На Вашем экземпляре
+                        страховая компания должна проставить отметку о получении (дата, печать, подпись). После
+                        рассмотрения заявления страховая выносит соответствующее решение, производит перерасчет и
+                        возврат денежных средств.
+                    </p>
+
+                    <!-- ДТП и возмещение -->
+                    <h3 class="content-subtitle">ДТП и страховые выплаты</h3>
+
+                    <p class="text-paragraph">
+                        Помимо вышеизложенного, страховые компании очень часто возмещают расходы страхователя при ДТП не
+                        в полном объеме, а только в части или страховая не платит вовсе. Как быть в этом случае и как
+                        получить страховые выплаты по ОСАГО в полном объёме?
+                    </p>
+
+                    <p class="text-paragraph">
+                        К сожалению в данном случае судебных разбирательств не избежать, кроме того настоятельно
+                        рекомендуем прибегать именно к этому способу, дабы не пропустить срок.
+                    </p>
+
+                    <!-- Алгоритм действий при ДТП -->
+                    <div class="action-algorithm">
+                        <h4>Алгоритм действий при ДТП:</h4>
+                        <ol class="numbered-list">
+                            <li>Получить справку ГИБДД, с указанием причин, виновников и следствия аварии</li>
+                            <li>Произвести независимую оценку нанесенного транспортному средству ущерба</li>
+                            <li>В случае несогласия с оценкой страховой компании — провести независимую экспертизу</li>
+                            <li>При частичном возмещении — подготовиться к судебным разбирательствам</li>
+                        </ol>
+                    </div>
+
+                    <blockquote class="content-quote">
+                        Практика рассмотрения таких споров в большинстве своем складывается в пользу владельцев
+                        транспортных средств, но только при грамотно построенной позиции. Потому не медлите –
+                        обращайтесь прямо сегодня и мы обязательно Вам поможем.
+                    </blockquote>
+
+                    <!-- Блок с призывом к действию -->
+                    <div class="cta-block">
+                        <h4 class="cta-title">Проблемы со страховой компанией?</h4>
+                        <p>Наши опытные юристы помогут вам отстоять свои права и получить полное возмещение ущерба.
+                            Первая консультация бесплатна!</p>
+                        <div class="cta-buttons">
+                            <button class="cta-button">Получить консультацию</button>
+                            <a href="tel:+74732954824" class="secondary-button">Позвонить юристу</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Дополнительные CSS стили -->
+            <style>
+                /* Стили для блока контактной информации */
+                .contact-info-box {
+                    background-color: rgba(198, 163, 89, 0.1);
+                    border-left: 4px solid var(--accent-color);
+                    padding: 20px;
+                    margin: 30px 0;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 5px;
+                }
+
+                .contact-icon {
+                    width: 40px;
+                    height: 40px;
+                    background-color: var(--accent-color);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 15px;
+                    font-size: 18px;
+                    color: var(--primary-color);
+                    flex-shrink: 0;
+                }
+
+                .contact-text p {
+                    margin: 0;
+                    font-weight: 500;
+                }
+
+                /* Стили для выделенного блока */
+                .highlight-box {
+                    background-color: rgba(227, 30, 36, 0.08);
+                    border: 2px solid rgba(227, 30, 36, 0.3);
+                    padding: 20px;
+                    margin: 25px 0;
+                    text-align: center;
+                    border-radius: 5px;
+                }
+
+                .highlight-title {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin: 0 0 10px;
+                    color: var(--text-color);
+                }
+
+                .highlight-box p {
+                    margin: 0;
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #e31e24;
+                }
+
+                /* Стили для блока предупреждения */
+                .warning-box {
+                    background-color: rgba(255, 193, 7, 0.05);
+                    border-left: 4px solid #ffc107;
+                    padding: 20px;
+                    margin: 25px 0;
+                    display: flex;
+                    align-items: flex-start;
+                    border-radius: 5px;
+                }
+
+                .warning-icon {
+                    color: #ffc107;
+                    font-size: 24px;
+                    margin-right: 15px;
+                    margin-top: 2px;
+                }
+
+                .warning-content h4 {
+                    margin: 0 0 10px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: var(--text-color);
+                }
+
+                .warning-content p {
+                    margin: 0;
+                    font-size: 15px;
+                }
+
+                /* Стили для блока процедуры */
+                .procedure-box {
+                    background-color: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(198, 163, 89, 0.2);
+                    padding: 25px;
+                    margin: 30px 0;
+                    border-radius: 5px;
+                }
+
+                .procedure-box h4 {
+                    margin: 0 0 20px;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--accent-color);
+                }
+
+                .procedure-steps {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .procedure-step {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .step-number {
+                    width: 30px;
+                    height: 30px;
+                    background-color: var(--accent-color);
+                    color: var(--primary-color);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    margin-right: 15px;
+                    flex-shrink: 0;
+                }
+
+                .step-text {
+                    font-size: 15px;
+                }
+
+                /* Стили для важной заметки */
+                .important-note {
+                    background-color: rgba(198, 163, 89, 0.08);
+                    padding: 15px 20px;
+                    margin: 20px 0;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    font-weight: 500;
+                    color: var(--accent-color);
+                }
+
+                .important-note i {
+                    margin-right: 10px;
+                    font-size: 18px;
+                }
+
+                /* Стили для алгоритма действий */
+                .action-algorithm {
+                    background-color: rgba(255, 255, 255, 0.02);
+                    border: 1px solid rgba(198, 163, 89, 0.15);
+                    padding: 25px;
+                    margin: 30px 0;
+                    border-radius: 5px;
+                }
+
+                .action-algorithm h4 {
+                    margin: 0 0 20px;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--accent-color);
+                }
+
+                .cta-buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                    margin-top: 25px;
+                }
+
+                .secondary-button {
+                    background-color: transparent;
+                    color: var(--text-color);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    padding: 12px 25px;
+                    text-decoration: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                    transition: all var(--transition-speed);
+                    position: relative;
+                    overflow: hidden;
+                    display: inline-block;
+                }
+
+                .secondary-button::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 0;
+                    height: 100%;
+                    background-color: rgba(255, 255, 255, 0.1);
+                    transition: width var(--transition-speed) ease;
+                    z-index: -1;
+                }
+
+                .secondary-button:hover {
+                    border-color: rgba(255, 255, 255, 0.5);
+                }
+
+                .secondary-button:hover::before {
+                    width: 100%;
+                    right: auto;
+                    left: 0;
+                }
+
+                /* Адаптивные стили */
+                @media (max-width: 768px) {
+                    .contact-info-box {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+                    .contact-icon {
+                        margin-right: 0;
+                        margin-bottom: 15px;
+                    }
+
+                    .warning-box {
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                    }
+
+                    .warning-icon {
+                        margin-right: 0;
+                        margin-bottom: 15px;
+                    }
+
+                    .procedure-step {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+                    .step-number {
+                        margin-right: 0;
+                        margin-bottom: 10px;
+                    }
+
+                    .cta-buttons {
+                        flex-direction: column;
+                    }
+                }
+            </style>
+        </div>
+    </div>
+
+<?php wp_footer(); ?>
+<?php get_footer(); ?>
+
+</body>
+</html>
