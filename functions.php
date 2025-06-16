@@ -4,14 +4,14 @@ add_action('phpmailer_init', 'configure_smtp_regru');
 
 function configure_smtp_regru($phpmailer) {
     $phpmailer->isSMTP();
-    $phpmailer->Host = 'mail.hosting.reg.ru';
+    $phpmailer->Host = 'smtp.yandex.ru';
     $phpmailer->SMTPAuth = true;
     $phpmailer->Username = '';
     $phpmailer->Password = '';
     $phpmailer->SMTPSecure = 'ssl';
     $phpmailer->Port = 465;
     $phpmailer->CharSet = 'UTF-8';
-    $phpmailer->setFrom('', 'Юридические услуги');
+    $phpmailer->setFrom('', 'Юридическая фирма «Стратегия»');
     
     $phpmailer->SMTPOptions = array(
         'ssl' => array(

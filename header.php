@@ -990,8 +990,8 @@
         .callback-checkbox-input {
           position: absolute;
           opacity: 0;
-          width: 0;
-          height: 0;
+          width: auto;
+          height: auto;
         }
   
         .callback-checkbox-custom {
@@ -1289,7 +1289,7 @@
                   >
                   <span class="callback-checkbox-custom"></span>
                   <span class="callback-checkbox-text">
-                    Я согласен на <a href="/privacy-policy.html" target="_blank" class="callback-privacy-link">обработку персональных данных</a> *
+                    Я согласен на <a href="<?php echo get_template_directory_uri(); ?>/conf.docx" target="_blank" class="callback-privacy-link">обработку персональных данных</a> *
                   </span>
                 </label>
                 <span class="callback-form-error" id="privacyErrorAuto"></span>
